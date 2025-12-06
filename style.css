@@ -1,22 +1,406 @@
-/* TEST CSS — просто чтобы проверить подключение */
+/* ========== BASE ========== */
+
+*,
+*::before,
+*::after {
+box-sizing: border-box;
+}
+
+html {
+scroll-behavior: smooth;
+}
 
 body {
-background: #f7f4f1; /* тёплый бежевый, не чисто белый */
-color: #2e2925; /* тёмно-коричневый текст */
-font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
-line-height: 1.5;
-padding: 40px;
+margin: 0;
+padding: 0;
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+color: #261f29; /* soft deep plum */
+background: radial-gradient(circle at top, #fdfbf8 0%, #f7f4f1 40%, #f3f0ec 100%);
+-webkit-font-smoothing: antialiased;
 }
 
-h1, h2 {
+h1,
+h2,
+p {
+margin: 0;
+}
+
+h1,
+h2 {
+font-family: "Georgia", "Times New Roman", serif; /* couture serif */
+font-weight: 500;
+letter-spacing: 0.03em;
+}
+
+p {
+font-size: 0.98rem;
+line-height: 1.7;
+}
+
+/* ========== HEADER ========== */
+
+.site-header {
+position: sticky;
+top: 0;
+z-index: 20;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0.75rem 4.5rem;
+background: rgba(250, 247, 243, 0.92);
+backdrop-filter: blur(16px);
+border-bottom: 1px solid rgba(219, 210, 198, 0.6);
+}
+
+.logo-mark {
+width: 36px;
+height: 36px;
+border-radius: 999px;
+border: 1px solid rgba(201, 188, 173, 0.8);
+display: flex;
+align-items: center;
+justify-content: center;
 font-family: "Georgia", "Times New Roman", serif;
+font-size: 0.8rem;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: #5a4d60;
+background: radial-gradient(circle at 30% 0%, #ffffff, #f2e7dd);
 }
 
-a {
-color: #7a6f66;
+.site-nav {
+display: flex;
+gap: 1.5rem;
+font-size: 0.82rem;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+}
+
+.site-nav a {
 text-decoration: none;
+color: #6a5b71;
+opacity: 0.9;
+position: relative;
+padding-bottom: 0.25rem;
 }
 
-a:hover {
-text-decoration: underline;
+.site-nav a::after {
+content: "";
+position: absolute;
+left: 0;
+bottom: 0;
+width: 0;
+height: 1px;
+background: linear-gradient(90deg, #cdb7a4, #e7d7c4);
+transition: width 0.18s ease-out;
+}
+
+.site-nav a:hover::after {
+width: 100%;
+}
+
+/* ========== LAYOUT: PANELS ========== */
+
+main {
+padding: 0 4.5rem 4rem;
+}
+
+.panel {
+padding: 4.5rem 0;
+border-bottom: 1px solid rgba(221, 210, 199, 0.45);
+}
+
+.panel:last-of-type {
+border-bottom: none;
+padding-bottom: 5rem;
+}
+
+.panel__inner {
+max-width: 1120px;
+margin: 0 auto;
+}
+
+.panel__inner--narrow {
+max-width: 720px;
+}
+
+/* Hero panel */
+
+.panel--hero {
+min-height: calc(100vh - 72px);
+display: flex;
+align-items: center;
+}
+
+.panel--hero .panel__inner {
+display: grid;
+grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+gap: 3.5rem;
+align-items: center;
+}
+
+/* Image block */
+
+.panel__image {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.panel__image img {
+max-width: 100%;
+border-radius: 32px;
+display: block;
+box-shadow:
+0 26px 80px rgba(23, 16, 12, 0.12),
+0 0 0 1px rgba(232, 220, 209, 0.8);
+background-color: #fdfbf9;
+}
+
+/* Subtle image variant */
+
+.panel__image--subtle img {
+box-shadow:
+0 18px 54px rgba(23, 16, 12, 0.1),
+0 0 0 1px rgba(230, 218, 207, 0.7);
+border-radius: 24px;
+}
+
+/* Text block */
+
+.panel__text {
+max-width: 620px;
+}
+
+.panel__text--center {
+text-align: center;
+margin: 0 auto;
+}
+
+.panel__text--below {
+margin-top: 1.75rem;
+}
+
+/* Eyebrow & lead */
+
+.eyebrow {
+text-transform: uppercase;
+letter-spacing: 0.18em;
+font-size: 0.78rem;
+color: #8c7d92;
+margin-bottom: 0.9rem;
+}
+
+.lead {
+font-size: 1rem;
+color: #493b4e;
+}
+
+/* Hero typography */
+
+.panel--hero h1 {
+font-size: 2.4rem;
+line-height: 1.2;
+margin-bottom: 1.3rem;
+}
+
+.panel--hero .lead {
+font-size: 1.02rem;
+}
+
+/* Section headings */
+
+.panel h2 {
+font-size: 1.7rem;
+margin-bottom: 0.9rem;
+color: #342836;
+}
+
+/* Rooms label */
+
+.panel--label {
+text-align: center;
+background: radial-gradient(circle at top, #fdfbf8 0%, #f5f1ed 50%, #f3efea 100%);
+}
+
+/* Founder panel */
+
+.panel--founder {
+background: radial-gradient(circle at top, #fdfbf8 0%, #f6f1ec 45%, #f2ece6 100%);
+}
+
+.panel--founder .panel__inner {
+padding: 3.5rem 2rem 3.75rem;
+border-radius: 32px;
+background: rgba(255, 255, 255, 0.78);
+box-shadow:
+0 28px 80px rgba(47, 35, 27, 0.16),
+0 0 0 1px rgba(233, 218, 203, 0.9);
+}
+
+.founder-body {
+margin-bottom: 1.1rem;
+color: #4a3a4e;
+font-size: 0.96rem;
+}
+
+.founder-tagline {
+margin-top: 1.4rem;
+font-family: "Georgia", "Times New Roman", serif;
+font-style: italic;
+font-size: 0.82rem;
+letter-spacing: 0.16em;
+text-transform: uppercase;
+color: #8c7d92;
+}
+
+/* Early access panel */
+
+.panel--early {
+background: linear-gradient(180deg, #f7f3ee 0%, #f0e7de 100%);
+}
+
+.panel--early .panel__inner {
+padding: 2.5rem 2rem 2.75rem;
+border-radius: 32px;
+background: rgba(255, 255, 255, 0.72);
+box-shadow:
+0 24px 70px rgba(50, 39, 31, 0.18),
+0 0 0 1px rgba(232, 218, 204, 0.8);
+}
+
+/* ========== EARLY ACCESS FORM ========== */
+
+.early-form {
+margin-top: 1.75rem;
+display: flex;
+flex-wrap: wrap;
+gap: 0.75rem;
+justify-content: center;
+}
+
+.early-form input[type="email"] {
+min-width: 260px;
+padding: 0.85rem 1rem;
+border-radius: 999px;
+border: 1px solid rgba(206, 189, 174, 0.8);
+background: rgba(255, 255, 255, 0.9);
+font-size: 0.9rem;
+outline: none;
+}
+
+.early-form input[type="email"]::placeholder {
+color: #a2949d;
+}
+
+.early-form button {
+padding: 0.85rem 1.8rem;
+border-radius: 999px;
+border: none;
+font-size: 0.84rem;
+letter-spacing: 0.16em;
+text-transform: uppercase;
+cursor: pointer;
+background: linear-gradient(135deg, #d1b89f, #f0dfcc);
+color: #2a1f23;
+box-shadow:
+0 10px 26px rgba(140, 115, 91, 0.4),
+0 0 0 1px rgba(244, 231, 217, 0.9);
+}
+
+.early-form button:hover {
+filter: brightness(1.03);
+}
+
+/* ========== FOOTER ========== */
+
+.site-footer {
+padding: 1.75rem 4.5rem 2.5rem;
+border-top: 1px solid rgba(220, 209, 198, 0.6);
+font-size: 0.78rem;
+letter-spacing: 0.16em;
+text-transform: uppercase;
+color: #8f7e86;
+text-align: center;
+background: #f7f2ec;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 960px) {
+.site-header {
+padding: 0.75rem 1.5rem;
+}
+
+main {
+padding: 0 1.5rem 3rem;
+}
+
+.site-nav {
+display: none; /* можно позже сделать бургер, пока убираем для чистоты */
+}
+
+.panel {
+padding: 3rem 0;
+}
+
+.panel--hero {
+min-height: auto;
+padding-top: 2.5rem;
+}
+
+.panel--hero .panel__inner {
+grid-template-columns: minmax(0, 1fr);
+}
+
+.panel__image img {
+border-radius: 24px;
+}
+
+.panel--early .panel__inner {
+padding: 2rem 1.5rem 2.25rem;
+border-radius: 24px;
+}
+
+.panel--founder .panel__inner {
+padding: 2.6rem 1.6rem 3rem;
+border-radius: 24px;
+}
+
+.founder-body {
+font-size: 0.9rem;
+}
+}
+
+@media (max-width: 600px) {
+.panel--hero h1 {
+font-size: 2rem;
+}
+
+.panel h2 {
+font-size: 1.45rem;
+}
+
+.early-form {
+flex-direction: column;
+align-items: stretch;
+}
+
+.early-form input[type="email"] {
+width: 100%;
+}
+
+.early-form button {
+width: 100%;
+text-align: center;
+}
+
+.panel--founder .panel__inner {
+padding: 2.3rem 1.3rem 2.5rem;
+}
+
+.founder-tagline {
+font-size: 0.78rem;
+letter-spacing: 0.14em;
+}
 }
