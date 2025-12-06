@@ -1,361 +1,288 @@
-/* ========== BASE ========== */
-
-*,
-*::before,
-*::after {
-box-sizing: border-box;
-}
-
-html {
-scroll-behavior: smooth;
-}
-
-body {
-margin: 0;
-padding: 0;
-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-color: #261f29; /* soft deep plum */
-background: radial-gradient(circle at top, #fdfbf8 0%, #f7f4f1 40%, #f3f0ec 100%);
--webkit-font-smoothing: antialiased;
-}
-
-/* Typography reset */
-
-h1,
-h2,
-p {
-margin: 0;
-}
-
-h1,
-h2 {
-font-family: "Georgia", "Times New Roman", serif; /* couture serif */
-font-weight: 500;
-letter-spacing: 0.03em;
-}
-
-p {
-font-size: 0.98rem;
-line-height: 1.7;
-}
-
-/* ========== HEADER ========== */
-
-.site-header {
-position: sticky;
-top: 0;
-z-index: 20;
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 0.75rem 4.5rem;
-background: rgba(250, 247, 243, 0.92);
-backdrop-filter: blur(16px);
-border-bottom: 1px solid rgba(219, 210, 198, 0.6);
-}
-
-.logo-mark {
-width: 36px;
-height: 36px;
-border-radius: 999px;
-border: 1px solid rgba(201, 188, 173, 0.8);
-display: flex;
-align-items: center;
-justify-content: center;
-font-family: "Georgia", "Times New Roman", serif;
-font-size: 0.8rem;
-letter-spacing: 0.12em;
-text-transform: uppercase;
-color: #5a4d60;
-background: radial-gradient(circle at 30% 0%, #ffffff, #f2e7dd);
-}
-
-.site-nav {
-display: flex;
-gap: 1.5rem;
-font-size: 0.82rem;
-letter-spacing: 0.14em;
-text-transform: uppercase;
-}
-
-.site-nav a {
-text-decoration: none;
-color: #6a5b71;
-opacity: 0.9;
-position: relative;
-padding-bottom: 0.25rem;
-}
-
-.site-nav a::after {
-content: "";
-position: absolute;
-left: 0;
-bottom: 0;
-width: 0;
-height: 1px;
-background: linear-gradient(90deg, #cdb7a4, #e7d7c4);
-transition: width 0.18s ease-out;
-}
-
-.site-nav a:hover::after {
-width: 100%;
-}
-
-/* ========== LAYOUT: PANELS ========== */
-
-main {
-padding: 0 4.5rem 4rem;
-}
-
-/* Generic panel */
-
-.panel {
-padding: 4.5rem 0;
-border-bottom: 1px solid rgba(221, 210, 199, 0.45);
-}
-
-.panel:last-of-type {
-border-bottom: none;
-padding-bottom: 5rem;
-}
-
-.panel__inner {
-max-width: 1120px;
-margin: 0 auto;
-}
-
-.panel__inner--narrow {
-max-width: 720px;
-}
-
-/* Hero panel */
-
-.panel--hero {
-min-height: calc(100vh - 72px);
-display: flex;
-align-items: center;
-}
-
-.panel--hero .panel__inner {
-display: grid;
-grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-gap: 3.5rem;
-align-items: center;
-}
-
-/* Image block */
-
-.panel__image {
-display: flex;
-align-items: center;
-justify-content: center;
-}
-
-.panel__image img {
-max-width: 100%;
-border-radius: 32px;
-display: block;
-box-shadow:
-0 26px 80px rgba(23, 16, 12, 0.12),
-0 0 0 1px rgba(232, 220, 209, 0.8);
-background-color: #fdfbf9;
-}
-
-/* For more subtle images (early access) */
-
-.panel__image--subtle img {
-box-shadow:
-0 18px 54px rgba(23, 16, 12, 0.1),
-0 0 0 1px rgba(230, 218, 207, 0.7);
-border-radius: 24px;
-}
-
-/* Text block */
-
-.panel__text {
-max-width: 620px;
-}
-
-.panel__text--center {
-text-align: center;
-margin: 0 auto;
-}
-
-.panel__text--below {
-margin-top: 1.75rem;
-}
-
-/* Eyebrow & lead */
-
-.eyebrow {
-text-transform: uppercase;
-letter-spacing: 0.18em;
-font-size: 0.78rem;
-color: #8c7d92;
-margin-bottom: 0.9rem;
-}
-
-.lead {
-font-size: 1rem;
-color: #493b4e;
-}
-
-/* Hero typography */
-
-.panel--hero h1 {
-font-size: 2.4rem;
-line-height: 1.2;
-margin-bottom: 1.3rem;
-}
-
-.panel--hero .lead {
-font-size: 1.02rem;
-}
-
-/* Section headings */
-
-.panel h2 {
-font-size: 1.7rem;
-margin-bottom: 0.9rem;
-color: #342836;
-}
-
-/* Rooms label panel */
-
-.panel--label {
-text-align: center;
-background: radial-gradient(circle at top, #fdfbf8 0%, #f5f1ed 50%, #f3efea 100%);
-}
-
-/* Early access panel */
-
-.panel--early {
-background: linear-gradient(180deg, #f7f3ee 0%, #f0e7de 100%);
-}
-
-.panel--early .panel__inner {
-padding: 2.5rem 2rem 2.75rem;
-border-radius: 32px;
-background: rgba(255, 255, 255, 0.72);
-box-shadow:
-0 24px 70px rgba(50, 39, 31, 0.18),
-0 0 0 1px rgba(232, 218, 204, 0.8);
-}
-
-/* ========== EARLY ACCESS FORM ========== */
-
-.early-form {
-margin-top: 1.75rem;
-display: flex;
-flex-wrap: wrap;
-gap: 0.75rem;
-justify-content: center;
-}
-
-.early-form input[type="email"] {
-min-width: 260px;
-padding: 0.85rem 1rem;
-border-radius: 999px;
-border: 1px solid rgba(206, 189, 174, 0.8);
-background: rgba(255, 255, 255, 0.9);
-font-size: 0.9rem;
-outline: none;
-}
-
-.early-form input[type="email"]::placeholder {
-color: #a2949d;
-}
-
-.early-form button {
-padding: 0.85rem 1.8rem;
-border-radius: 999px;
-border: none;
-font-size: 0.84rem;
-letter-spacing: 0.16em;
-text-transform: uppercase;
-cursor: pointer;
-background: linear-gradient(135deg, #d1b89f, #f0dfcc);
-color: #2a1f23;
-box-shadow:
-0 10px 26px rgba(140, 115, 91, 0.4),
-0 0 0 1px rgba(244, 231, 217, 0.9);
-}
-
-.early-form button:hover {
-filter: brightness(1.03);
-}
-
-/* ========== FOOTER ========== */
-
-.site-footer {
-padding: 1.75rem 4.5rem 2.5rem;
-border-top: 1px solid rgba(220, 209, 198, 0.6);
-font-size: 0.78rem;
-letter-spacing: 0.16em;
-text-transform: uppercase;
-color: #8f7e86;
-text-align: center;
-background: #f7f2ec;
-}
-
-/* ========== RESPONSIVE ========== */
-
-@media (max-width: 960px) {
-.site-header {
-padding: 0.75rem 1.5rem;
-}
-
-main {
-padding: 0 1.5rem 3rem;
-}
-
-.site-nav {
-display: none; /* можно позже сделать бургер, пока убираем для чистоты */
-}
-
-.panel {
-padding: 3rem 0;
-}
-
-.panel--hero {
-min-height: auto;
-padding-top: 2.5rem;
-}
-
-.panel--hero .panel__inner {
-grid-template-columns: minmax(0, 1fr);
-}
-
-.panel__image img {
-border-radius: 24px;
-}
-
-.panel--early .panel__inner {
-padding: 2rem 1.5rem 2.25rem;
-border-radius: 24px;
-}
-}
-
-@media (max-width: 600px) {
-.panel--hero h1 {
-font-size: 2rem;
-}
-
-.panel h2 {
-font-size: 1.45rem;
-}
-
-.early-form {
-flex-direction: column;
-align-items: stretch;
-}
-
-.early-form input[type="email"] {
-width: 100%;
-}
-
-.early-form button {
-width: 100%;
-text-align: center;
-}
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Scene404.studio — Emotional Couture House</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="site-header">
+<div class="logo-mark">S404</div>
+<nav class="site-nav">
+<a href="#welcome">Welcome</a>
+<a href="#about">About</a>
+<a href="#founder">Founder</a>
+<a href="#dreamos">dreamOS</a>
+<a href="#rooms">Rooms</a>
+<a href="#twinmode">Twin Mode</a>
+<a href="#glamdash">GlamDash</a>
+<a href="#early-access">Early Access</a>
+</nav>
+</header>
+
+<main>
+<!-- WELCOME -->
+<section id="welcome" class="panel panel--hero">
+<div class="panel__inner">
+<div class="panel__image">
+<img src="assets/welcome.png" alt="Welcome to your System" />
+</div>
+<div class="panel__text panel__text--center panel__text--below">
+<p class="eyebrow">Scene404.studio</p>
+<h1>Welcome to your System.</h1>
+<p class="lead">
+Where light becomes language. A quiet operating system shaped by softness,
+presence, and emotional clarity.
+</p>
+<p class="lead">
+Built for sensitive minds, deep feelers, and those who are tired of noise but not of feeling.
+</p>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="panel">
+<div class="panel__inner">
+<div class="panel__image">
+<img src="assets/about.png" alt="Scene404.studio — Emotional Couture House" />
+</div>
+<div class="panel__text panel__text--center panel__text--below">
+<p class="eyebrow">About</p>
+<h2>Emotional Couture House.</h2>
+<p>
+Scene404.studio treats systems the way a maison treats garments —
+with precision, breath, and devotion to inner texture.
+</p>
+<p>
+We design interfaces that feel like rooms, not dashboards. Technology becomes softer here.
+And the user becomes seen.
+</p>
+</div>
+</div>
+</section>
+
+<!-- FOUNDER -->
+<section id="founder" class="panel panel--founder">
+<div class="panel__inner panel__inner--narrow">
+<div class="panel__text panel__text--center">
+<p class="eyebrow">Founder &amp; Creative Director</p>
+<h2>Margarita Ivanova</h2>
+
+<p class="founder-body">
+Scene404.studio was born from a simple idea: technology can feel human.
+Margarita designs emotional systems slowly and attentively, with couture softness
+and a deep respect for inner worlds.
+</p>
+
+<p class="founder-body">
+Across dreamOS, Calm Room, Twin Mode and GlamDash, her vision stays the same:
+softness as structure, presence as design, and emotion as a language the
+system must learn to speak.
+</p>
+
+<p class="founder-tagline">
+Softness as structure. Presence as design.
+</p>
+</div>
+</div>
+</section>
+
+<!-- DREAMOS OVERVIEW -->
+<section id="dreamos" class="panel">
+<div class="panel__inner">
+<div class="panel__image">
+<img src="assets/dreamos.png" alt="dreamOS — Emotional Operating System" />
+</div>
+<div class="panel__text panel__text--center panel__text--below">
+<p class="eyebrow">dreamOS</p>
+<h2>Emotional Operating System.</h2>
+<p>
+dreamOS is an operating system shaped not by speed, but by feeling.
+Every gesture becomes a signal; every room is a state of light.
+</p>
+<p>
+Instead of chasing attention, the system listens. It learns your rhythms,
+responds softly, and leaves space for your inner world to breathe.
+</p>
+</div>
+</div>
+</section>
+
+<!-- ROOMS LABEL -->
+<section id="rooms" class="panel panel--label">
+<div class="panel__inner">
+<div class="panel__text panel__text--center">
+<p class="eyebrow">The Rooms</p>
+<h2>Spaces inside your System.</h2>
+<p>
+Each room is a different state of light — calm, reflection, softness, joy.
+Together they form the emotional architecture of dreamOS.
+</p>
+</div>
+</div>
+</section>
+
+<!-- CALM ROOM -->
+<section class="panel">
+<div class="panel__inner">
+<div class="panel__image">
+<img src="assets/calm_room.png" alt="Calm Room — Breathe with Light" />
+</div>
+<div class="panel__text panel__text--center panel__text--below">
+<p class="eyebrow">Calm Room</p>
+<h2>Breathe with Light.</h2>
+<p>
+A room where stillness becomes architecture. Breathing is the interface,
+and the system follows your pace instead of forcing its own.
+</p>
+<p>
+Here, light slows down with you — quietly, precisely, without demand,
+until your nervous system remembers what calm feels like.
+</p>
+</div>
+</div>
+</section>
+
+<!-- MIRROR ROOM -->
+<section class="panel">
+<div class="panel__inner">
+<div class="panel__image">
+<img src="assets/mirror_room.png" alt="Mirror Room — Do you see yourself?" />
+</div>
+<div class="panel__text panel__text--center panel__text--below">
+<p class="eyebrow">Mirror Room</p>
+<h2>Do You See Yourself?</h2>
+<p>
+A reflective chamber where emotion becomes surface. Every touch creates
+a subtle ripple — honest, soft, and impossible to ignore.
+</p>
+<p>
+The system doesn’t judge or correct you. It simply shows you to yourself
+with the tenderness the outside world rarely offers.
+</p>
+</div>
+</div>
+</section>
+
+<!-- SOFT ROOM -->
+<section class="panel">
+<div class="panel__inner">
+<div class="panel__image">
+<img src="assets/soft_room.png" alt="Soft Room — Touch. Hold. Heal." />
+</div>
+<div class="panel__text panel__text--center panel__text--below">
+<p class="eyebrow">Soft Room</p>
+<h2>Touch. Hold. Heal.</h2>
+<p>
+A room for long pauses, warm tones, and slower replies.
+Here, the interface answers not to urgency, but to care.
+</p>
+<p>
+Softness becomes a method, not a weakness. Presence becomes a design principle,
+and you are allowed to arrive as you are.
+</p>
+</div>
+</div>
+</section>
+
+<!-- JOY ROOM -->
+<section class="panel">
+<div class="panel__inner">
+<div class="panel__image">
+<img src="assets/joy_room.png" alt="Joy Room — Pearl-Heart Joy" />
+</div>
+<div class="panel__text panel__text--center panel__text--below">
+<p class="eyebrow">Joy Room</p>
+<h2>Pearl-Heart Joy.</h2>
+<p>
+A quiet celebration of aliveness. Not fireworks, but small luminous sparks
+collected with intention over days, weeks, and seasons.
+</p>
+<p>
+Every moment of joy is treated like a pearl — noticed, held, and remembered
+by the system so you don’t lose it in the noise.
+</p>
+</div>
+</div>
+</section>
+
+<!-- TWIN MODE -->
+<section id="twinmode" class="panel">
+<div class="panel__inner">
+<div class="panel__image">
+<img src="assets/twin_mode.png" alt="Twin Mode — Connect as Two. Heal as One." />
+</div>
+<div class="panel__text panel__text--center panel__text--below">
+<p class="eyebrow">Twin Mode</p>
+<h2>Connect as Two. Heal as One.</h2>
+<p>
+Two nervous systems meeting in one shared field of light.
+Twin Mode turns presence, breath, and attention into a quiet co-experience.
+</p>
+<p>
+No performance, no pressure. Just a carefully held space where two people
+can sync softly — and leave a calmer imprint on each other.
+</p>
+</div>
+</div>
+</section>
+
+<!-- GLAMDASH -->
+<section id="glamdash" class="panel">
+<div class="panel__inner">
+<div class="panel__image">
+<img src="assets/glamdash.png" alt="GlamDash — Digital Couture Mini-Game" />
+</div>
+<div class="panel__text panel__text--center panel__text--below">
+<p class="eyebrow">GlamDash</p>
+<h2>Digital Couture Mini-Game.</h2>
+<p>
+A soft, collectible universe where fashion becomes an emotional interface.
+Outfits, moods, and small rituals weave into one gentle game loop.
+</p>
+<p>
+Designed as a future-ready title for consoles and handheld devices —
+born inside dreamOS, growing into its own world. Coming soon.
+</p>
+</div>
+</div>
+</section>
+
+<!-- EARLY ACCESS -->
+<section id="early-access" class="panel panel--early">
+<div class="panel__inner panel__inner--narrow">
+<div class="panel__image panel__image--subtle">
+<img src="assets/early_access.png" alt="Request Early Access" />
+</div>
+<div class="panel__text panel__text--center panel__text--below">
+<p class="eyebrow">dreamOS · Early Access</p>
+<h2>Enter the System Early.</h2>
+<p>
+We are quietly opening doors for those who feel the need for softer systems —
+founders, creatives, researchers, and deeply sensitive people.
+</p>
+<p>
+Leave your email to be among the first to step inside the live dreamOS rooms as they open.
+</p>
+
+<form class="early-form">
+<input
+type="email"
+name="email"
+placeholder="Enter your email"
+aria-label="Email"
+/>
+<button type="button">Notify me</button>
+</form>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="site-footer">
+<p>© 2025 Scene404.studio · Emotional Couture House.</p>
+</footer>
+</body>
+</html>
