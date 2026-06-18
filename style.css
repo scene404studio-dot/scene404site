@@ -1,100 +1,193 @@
-/* -----------------------------------------
-SCENE404 Maison — Minimal Stable CSS
------------------------------------------ */
-
-/* Global */
+* {
+box-sizing: border-box;
+}
 
 body {
 margin: 0;
-padding: 40px 20px;
-background: #f7f4f1; /* whisper-white / champagne nude */
-color: #2e2925; /* calm brown, readable */
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+font-family: Inter, Arial, sans-serif;
+color: #5f5a55;
+background: #fbfbfa;
+}
+
+.nav {
+position: fixed;
+top: 0;
+width: 100%;
+padding: 28px 48px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: rgba(251, 251, 250, 0.82);
+backdrop-filter: blur(18px);
+z-index: 10;
+}
+
+.logo {
+letter-spacing: 8px;
+font-weight: 600;
+}
+
+.nav a {
+margin-left: 32px;
+text-decoration: none;
+color: #5f5a55;
+font-size: 12px;
+text-transform: uppercase;
+letter-spacing: 2px;
+}
+
+.hero {
+min-height: 100vh;
+display: grid;
+grid-template-columns: 42% 58%;
+align-items: center;
+padding: 120px 48px 60px;
+}
+
+.hero-text {
+padding-left: 40px;
+}
+
+.eyebrow {
+font-size: 12px;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: #a69f98;
+}
+
+h1 {
+font-size: clamp(48px, 7vw, 92px);
+line-height: 0.95;
+font-weight: 400;
+margin: 20px 0;
+color: #4d4742;
+}
+
+h2 {
+font-size: clamp(36px, 5vw, 64px);
+line-height: 1;
+font-weight: 400;
+margin: 16px 0;
+color: #4d4742;
+}
+
+p {
+font-size: 18px;
 line-height: 1.6;
 }
 
-h1, h2, h3 {
-font-family: "Georgia", serif; /* couture serif */
-font-weight: 500;
-color: #2e2925;
-margin-top: 0;
+.emoji {
+font-size: 28px;
+letter-spacing: 12px;
 }
 
-a {
-color: #7a6f66; /* pearl taupe */
+.button,
+button {
+display: inline-block;
+border: 1px solid #ffd6de;
+background: #ffd6de;
+color: #5f5a55;
+padding: 16px 32px;
+border-radius: 999px;
 text-decoration: none;
-}
-
-a:hover {
-text-decoration: underline;
-}
-
-/* Layout helpers */
-
-section {
-max-width: 900px;
-margin: 60px auto;
-padding: 0 10px;
-}
-
-ul {
-padding-left: 18px;
-}
-
-/* Header */
-
-header {
-max-width: 900px;
-margin: 0 auto 30px;
-padding: 10px 10px;
-border-bottom: 1px solid #e7d8c8;
-}
-
-header .logo {
-font-family: "Georgia", serif;
-font-size: 14px;
-letter-spacing: 0.15em;
 text-transform: uppercase;
-color: #7a6f66;
+letter-spacing: 2px;
+font-size: 12px;
+cursor: pointer;
 }
 
-nav {
-margin-top: 12px;
+.hero-img,
+.app-img,
+.waitlist-img {
+width: 100%;
+display: block;
+border-radius: 28px;
 }
 
-nav a {
-margin-right: 14px;
-font-size: 13px;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-}
-
-/* Hero */
-
-.hero {
-background: #faf7f3;
-padding: 40px 20px;
-border: 1px solid #e7d8c8;
-border-radius: 18px;
-}
-
-.hero p {
-max-width: 500px;
-}
-
-/* Simple card */
-
-.card {
-margin: 20px 0;
-padding: 16px 20px;
+.intro {
+text-align: center;
+padding: 120px 24px;
 background: #ffffff;
-border: 1px solid #eadfd3;
-border-radius: 14px;
 }
 
-/* Micro text */
+.app-section {
+display: grid;
+grid-template-columns: 40% 60%;
+align-items: center;
+gap: 40px;
+padding: 100px 80px;
+}
 
-.micro {
-font-size: 13px;
-color: #7a6f66;
+.waitlist {
+padding: 80px 48px 120px;
+}
+
+.waitlist-box {
+max-width: 900px;
+margin: 40px auto 0;
+padding: 40px;
+border-radius: 28px;
+background: #ffffff;
+text-align: center;
+box-shadow: 0 20px 60px rgba(0,0,0,0.04);
+}
+
+form {
+margin-top: 28px;
+display: flex;
+gap: 12px;
+justify-content: center;
+}
+
+input {
+width: 360px;
+padding: 16px 22px;
+border-radius: 999px;
+border: 1px solid #e4e2dd;
+font-size: 14px;
+outline: none;
+}
+
+footer {
+padding: 32px 48px;
+display: flex;
+justify-content: space-between;
+font-size: 12px;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: #8d8782;
+}
+
+@media (max-width: 800px) {
+.nav {
+padding: 22px;
+}
+
+.nav nav {
+display: none;
+}
+
+.hero,
+.app-section {
+grid-template-columns: 1fr;
+padding: 110px 22px 50px;
+}
+
+.hero-text {
+padding-left: 0;
+}
+
+form {
+flex-direction: column;
+}
+
+input,
+button {
+width: 100%;
+}
+
+footer {
+flex-direction: column;
+gap: 12px;
+}
 }
