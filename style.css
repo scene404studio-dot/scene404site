@@ -115,7 +115,7 @@ text-align: center;
 
 .app-section,
 .hero {
-min-height: 86vh;
+min-height: 65vh;
 padding: 70px 54px;
 display: grid;
 grid-template-columns: 42% 58%;
@@ -133,7 +133,7 @@ display: block;
 }
 
 .waitlist {
-min-height: 88vh;
+min-height: 65vh;
 padding: 70px 54px 90px;
 display: flex;
 flex-direction: column;
