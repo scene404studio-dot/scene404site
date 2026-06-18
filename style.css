@@ -105,7 +105,7 @@ cursor: pointer;
 }
 
 .intro {
-min-height: 72vh;
+min-height: 55vh;
 padding: 120px 24px 90px;
 display: flex;
 flex-direction: column;
