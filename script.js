@@ -1,8 +1,8 @@
-const form = document.querySelector(".waitlist-form");
-const button = form?.querySelector("button");
+const form = document.querySelector(".waitlist");
+const button = document.querySelector(".waitlist button");
 
 if (form && button) {
-form.addEventListener("submit", () => {
+form.addEventListener("submit", function () {
 button.textContent = "Joining...";
 button.disabled = true;
 });
