@@ -1,197 +1,314 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>BRB</title>
-
-<meta name="description"
-content="BRB. Not a pet. Not a game. Something in between.">
-
-<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<main>
-
-<!-- ================= HERO ================= -->
-
-<section class="hero">
-
-<div class="hero-left">
-
-<span class="eyebrow">
-SCENE404 presents
-</span>
-
-<h1>BRB</h1>
-
-<h2>
-A tiny world.
-</h2>
-
-<p class="subtitle">
-Always up to something.
-</p>
-
-<p class="coming">
-Coming Fall 2026
-</p>
-
-<form
-action="https://formspree.io/f/xjgdddne"
-method="POST"
-class="waitlist">
-
-<input
-type="email"
-name="email"
-placeholder="Email address"
-required>
-
-<button type="submit">
-Join the waitlist
-</button>
-
-</form>
-
-<small>
-No spam. Just the first invite.
-</small>
-
-</div>
-
-<div class="hero-right">
-
-<img
-src="hero.png"
-alt="BRB">
-
-</div>
-
-</section>
-
-<!-- ================= WORLD ================= -->
-
-<section class="world">
-
-<div class="section-image">
-
-<img
-src="world.png"
-alt="The BRB World">
-
-</div>
-
-<div class="section-copy">
-
-<span class="eyebrow">
-The BRB World
-</span>
-
-<h3>
-Always finding something.
-</h3>
-
-<p>
-
-Always doing something.
-
-<br><br>
-
-Always moving.
-
-</p>
-
-</div>
-
-</section>
-<!-- ================= APP ================= -->
-
-<section class="app">
-
-<div class="section-copy">
-
-<span class="eyebrow">
-Inside BRB
-</span>
-
-<h3>
-A tiny world.
-</h3>
-
-<p>
-
-Always changing.
-
-</p>
-
-</div>
-
-<div class="section-image">
-
-<img
-src="app.png"
-alt="BRB App">
-
-</div>
-
-</section>
-
-<!-- ================= MOMENTS ================= -->
-
-<section class="moments">
-
-<div class="moments-header">
-
-<span class="eyebrow">
-Small Moments
-</span>
-
-<h3>
-The ones you keep coming back for.
-</h3>
-
-</div>
-
-<div class="moments-image">
-
-<img
-src="moments.png"
-alt="Small Moments">
-
-</div>
-
-<div class="moments-tags">
-
-<span>♡ Mood</span>
-
-<span>✦ Curiosity</span>
-
-<span>🥛 Feed</span>
-
-<span>🎮 Play</span>
-
-<span>◷ Time passes</span>
-
-</div>
-
-</section>
-
-</main>
-
-<footer>
-
-<p>
-© 2025 SCENE404
-</p>
-
-</footer>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+* {
+box-sizing: border-box;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+html,
+body {
+margin: 0;
+padding: 0;
+background: #ffffff;
+color: #202326;
+font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+text-rendering: geometricPrecision;
+-webkit-font-smoothing: antialiased;
+}
+
+body {
+overflow-x: hidden;
+}
+
+img {
+display: block;
+width: 100%;
+height: auto;
+}
+
+.section {
+width: 100%;
+min-height: 100vh;
+padding: 72px 7vw;
+}
+
+.hero {
+display: grid;
+grid-template-columns: minmax(320px, 0.78fr) minmax(420px, 1.22fr);
+align-items: center;
+gap: 5vw;
+}
+
+.copy {
+max-width: 520px;
+}
+
+.hero-copy {
+justify-self: end;
+max-width: 470px;
+}
+
+.eyebrow {
+margin: 0 0 22px;
+color: #8b9296;
+font-size: 12px;
+line-height: 1;
+font-weight: 650;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+margin-top: 0;
+}
+
+h1 {
+margin-bottom: 24px;
+color: #202326;
+font-size: clamp(96px, 13vw, 190px);
+line-height: 0.78;
+font-weight: 720;
+letter-spacing: -0.095em;
+}
+
+h2 {
+margin-bottom: 24px;
+color: #202326;
+font-size: clamp(54px, 6.8vw, 104px);
+line-height: 0.9;
+font-weight: 650;
+letter-spacing: -0.075em;
+}
+
+.hero-line {
+margin-bottom: 8px;
+color: #33393d;
+font-size: clamp(26px, 2.8vw, 40px);
+line-height: 1.05;
+font-weight: 430;
+letter-spacing: -0.045em;
+}
+
+.hero-line.muted {
+color: #657075;
+}
+
+.coming {
+margin: 28px 0 0;
+color: #8b9296;
+font-size: 15px;
+line-height: 1.4;
+letter-spacing: -0.015em;
+}
+
+.body-text {
+margin: 0;
+color: #657075;
+font-size: clamp(24px, 2.6vw, 38px);
+line-height: 1.12;
+font-weight: 420;
+letter-spacing: -0.045em;
+}
+
+.hero-image {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.hero-image img {
+width: min(760px, 100%);
+max-height: 78vh;
+object-fit: contain;
+}
+
+.waitlist-form {
+margin-top: 34px;
+display: flex;
+align-items: center;
+gap: 10px;
+width: 100%;
+max-width: 450px;
+}
+
+.waitlist-form input {
+flex: 1;
+min-width: 0;
+height: 54px;
+border: 1px solid #e1e5e7;
+border-radius: 999px;
+padding: 0 20px;
+background: #ffffff;
+color: #202326;
+font: inherit;
+font-size: 15px;
+outline: none;
+}
+
+.waitlist-form input::placeholder {
+color: #a0a8ad;
+}
+
+.waitlist-form input:focus {
+border-color: #c8d0d4;
+}
+
+.waitlist-form button {
+height: 54px;
+border: 0;
+border-radius: 999px;
+padding: 0 25px;
+background: #202326;
+color: #ffffff;
+font: inherit;
+font-size: 15px;
+cursor: pointer;
+white-space: nowrap;
+}
+
+.waitlist-form button:disabled {
+opacity: 0.62;
+cursor: default;
+}
+
+.note {
+margin: 14px 0 0;
+color: #8b9296;
+font-size: 13px;
+line-height: 1.4;
+}
+
+.world,
+.app,
+.moments {
+border-top: 1px solid #eef0f1;
+}
+
+.world {
+display: grid;
+grid-template-columns: minmax(420px, 1.15fr) minmax(320px, 0.85fr);
+align-items: center;
+gap: 6vw;
+}
+
+.app {
+display: grid;
+grid-template-columns: minmax(320px, 0.85fr) minmax(420px, 1.15fr);
+align-items: center;
+gap: 6vw;
+}
+
+.big-image {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.big-image img {
+width: 100%;
+max-height: 78vh;
+object-fit: contain;
+}
+
+.moments {
+min-height: auto;
+padding-top: 96px;
+}
+
+.moments-copy {
+max-width: 840px;
+margin: 0 auto;
+text-align: center;
+}
+
+.moments-image {
+max-width: 1120px;
+margin: 56px auto 0;
+}
+
+.moments-tags {
+max-width: 1120px;
+margin: 28px auto 0;
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+gap: 12px;
+}
+
+.moments-tags span {
+display: block;
+padding: 16px 18px;
+border: 1px solid #eef0f1;
+border-radius: 999px;
+color: #657075;
+background: #ffffff;
+font-size: 15px;
+line-height: 1;
+text-align: center;
+}
+
+footer {
+padding: 38px 7vw;
+border-top: 1px solid #eef0f1;
+color: #8b9296;
+font-size: 13px;
+}
+
+footer p {
+margin: 0;
+}
+
+@media (max-width: 900px) {
+.section {
+min-height: auto;
+padding: 76px 24px;
+}
+
+.hero,
+.world,
+.app {
+grid-template-columns: 1fr;
+gap: 44px;
+}
+
+.hero-copy {
+justify-self: start;
+}
+
+h1 {
+font-size: 84px;
+}
+
+h2 {
+font-size: 52px;
+}
+
+.hero-line,
+.body-text {
+font-size: 23px;
+}
+
+.hero-image img {
+width: 92%;
+max-height: none;
+}
+
+.waitlist-form {
+flex-direction: column;
+align-items: stretch;
+}
+
+.waitlist-form button {
+width: 100%;
+}
+
+.moments-tags {
+grid-template-columns: 1fr;
+}
+
+footer {
+padding: 34px 24px;
+}
+}
