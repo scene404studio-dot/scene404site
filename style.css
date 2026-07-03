@@ -1,240 +1,197 @@
-* {
-box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
 
-html,
-body {
-margin: 0;
-padding: 0;
-width: 100%;
-background: #ffffff;
-color: #202326;
-font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
-}
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-img {
-display: block;
-max-width: 100%;
-}
+<title>BRB</title>
 
-.section {
-width: 100%;
-min-height: 100vh;
-padding: 80px 7vw;
-}
+<meta name="description"
+content="BRB. Not a pet. Not a game. Something in between.">
 
-.hero {
-display: grid;
-grid-template-columns: 420px 1fr;
-align-items: center;
-gap: 7vw;
-}
+<link rel="stylesheet" href="style.css">
+</head>
 
-.copy {
-max-width: 420px;
-}
+<body>
 
-.eyebrow {
-margin: 0 0 18px;
-font-size: 12px;
-line-height: 1;
-letter-spacing: 0.09em;
-text-transform: uppercase;
-color: #8f969a;
-font-weight: 600;
-}
+<main>
 
-h1 {
-margin: 0 0 18px;
-font-size: 96px;
-line-height: 0.86;
-letter-spacing: -0.08em;
-font-weight: 700;
-}
+<!-- ================= HERO ================= -->
 
-h2 {
-margin: 0 0 18px;
-font-size: 64px;
-line-height: 0.95;
-letter-spacing: -0.06em;
-font-weight: 650;
-}
+<section class="hero">
 
-.tagline,
-.subline,
-.copy p:not(.eyebrow):not(.coming):not(.form-note) {
-margin: 8px 0 0;
-font-size: 24px;
-line-height: 1.16;
-color: #4d565b;
-font-weight: 400;
-}
+<div class="hero-left">
 
-.coming {
-margin: 22px 0 0;
-font-size: 15px;
-color: #8f969a;
-}
+<span class="eyebrow">
+SCENE404 presents
+</span>
 
-.hero-visual {
-width: 100%;
-height: 72vh;
-display: flex;
-align-items: center;
-justify-content: center;
-background: transparent;
-}
+<h1>BRB</h1>
 
-.hero-visual img {
-width: auto;
-height: 100%;
-max-height: 620px;
-object-fit: contain;
-}
+<h2>
+A tiny world.
+</h2>
 
-.waitlist-form {
-margin-top: 32px;
-display: flex;
-width: 100%;
-max-width: 420px;
-gap: 10px;
-}
+<p class="subtitle">
+Always up to something.
+</p>
 
-.waitlist-form input {
-flex: 1;
-height: 52px;
-border: 1px solid #e3e6e7;
-border-radius: 999px;
-padding: 0 20px;
-font-size: 15px;
-color: #202326;
-outline: none;
-background: #ffffff;
-}
+<p class="coming">
+Coming Fall 2026
+</p>
 
-.waitlist-form button {
-height: 52px;
-border: 0;
-border-radius: 999px;
-padding: 0 24px;
-background: #202326;
-color: #ffffff;
-font-size: 15px;
-cursor: pointer;
-white-space: nowrap;
-}
+<form
+action="https://formspree.io/f/xjgdddne"
+method="POST"
+class="waitlist">
 
-.form-note {
-margin: 14px 0 0;
-font-size: 13px;
-color: #8f969a;
-}
+<input
+type="email"
+name="email"
+placeholder="Email address"
+required>
 
-.split,
-.reverse {
-display: grid;
-grid-template-columns: 1fr 420px;
-align-items: center;
-gap: 7vw;
-border-top: 1px solid #eef0f1;
-}
+<button type="submit">
+Join the waitlist
+</button>
 
-.reverse {
-grid-template-columns: 420px 1fr;
-}
+</form>
 
-.visual {
-background: #f8f9f9;
-border-radius: 32px;
-overflow: hidden;
-}
+<small>
+No spam. Just the first invite.
+</small>
 
-.visual img {
-width: 100%;
-height: auto;
-}
+</div>
 
-.center {
-text-align: center;
-margin: 0 auto;
-}
+<div class="hero-right">
 
-.moments {
-min-height: auto;
-border-top: 1px solid #eef0f1;
-}
+<img
+src="hero.png"
+alt="BRB">
 
-.wide {
-margin-top: 44px;
-}
+</div>
 
-.moment-grid {
-margin-top: 24px;
-display: grid;
-grid-template-columns: repeat(5, 1fr);
-gap: 12px;
-}
+</section>
 
-.moment-grid div {
-padding: 16px;
-border: 1px solid #eef0f1;
-border-radius: 999px;
-text-align: center;
-color: #667176;
-font-size: 15px;
-}
+<!-- ================= WORLD ================= -->
 
-footer {
-padding: 36px 7vw;
-border-top: 1px solid #eef0f1;
-color: #8f969a;
-font-size: 13px;
-}
+<section class="world">
 
-@media (max-width: 900px) {
-.section {
-padding: 72px 24px;
-}
+<div class="section-image">
 
-.hero,
-.split,
-.reverse {
-grid-template-columns: 1fr;
-gap: 44px;
-}
+<img
+src="world.png"
+alt="The BRB World">
 
-h1 {
-font-size: 72px;
-}
+</div>
 
-h2 {
-font-size: 48px;
-}
+<div class="section-copy">
 
-.tagline,
-.subline,
-.copy p:not(.eyebrow):not(.coming):not(.form-note) {
-font-size: 21px;
-}
+<span class="eyebrow">
+The BRB World
+</span>
 
-.hero-visual {
-height: auto;
-}
+<h3>
+Always finding something.
+</h3>
 
-.hero-visual img {
-width: 86%;
-height: auto;
-}
+<p>
 
-.waitlist-form {
-flex-direction: column;
-}
+Always doing something.
 
-.waitlist-form button {
-width: 100%;
-}
+<br><br>
 
-.moment-grid {
-grid-template-columns: 1fr;
-}
-}
+Always moving.
+
+</p>
+
+</div>
+
+</section>
+<!-- ================= APP ================= -->
+
+<section class="app">
+
+<div class="section-copy">
+
+<span class="eyebrow">
+Inside BRB
+</span>
+
+<h3>
+A tiny world.
+</h3>
+
+<p>
+
+Always changing.
+
+</p>
+
+</div>
+
+<div class="section-image">
+
+<img
+src="app.png"
+alt="BRB App">
+
+</div>
+
+</section>
+
+<!-- ================= MOMENTS ================= -->
+
+<section class="moments">
+
+<div class="moments-header">
+
+<span class="eyebrow">
+Small Moments
+</span>
+
+<h3>
+The ones you keep coming back for.
+</h3>
+
+</div>
+
+<div class="moments-image">
+
+<img
+src="moments.png"
+alt="Small Moments">
+
+</div>
+
+<div class="moments-tags">
+
+<span>♡ Mood</span>
+
+<span>✦ Curiosity</span>
+
+<span>🥛 Feed</span>
+
+<span>🎮 Play</span>
+
+<span>◷ Time passes</span>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+
+<p>
+© 2025 SCENE404
+</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
