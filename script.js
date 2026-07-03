@@ -1,5 +1,5 @@
-const form = document.querySelector(".waitlist");
-const button = document.querySelector(".waitlist button");
+const form = document.querySelector(".waitlist-form");
+const button = document.querySelector(".waitlist-form button");
 
 if (form && button) {
 form.addEventListener("submit", function () {
