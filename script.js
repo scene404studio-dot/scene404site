@@ -2,12 +2,14 @@ if ("scrollRestoration" in history) {
 history.scrollRestoration = "manual";
 }
 
-window.addEventListener("load", function () {
-if (!window.location.hash) {
-setTimeout(function () {
-window.scrollTo(0, 0);
-}, 0);
+window.addEventListener("DOMContentLoaded", function () {
+if (window.location.hash) {
+history.replaceState(null, "", window.location.pathname + window.location.search);
 }
+
+requestAnimationFrame(function () {
+window.scrollTo(0, 0);
+});
 });
 
 const form = document.querySelector(".waitlist-form");
