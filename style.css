@@ -550,3 +550,41 @@ font-size: 48px;
 height: 64px;
 }
 }
+
+.legal-page {
+min-height: 100vh;
+padding: 150px 7vw 90px;
+max-width: 900px;
+margin: 0 auto;
+}
+
+.legal-page h1 {
+margin-bottom: 34px;
+font-size: clamp(58px, 8vw, 110px);
+line-height: 0.9;
+letter-spacing: -0.08em;
+}
+
+.legal-page p {
+max-width: 720px;
+margin-bottom: 18px;
+color: #657075;
+font-size: 20px;
+line-height: 1.55;
+letter-spacing: -0.02em;
+}
+
+.legal-page a {
+color: #202326;
+text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+.legal-page {
+padding: 130px 24px 70px;
+}
+
+.legal-page p {
+font-size: 18px;
+}
+}
