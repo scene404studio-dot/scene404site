@@ -411,3 +411,37 @@ gap: 12px;
 padding: 36px 24px;
 }
 }
+@media (max-width: 900px) {
+.final-waitlist {
+padding-top: 110px;
+padding-bottom: 90px;
+}
+
+.waitlist-form input {
+height: 64px;
+font-size: 18px;
+text-align: center;
+}
+
+.waitlist-form button {
+height: 64px;
+font-size: 18px;
+}
+
+.site-footer {
+padding: 36px 24px 42px;
+}
+
+.footer-links {
+max-width: 320px;
+margin-left: auto;
+margin-right: auto;
+gap: 14px 20px;
+}
+
+.footer-links a:nth-child(3) {
+flex-basis: 100%;
+font-size: 12px;
+opacity: 0.75;
+}
+}
