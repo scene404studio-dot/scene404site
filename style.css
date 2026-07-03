@@ -549,7 +549,6 @@ font-size: 48px;
 .waitlist-form button {
 height: 64px;
 }
-}
 
 .legal-page {
 padding: 140px 7vw 80px;
@@ -578,4 +577,5 @@ margin-bottom: 18px;
 .legal-page a {
 color: #202326;
 text-decoration: underline;
+}
 }
