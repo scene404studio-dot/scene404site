@@ -1,87 +1,266 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>BRB — SCENE404</title>
-<meta name="description" content="BRB. Not a pet. Not a game. Something in between." />
-<link rel="stylesheet" href="style.css" />
-</head>
+:root {
+--bg: #ffffff;
+--text: #202326;
+--muted: #858d92;
+--soft: #f8f9f9;
+--line: #eef0f1;
+--button: #202326;
+--button-text: #ffffff;
+}
 
-<body>
-<header class="site-header">
-<a class="brand" href="#">BRB</a>
-</header>
+* {
+box-sizing: border-box;
+}
 
-<main>
-<section class="hero section">
-<div class="copy">
-<p class="eyebrow">SCENE404 presents</p>
-<h1>BRB</h1>
-<p class="tagline">A tiny world.</p>
-<p class="subline">Always up to something.</p>
-<p class="coming">Coming Fall 2026</p>
+html {
+scroll-behavior: smooth;
+}
 
-<form class="waitlist-form" action="https://formspree.io/f/xjgdddne" method="POST">
-<input type="email" name="email" placeholder="Email address" required />
-<button type="submit">Join the waitlist</button>
-</form>
+body {
+margin: 0;
+background: var(--bg);
+color: var(--text);
+font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+letter-spacing: -0.02em;
+}
 
-<p class="form-note">No spam. Just the first invite.</p>
-</div>
+img {
+display: block;
+width: 100%;
+height: auto;
+}
 
-<div class="visual hero-visual">
-<img src="hero.png" alt="BRB hero render" />
-</div>
-</section>
+.section {
+min-height: 100vh;
+padding: 96px 64px 70px;
+display: grid;
+align-items: center;
+gap: 40px;
+}
 
-<section class="section split">
-<div class="visual">
-<img src="world.png" alt="The BRB world" />
-</div>
-<div class="copy">
-<p class="eyebrow">The BRB World</p>
-<h2>Always finding something.</h2>
-<p>Always doing something. Always moving.</p>
-</div>
-</section>
+.hero {
+grid-template-columns: 0.78fr 1.22fr;
+}
 
-<section class="section split reverse">
-<div class="copy">
-<p class="eyebrow">Inside BRB</p>
-<h2>A tiny world.</h2>
-<p>Always changing.</p>
-</div>
+.hero .copy {
+max-width: 430px;
+justify-self: end;
+transform: translateY(18px);
+}
 
-<div class="visual">
-<img src="app.png" alt="BRB app preview" />
-</div>
-</section>
+.copy {
+max-width: 560px;
+}
 
-<section class="section moments">
-<div class="copy center">
-<p class="eyebrow">Small Moments</p>
-<h2>The ones you keep coming back for.</h2>
-</div>
+.eyebrow {
+margin: 0 0 22px;
+color: var(--muted);
+font-size: 13px;
+font-weight: 500;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+}
 
-<div class="visual wide">
-<img src="moments.png" alt="BRB small moments" />
-</div>
+h1 {
+margin: 0 0 18px;
+font-size: clamp(42px, 5.5vw, 86px);
+line-height: 0.92;
+font-weight: 620;
+letter-spacing: -0.07em;
+}
 
-<div class="moment-grid">
-<div>♡ Mood</div>
-<div>✦ Curiosity</div>
-<div>🥛 Feed</div>
-<div>🎮 Play</div>
-<div>◷ Time passes</div>
-</div>
-</section>
-</main>
+h2 {
+margin: 0 0 18px;
+font-size: clamp(42px, 6vw, 82px);
+line-height: 0.96;
+font-weight: 560;
+letter-spacing: -0.07em;
+}
 
-<footer>
-<p>© 2025 SCENE404</p>
-</footer>
+.tagline,
+.subline,
+.copy p:not(.eyebrow):not(.coming):not(.form-note) {
+color: #4f585d;
+font-size: clamp(18px, 1.7vw, 25px);
+line-height: 1.18;
+margin: 10px 0 0;
+}
 
-<script src="script.js"></script>
-</body>
-</html>
+.coming {
+margin: 18px 0 0;
+color: var(--muted);
+font-size: 15px;
+}
+
+.visual {
+background: var(--soft);
+border-radius: 34px;
+overflow: hidden;
+}
+
+.hero-visual {
+background: transparent;
+border-radius: 0;
+overflow: visible;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.hero-visual img {
+width: min(520px, 78%);
+max-height: 72vh;
+object-fit: contain;
+}
+
+.split {
+grid-template-columns: 1fr 0.85fr;
+border-top: 1px solid var(--line);
+}
+
+.reverse {
+grid-template-columns: 0.85fr 1fr;
+}
+
+.waitlist-form {
+margin-top: 30px;
+display: flex;
+gap: 10px;
+max-width: 420px;
+}
+
+.waitlist-form input {
+width: 100%;
+height: 50px;
+border: 1px solid var(--line);
+border-radius: 999px;
+padding: 0 20px;
+font-size: 15px;
+outline: none;
+background: #ffffff;
+color: var(--text);
+}
+
+.waitlist-form input::placeholder {
+color: #a2a8ac;
+}
+
+.waitlist-form input:focus {
+border-color: #cfd6d9;
+}
+
+.waitlist-form button {
+height: 50px;
+border: 0;
+border-radius: 999px;
+padding: 0 24px;
+background: var(--button);
+color: var(--button-text);
+font-size: 15px;
+white-space: nowrap;
+cursor: pointer;
+transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.waitlist-form button:hover {
+opacity: 0.88;
+transform: translateY(-1px);
+}
+
+.waitlist-form button:disabled {
+opacity: 0.65;
+cursor: default;
+}
+
+.form-note {
+margin-top: 14px;
+color: var(--muted);
+font-size: 13px;
+}
+
+.center {
+margin: 0 auto;
+text-align: center;
+}
+
+.moments {
+display: block;
+min-height: auto;
+}
+
+.wide {
+margin-top: 46px;
+}
+
+.moment-grid {
+margin-top: 26px;
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+gap: 12px;
+}
+
+.moment-grid div {
+border: 1px solid var(--line);
+border-radius: 999px;
+padding: 16px 18px;
+text-align: center;
+color: #687277;
+background: #ffffff;
+font-size: 15px;
+}
+
+footer {
+padding: 40px 64px;
+border-top: 1px solid var(--line);
+color: var(--muted);
+font-size: 13px;
+}
+
+@media (max-width: 860px) {
+.section,
+.hero,
+.split,
+.reverse {
+grid-template-columns: 1fr;
+min-height: auto;
+padding: 90px 22px 64px;
+}
+
+.hero .copy {
+justify-self: start;
+transform: none;
+}
+
+.hero-visual img {
+width: min(360px, 90%);
+max-height: none;
+}
+
+.reverse .copy {
+order: 1;
+}
+
+.reverse .visual {
+order: 2;
+}
+
+.waitlist-form {
+flex-direction: column;
+}
+
+.waitlist-form button {
+width: 100%;
+}
+
+.moment-grid {
+grid-template-columns: 1fr;
+}
+
+.visual {
+border-radius: 26px;
+}
+
+footer {
+padding: 34px 22px;
+}
+}
