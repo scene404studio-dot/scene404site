@@ -461,6 +461,22 @@ grid-template-columns: 1fr;
 gap: 44px;
 }
 
+.world {
+  display: flex;
+  flex-direction: column;
+}
+
+.world .copy {
+  order: 1;
+  text-align: center;
+  margin: 0 auto 32 px;
+  max-width: 620 px;
+}
+
+.world .big-image {
+  order: 2;
+}
+
 .hero-copy {
 justify-self: start;
 }
