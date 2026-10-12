@@ -214,3 +214,50 @@ Do Not Sell or Share My Personal Information
 
 </body>
 </html>
+<script>
+(() => {
+const images = document.querySelectorAll(
+".motion-media img, .big-image img"
+);
+
+if (
+!images.length ||
+window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) return;
+
+let frame = null;
+
+function update() {
+const height = window.innerHeight;
+
+images.forEach((img) => {
+const rect = img.getBoundingClientRect();
+
+if (rect.bottom <= 0 || rect.top >= height) return;
+
+const center = rect.top + rect.height / 2;
+const distance = Math.abs(center - height / 2);
+const proximity = Math.max(0, 1 - distance / (height * 0.85));
+
+const maxScale = window.innerWidth <= 680 ? 0.012 : 0.025;
+const scale = 1 + proximity * maxScale;
+
+img.style.setProperty("--scroll-image-scale", scale.toFixed(4));
+});
+
+frame = null;
+}
+
+function scheduleUpdate() {
+if (frame !== null) return;
+frame = requestAnimationFrame(update);
+}
+
+window.addEventListener("scroll", scheduleUpdate, { passive: true });
+window.addEventListener("resize", scheduleUpdate);
+window.addEventListener("load", update);
+
+update();
+})();
+</script>
+</body>
