@@ -1397,3 +1397,38 @@ transition: none !important;
     }
   });
 })();
+/* SCENE404 — SCROLL-DRIVEN IMAGE MOTION */
+
+.motion-media img {
+transition: transform 0.45s ease !important;
+animation: scene404-float 4s ease-in-out infinite;
+transform-origin: center center;
+will-change: transform;
+}
+
+/* Scroll down */
+.motion-media.scroll-down img {
+transform: scale(0.96) translateY(3px) !important;
+}
+
+/* Scroll up */
+.motion-media.scroll-up img {
+transform: scale(1.04) translateY(-3px) !important;
+}
+
+/* Gentle floating when scrolling stops */
+@keyframes scene404-float {
+0%, 100% {
+translate: 0 0;
+}
+50% {
+translate: 0 -7px;
+}
+}
+
+/* Disable hover-only zoom so it doesn't compete */
+@media (hover: hover) and (pointer: fine) {
+.motion-media:hover img {
+transform: none;
+}
+}
