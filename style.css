@@ -1547,3 +1547,27 @@ body.mobile-menu-open {
 overflow: hidden;
 }
 }
+/* SCENE404 — visually unify footer sections */
+.site-footer {
+background: #f1f1ee;
+border-radius: 20px 20px 0 0;
+overflow: hidden;
+}
+
+/* Remove the dividing line between the brand and footer content */
+.site-footer .footer-brand {
+border-bottom: 0 !important;
+margin-bottom: 0;
+}
+
+/* Keep the content on one continuous background */
+.site-footer .footer-main {
+border-top: 0 !important;
+margin-top: 0;
+background: transparent;
+}
+
+/* Keep only the line above the legal/copyright area */
+.site-footer .footer-bottom {
+border-top: 1px solid rgba(32, 35, 38, 0.14);
+}
