@@ -29,6 +29,7 @@ SCENE404 studio
 
 <main>
 
+<!-- HERO -->
 <section class="hero section">
 <div class="hero-copy">
 <p class="eyebrow">PRODUCT 001</p>
@@ -52,6 +53,7 @@ alt="BRB, the chrome character from SCENE404 studio"
 </div>
 </section>
 
+<!-- ABOUT BRB -->
 <section class="world section" id="about-brb">
 <div class="world-copy">
 <p class="eyebrow">MORE THAN AN INTERFACE</p>
@@ -75,6 +77,7 @@ loading="lazy"
 </div>
 </section>
 
+<!-- THE IDEA -->
 <section class="app section">
 <div class="app-copy">
 <p class="eyebrow">THE IDEA</p>
@@ -98,6 +101,7 @@ loading="lazy"
 </div>
 </section>
 
+<!-- IN THE MAKING -->
 <section class="moments section">
 <div class="moments-copy">
 <p class="eyebrow">IN THE MAKING</p>
@@ -118,6 +122,142 @@ loading="lazy"
 </div>
 </section>
 
+<!-- FEED -->
+<section class="app section">
+<div class="app-copy">
+<p class="eyebrow">A LITTLE CHECK-IN</p>
+<h2>Feed.</h2>
+<p>
+A few little messages. A familiar face.
+Something waiting when you look.
+</p>
+</div>
+
+<div class="app-media big-image motion-media">
+<img
+src="./brb-feed.PNG"
+alt="BRB Feed displayed on a phone"
+loading="lazy"
+>
+</div>
+</section>
+
+<!-- SLEEP -->
+<section class="world section">
+<div class="world-copy">
+<p class="eyebrow">WHEN THE DAY IS DONE</p>
+<h2>Sleep.</h2>
+<p>
+Even little characters need a little downtime.
+</p>
+</div>
+
+<div class="world-media big-image motion-media">
+<img
+src="./brb-sleep.PNG"
+alt="BRB Sleep visual with a soft white pillow"
+loading="lazy"
+>
+</div>
+</section>
+
+<!-- PLAY -->
+<section class="app section">
+<div class="app-copy">
+<p class="eyebrow">A MOMENT TO PLAY</p>
+<h2>Play.</h2>
+<p>
+A tiny game, a quick choice, and one more reason to come back.
+</p>
+</div>
+
+<div class="app-media big-image motion-media">
+<img
+src="./brb-play.PNG"
+alt="BRB Play — rock, paper, scissors"
+loading="lazy"
+>
+</div>
+</section>
+
+<!-- MILK OBJECT -->
+<section class="world section">
+<div class="world-copy">
+<p class="eyebrow">LITTLE THINGS</p>
+<h2>Milk. Just for you.</h2>
+<p>
+Objects with personality, made part of the BRB world.
+</p>
+</div>
+
+<div class="world-media big-image motion-media">
+<img
+src="./brb-object-milk.PNG"
+alt="BRB beside its signature red milk carton"
+loading="lazy"
+>
+</div>
+</section>
+
+<!-- TREAT OBJECT -->
+<section class="app section">
+<div class="app-copy">
+<p class="eyebrow">A LITTLE TREAT</p>
+<h2>Sweet little details.</h2>
+<p>
+Because the smallest things can become the most memorable.
+</p>
+</div>
+
+<div class="app-media big-image motion-media">
+<img
+src="./brb-object-treat.PNG"
+alt="Glossy red ice pop from the BRB visual world"
+loading="lazy"
+>
+</div>
+</section>
+
+<!-- BRB LOGO -->
+<section class="moments section">
+<div class="moments-copy">
+<p class="eyebrow">THE SIGNATURE</p>
+<h2>Meet the BRB mark.</h2>
+<p>
+A little pink signature from the world we're building.
+</p>
+</div>
+
+<div class="moments-media big-image motion-media">
+<img
+src="./brb-logo.PNG"
+alt="Pink BRB logo"
+loading="lazy"
+>
+</div>
+</section>
+
+<!-- FOUNDER'S NOTE -->
+<section class="app section">
+<div class="app-copy">
+<p class="eyebrow">A NOTE FROM THE FOUNDER</p>
+<h2>Why BRB.</h2>
+<p>
+A personal note on the idea behind BRB and the world
+SCENE404 is creating.
+</p>
+</div>
+
+<div class="app-media big-image motion-media">
+<img
+src="./founders-note.PNG"
+alt="A note from the founder of SCENE404 studio"
+loading="lazy"
+>
+</div>
+</section>
+
+<!-- WAITLIST -->
 <section class="final-waitlist section" id="waitlist">
 <div class="final-waitlist-copy">
 <p class="eyebrow">FIRST IN LINE</p>
@@ -133,6 +273,7 @@ action="https://formspree.io/f/xjgdddne"
 method="POST"
 >
 <label for="brb-email">Email address</label>
+
 <div class="waitlist-form-row">
 <input
 id="brb-email"
@@ -158,6 +299,7 @@ and
 
 </main>
 
+<!-- FOOTER -->
 <footer class="site-footer">
 <div class="footer-brand">
 <a class="footer-logo" href="./index.html">SCENE404 studio</a>
@@ -211,6 +353,7 @@ method="POST"
 <label class="visually-hidden" for="footer-brb-email">
 Email address
 </label>
+
 <input
 id="footer-brb-email"
 type="email"
@@ -219,6 +362,7 @@ placeholder="Email address"
 autocomplete="email"
 required
 >
+
 <button type="submit">Join the waitlist</button>
 </form>
 
@@ -234,8 +378,6 @@ Do Not Sell or Share My Personal Information
 </div>
 </footer>
 
-</body>
-</html>
 <script>
 (() => {
 const header = document.querySelector(".site-header");
@@ -267,8 +409,7 @@ drawer.className = "mobile-menu-drawer";
 drawer.setAttribute("aria-label", "Mobile navigation");
 
 nav.querySelectorAll("a").forEach((link) => {
-const copy = link.cloneNode(true);
-drawer.appendChild(copy);
+drawer.appendChild(link.cloneNode(true));
 });
 
 document.body.append(backdrop, drawer);
@@ -296,6 +437,7 @@ drawer.classList.contains("is-visible")
 });
 
 backdrop.addEventListener("click", closeMenu);
+
 drawer.addEventListener("click", (event) => {
 if (event.target.closest("a")) closeMenu();
 });
@@ -364,4 +506,6 @@ window.addEventListener("load", updateImages);
 updateImages();
 })();
 </script>
+
 </body>
+</html>
