@@ -140,6 +140,7 @@ if (!header) return;
 
 const nav = header.querySelector(".nav-links");
 const logo = header.querySelector(".logo");
+const mobileQuery = window.matchMedia("(max-width: 680px)");
 
 if (nav && logo && !header.querySelector(".mobile-menu-toggle")) {
 const toggle = document.createElement("button");
@@ -158,7 +159,10 @@ const drawer = document.createElement("nav");
 drawer.className = "mobile-menu-drawer";
 drawer.setAttribute("aria-label", "Mobile navigation");
 
-nav.querySelectorAll("a").forEach(link => drawer.appendChild(link.cloneNode(true)));
+nav.querySelectorAll("a").forEach(link => {
+drawer.appendChild(link.cloneNode(true));
+});
+
 document.body.append(backdrop, drawer);
 
 function closeMenu() {
@@ -180,25 +184,54 @@ toggle.setAttribute("aria-label", "Close navigation");
 toggle.addEventListener("click", () => {
 drawer.classList.contains("is-visible") ? closeMenu() : openMenu();
 });
+
 backdrop.addEventListener("click", closeMenu);
+
 drawer.addEventListener("click", event => {
 if (event.target.closest("a")) closeMenu();
 });
+
 document.addEventListener("keydown", event => {
 if (event.key === "Escape") closeMenu();
 });
 }
 
+let previousY = window.scrollY;
+let scheduled = false;
+
 function updateHeader() {
-header.classList.toggle("is-compact", window.innerWidth <= 680 && window.scrollY > 70);
+const y = window.scrollY;
+
+if (mobileQuery.matches) {
+header.classList.remove("is-hidden");
+header.classList.toggle("is-compact", y > 70);
+} else {
+header.classList.remove("is-compact");
+
+if (y <= 12 || y < previousY - 2) {
+header.classList.remove("is-hidden");
+} else if (y > previousY + 2) {
+header.classList.add("is-hidden");
+}
 }
 
-window.addEventListener("scroll", updateHeader, { passive: true });
+previousY = y;
+scheduled = false;
+}
+
+function onScroll() {
+if (scheduled) return;
+scheduled = true;
+requestAnimationFrame(updateHeader);
+}
+
+window.addEventListener("scroll", onScroll, { passive: true });
 window.addEventListener("resize", updateHeader);
 updateHeader();
 
 const images = document.querySelectorAll(".motion-media img, .big-image img");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
 if (reduceMotion.matches || !images.length) return;
 
 let frame = null;
@@ -214,23 +247,28 @@ if (rect.bottom < 0 || rect.top > vh) return;
 const center = rect.top + rect.height / 2;
 const distance = Math.abs(center - vh * 0.5);
 const proximity = Math.max(0, 1 - distance / (vh * 0.8));
-img.style.transformOrigin = "center center";
-img.style.transform = `scale(${1 + proximity * maxScale})`;
+
+img.style.setProperty(
+"--scroll-image-scale",
+String(1 + proximity * maxScale)
+);
 });
 
 frame = null;
 }
 
-function requestUpdate() {
+function requestImageUpdate() {
 if (frame !== null) return;
 frame = requestAnimationFrame(updateImages);
 }
 
-window.addEventListener("scroll", requestUpdate, { passive: true });
-window.addEventListener("resize", requestUpdate);
+window.addEventListener("scroll", requestImageUpdate, { passive: true });
+window.addEventListener("resize", requestImageUpdate);
 window.addEventListener("load", updateImages);
+
 updateImages();
 })();
 </script>
+
 </body>
 </html>
