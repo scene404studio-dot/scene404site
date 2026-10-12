@@ -1753,6 +1753,7 @@ body .site-footer .footer-bottom {
 justify-content: space-between !important;
 }
 }
+
 /* Remove decorative arrows from links and buttons */
 a::after,
 a::before,
