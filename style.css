@@ -1388,3 +1388,4 @@ transition-duration: .01ms !important;
     font-size: clamp(30px, 8.5vw, 43px);
   }
 }
+/* ABOUT — FOUNDER'S NOTE */ .about-page .founders-note-section { display: grid; grid-template-columns: 1fr; width: 100%; padding: 100px 8%; box-sizing: border-box; } .about-page .founders-note-copy { display: block; width: 100%; max-width: 760px; margin: 0 auto; } .about-page .founders-note-copy h2, .about-page .founders-note-copy p { display: block; } @media (max-width: 768px) { .about-page .founders-note-section { padding: 64px 6%; } } 
