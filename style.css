@@ -1270,3 +1270,70 @@ color: var(--white);
 border: 0;
 background: none;
 }
+/* SCENE404 — footer spacing fix */
+
+.footer-main {
+display: grid;
+grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.5fr);
+align-items: start;
+column-gap: clamp(36px, 5vw, 76px);
+}
+
+.footer-newsletter {
+order: 0;
+width: 100%;
+min-width: 0;
+max-width: 440px;
+justify-self: start;
+}
+
+.footer-columns {
+display: grid;
+grid-template-columns: 1.35fr 0.9fr 0.9fr 0.9fr;
+gap: clamp(18px, 2.5vw, 38px);
+min-width: 0;
+}
+
+.footer-column {
+min-width: 0;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+}
+
+.footer-heading {
+margin: 0 0 8px;
+font-size: 10px;
+letter-spacing: 0.12em;
+white-space: normal;
+overflow-wrap: normal;
+}
+
+.footer-column a {
+font-size: 13px;
+line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+.footer-main {
+grid-template-columns: 1fr;
+row-gap: 44px;
+}
+
+.footer-newsletter {
+max-width: 540px;
+}
+
+.footer-columns {
+grid-template-columns: repeat(4, minmax(0, 1fr));
+gap: 22px;
+}
+}
+
+@media (max-width: 560px) {
+.footer-columns {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 30px 24px;
+}
+}
