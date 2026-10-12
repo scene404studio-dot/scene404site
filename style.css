@@ -429,7 +429,7 @@ main .final-waitlist,
 main .world-waitlist,
 main .brb-waitlist,
 main .about-waitlist {
-display: none !important;
+display: block;
 }
 
 .final-waitlist-copy { max-width: 600px; }
