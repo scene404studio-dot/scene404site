@@ -1752,7 +1752,6 @@ gap: 24px 18px !important;
 body .site-footer .footer-bottom {
 justify-content: space-between !important;
 }
-}
 
 /* Remove decorative arrows from links and buttons */
 a::after,
@@ -1761,4 +1760,12 @@ button::after,
 button::before {
 content: none !important;
 display: none !important;
+}
+
+/* HIDE THE LARGE BRB HERO IMAGE ON THE WORLD PAGE */
+body.world-page .world-hero .hero-media,
+body.world-page .world-hero .big-image,
+body.world-page .world-hero .motion-media {
+display: none !important;
+}
 }
