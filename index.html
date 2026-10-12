@@ -22,14 +22,11 @@
 </header>
 
 <main>
-
 <section class="hero section">
 <div class="hero-copy">
 <p class="eyebrow">INDEPENDENT DIGITAL STUDIO</p>
 <h1>Small studio.<br>Distant ideas.</h1>
-<p class="hero-description">
-We make digital products, characters, and worlds worth keeping around.
-</p>
+<p class="hero-description">We make digital products, characters, and worlds worth keeping around.</p>
 <a class="pill-link" href="./about.html">About the studio</a>
 </div>
 </section>
@@ -38,23 +35,12 @@ We make digital products, characters, and worlds worth keeping around.
 <div class="world-copy">
 <p class="eyebrow">THE IDEA</p>
 <h2>Useful isn't enough.</h2>
-<p>
-The things we keep are rarely defined by function alone.
-They become familiar. They gather meaning. We remember them.
-</p>
-<p>
-We are interested in digital experiences that feel considered,
-distinctive, and worth returning to.
-</p>
+<p>The things we keep are rarely defined by function alone. They become familiar. They gather meaning. We remember them.</p>
+<p>We are interested in digital experiences that feel considered, distinctive, and worth returning to.</p>
 <a class="pill-link" href="./world.html">Explore the world</a>
 </div>
-
 <div class="world-media big-image motion-media">
-<img
-src="./world.png"
-alt="A glimpse into the SCENE404 studio world"
-loading="lazy"
->
+<img src="./world.png" alt="A glimpse into the SCENE404 studio world" loading="eager">
 </div>
 </section>
 
@@ -62,21 +48,12 @@ loading="lazy"
 <div class="app-copy">
 <p class="eyebrow">PRODUCT 001</p>
 <h2>Meet BRB.</h2>
-<p>
-A character-led digital experiment about curiosity,
-small discoveries, and the details that make a product
-feel like its own world.
-</p>
+<p>A character-led digital experiment about curiosity, small discoveries, and the details that make a product feel like its own world.</p>
 <p>BRB is in development. More to come as it takes shape.</p>
 <a class="pill-link" href="./brb.html">Discover BRB</a>
 </div>
-
 <div class="app-media big-image motion-media">
-<img
-src="./hero.png"
-alt="BRB, the first character-led product from SCENE404 studio"
-loading="lazy"
->
+<img src="./hero.png" alt="BRB, the first character-led product from SCENE404 studio" loading="lazy">
 </div>
 </section>
 
@@ -84,19 +61,11 @@ loading="lazy"
 <div class="moments-copy">
 <p class="eyebrow">IN THE MAKING</p>
 <h2>One product.<br>A world to explore.</h2>
-<p>
-Character, objects, interactions, and details are all part
-of the same idea. We are building BRB one piece at a time.
-</p>
+<p>Character, objects, interactions, and details are all part of the same idea. We are building BRB one piece at a time.</p>
 <a class="pill-link" href="./world.html">Explore the world</a>
 </div>
-
 <div class="moments-media big-image motion-media">
-<img
-src="./moments.PNG"
-alt="Small moments and character details from the BRB world"
-loading="lazy"
->
+<img src="./moments.PNG" alt="Small moments and character details from the BRB world" loading="lazy">
 </div>
 </section>
 
@@ -104,15 +73,10 @@ loading="lazy"
 <div class="studio-about-copy">
 <p class="eyebrow">SCENE404 STUDIO</p>
 <h2>Things worth keeping around.</h2>
-<p>
-An independent studio exploring what digital products
-can become when character, design, and interaction
-are treated as parts of the same world.
-</p>
+<p>An independent studio exploring what digital products can become when character, design, and interaction are treated as parts of the same world.</p>
 <a class="pill-link" href="./about.html">Get to know the studio</a>
 </div>
 </section>
-
 </main>
 
 <footer class="site-footer">
@@ -126,24 +90,11 @@ are treated as parts of the same world.
 <p class="eyebrow">STAY IN THE LOOP</p>
 <h2>Follow what comes next.</h2>
 <p>Occasional updates from SCENE404 studio.</p>
-
-<form
-class="footer-waitlist-form"
-action="https://formspree.io/f/xjgdddne"
-method="POST"
->
+<form class="footer-waitlist-form" action="https://formspree.io/f/xjgdddne" method="POST">
 <label class="visually-hidden" for="studio-email">Email address</label>
-<input
-id="studio-email"
-type="email"
-name="email"
-placeholder="Email address"
-autocomplete="email"
-required
->
+<input id="studio-email" type="email" name="email" placeholder="Email address" autocomplete="email" required>
 <button type="submit">Subscribe</button>
 </form>
-
 <p class="footer-form-consent">
 By subscribing, you agree to our
 <a href="./privacy.html">Privacy Policy</a> and
@@ -159,23 +110,16 @@ By subscribing, you agree to our
 <a href="./world.html">The World</a>
 <a href="./about.html">About</a>
 </div>
-
 <div class="footer-column">
 <p class="footer-heading">Social</p>
-<a
-href="https://instagram.com/scene404.studio"
-target="_blank"
-rel="noopener noreferrer"
->Instagram</a>
+<a href="https://instagram.com/scene404.studio" target="_blank" rel="noopener noreferrer">Instagram</a>
 </div>
-
 <div class="footer-column">
 <p class="footer-heading">Official</p>
 <a href="./FAQ.html">FAQ</a>
 <a href="./privacy.html">Privacy</a>
 <a href="./terms.html">Terms</a>
 </div>
-
 <div class="footer-column">
 <p class="footer-heading">Support</p>
 <a href="./contact.html">Contact</a>
@@ -191,8 +135,7 @@ rel="noopener noreferrer"
 <script>
 (() => {
 const header = document.querySelector(".site-header");
-const nav = header?.querySelector(".nav-links");
-
+const nav = header && header.querySelector(".nav-links");
 if (!header || !nav) return;
 
 const mobileQuery = window.matchMedia("(max-width: 680px)");
@@ -237,13 +180,8 @@ toggle.setAttribute("aria-label", "Close navigation");
 toggle.addEventListener("click", () => {
 drawer.classList.contains("is-visible") ? closeMenu() : openMenu();
 });
-
 backdrop.addEventListener("click", closeMenu);
-
-drawer.querySelectorAll("a").forEach(link => {
-link.addEventListener("click", closeMenu);
-});
-
+drawer.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
 document.addEventListener("keydown", event => {
 if (event.key === "Escape") closeMenu();
 });
