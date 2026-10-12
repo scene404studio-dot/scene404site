@@ -1091,3 +1091,24 @@ transform: none !important;
 transition: none !important;
 }
 }
+/* FINAL — SMOOTH HEADER AND MOBILE TOGGLE */
+
+.site-header,
+.site-header.is-hidden {
+transition:
+transform 650ms cubic-bezier(0.22, 1, 0.36, 1),
+opacity 450ms ease,
+visibility 450ms ease !important;
+will-change: transform, opacity;
+}
+
+@media (max-width: 680px) {
+.mobile-menu-toggle,
+.mobile-menu-toggle.is-visible {
+transition:
+transform 550ms cubic-bezier(0.22, 1, 0.36, 1),
+opacity 400ms ease,
+visibility 400ms ease !important;
+will-change: transform, opacity;
+}
+}
