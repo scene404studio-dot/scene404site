@@ -139,33 +139,48 @@ const header = document.querySelector(".site-header");
 if (!header) return;
 
 const nav = header.querySelector(".nav-links");
-const logo = header.querySelector(".logo");
 const mobileQuery = window.matchMedia("(max-width: 680px)");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-if (nav && logo && !header.querySelector(".mobile-menu-toggle")) {
-const toggle = document.createElement("button");
+/* Build the mobile navigation once. */
+let toggle = header.querySelector(".mobile-menu-toggle");
+let backdrop = document.querySelector(".mobile-menu-backdrop");
+let drawer = document.querySelector(".mobile-menu-drawer");
+
+if (nav && !toggle) {
+toggle = document.createElement("button");
 toggle.className = "mobile-menu-toggle";
 toggle.type = "button";
 toggle.setAttribute("aria-label", "Open navigation");
 toggle.setAttribute("aria-expanded", "false");
+toggle.setAttribute("aria-controls", "mobile-navigation");
 toggle.innerHTML = "<span></span><span></span><span></span>";
 header.appendChild(toggle);
+}
 
-const backdrop = document.createElement("div");
+if (nav && !backdrop) {
+backdrop = document.createElement("div");
 backdrop.className = "mobile-menu-backdrop";
 backdrop.setAttribute("aria-hidden", "true");
+document.body.appendChild(backdrop);
+}
 
-const drawer = document.createElement("nav");
+if (nav && !drawer) {
+drawer = document.createElement("nav");
 drawer.className = "mobile-menu-drawer";
+drawer.id = "mobile-navigation";
 drawer.setAttribute("aria-label", "Mobile navigation");
 
 nav.querySelectorAll("a").forEach(link => {
 drawer.appendChild(link.cloneNode(true));
 });
 
-document.body.append(backdrop, drawer);
+document.body.appendChild(drawer);
+}
 
 function closeMenu() {
+if (!drawer || !backdrop || !toggle) return;
+
 drawer.classList.remove("is-visible");
 backdrop.classList.remove("is-visible");
 document.body.classList.remove("mobile-menu-open");
@@ -174,6 +189,8 @@ toggle.setAttribute("aria-label", "Open navigation");
 }
 
 function openMenu() {
+if (!drawer || !backdrop || !toggle) return;
+
 drawer.classList.add("is-visible");
 backdrop.classList.add("is-visible");
 document.body.classList.add("mobile-menu-open");
@@ -181,13 +198,20 @@ toggle.setAttribute("aria-expanded", "true");
 toggle.setAttribute("aria-label", "Close navigation");
 }
 
+if (toggle && !toggle.dataset.menuReady) {
+toggle.dataset.menuReady = "true";
+
 toggle.addEventListener("click", () => {
-drawer.classList.contains("is-visible") ? closeMenu() : openMenu();
+if (drawer && drawer.classList.contains("is-visible")) {
+closeMenu();
+} else {
+openMenu();
+}
 });
 
-backdrop.addEventListener("click", closeMenu);
+backdrop?.addEventListener("click", closeMenu);
 
-drawer.addEventListener("click", event => {
+drawer?.addEventListener("click", event => {
 if (event.target.closest("a")) closeMenu();
 });
 
@@ -196,22 +220,36 @@ if (event.key === "Escape") closeMenu();
 });
 }
 
+/* Header scroll behaviour:
+desktop: hide down, reveal up
+mobile: compact floating menu down, reveal full header up */
 let previousY = window.scrollY;
 let scheduled = false;
+const directionThreshold = 5;
+const topThreshold = 40;
 
 function updateHeader() {
-const y = window.scrollY;
+const y = Math.max(0, window.scrollY);
+const delta = y - previousY;
 
-if (mobileQuery.matches) {
+if (y <= topThreshold) {
+header.classList.remove("is-hidden", "is-compact");
+closeMenu();
+} else if (mobileQuery.matches) {
+if (delta > directionThreshold) {
+header.classList.add("is-hidden");
+header.classList.add("is-compact");
+} else if (delta < -directionThreshold) {
 header.classList.remove("is-hidden");
-header.classList.toggle("is-compact", y > 70);
+header.classList.add("is-compact");
+}
 } else {
 header.classList.remove("is-compact");
 
-if (y <= 12 || y < previousY - 2) {
-header.classList.remove("is-hidden");
-} else if (y > previousY + 2) {
+if (delta > directionThreshold) {
 header.classList.add("is-hidden");
+} else if (delta < -directionThreshold) {
+header.classList.remove("is-hidden");
 }
 }
 
@@ -222,19 +260,26 @@ scheduled = false;
 function onScroll() {
 if (scheduled) return;
 scheduled = true;
-requestAnimationFrame(updateHeader);
+window.requestAnimationFrame(updateHeader);
 }
 
 window.addEventListener("scroll", onScroll, { passive: true });
-window.addEventListener("resize", updateHeader);
+
+window.addEventListener("resize", () => {
+closeMenu();
+header.classList.remove("is-hidden", "is-compact");
+previousY = window.scrollY;
+updateHeader();
+});
+
 updateHeader();
 
+/* Subtle image scale on scroll. */
 const images = document.querySelectorAll(".motion-media img, .big-image img");
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 if (reduceMotion.matches || !images.length) return;
 
-let frame = null;
+let imageFrame = null;
 
 function updateImages() {
 const vh = window.innerHeight;
@@ -242,6 +287,7 @@ const maxScale = window.innerWidth <= 680 ? 0.035 : 0.055;
 
 images.forEach(img => {
 const rect = img.getBoundingClientRect();
+
 if (rect.bottom < 0 || rect.top > vh) return;
 
 const center = rect.top + rect.height / 2;
@@ -254,12 +300,12 @@ String(1 + proximity * maxScale)
 );
 });
 
-frame = null;
+imageFrame = null;
 }
 
 function requestImageUpdate() {
-if (frame !== null) return;
-frame = requestAnimationFrame(updateImages);
+if (imageFrame !== null) return;
+imageFrame = window.requestAnimationFrame(updateImages);
 }
 
 window.addEventListener("scroll", requestImageUpdate, { passive: true });
