@@ -242,7 +242,7 @@ Do Not Sell or Share My Personal Information
 <script>
 (() => {
 const images = document.querySelectorAll(
-".motion-media img, .big-image img"
+".motion-media img, .big-image img, .hero-media img, .world-media img, .app-media img, .moments-media img"
 );
 
 if (
@@ -250,39 +250,43 @@ if (
 window.matchMedia("(prefers-reduced-motion: reduce)").matches
 ) return;
 
-let frame = null;
+let animationFrame = 0;
 
-function update() {
-const height = window.innerHeight;
+function updateMotion() {
+const viewportHeight = window.innerHeight;
+const mobile = window.innerWidth <= 680;
+const maxScale = mobile ? 0.025 : 0.045;
 
 images.forEach((img) => {
 const rect = img.getBoundingClientRect();
 
-if (rect.bottom <= 0 || rect.top >= height) return;
+if (rect.bottom < 0 || rect.top > viewportHeight) return;
 
 const center = rect.top + rect.height / 2;
-const distance = Math.abs(center - height / 2);
-const proximity = Math.max(0, 1 - distance / (height * 0.85));
+const distance = Math.abs(center - viewportHeight / 2);
+const proximity = Math.max(
+0,
+1 - distance / (viewportHeight * 0.75)
+);
 
-const maxScale = window.innerWidth <= 680 ? 0.012 : 0.025;
 const scale = 1 + proximity * maxScale;
-
-img.style.setProperty("--scroll-image-scale", scale.toFixed(4));
+img.style.transform = `scale(${scale.toFixed(4)})`;
+img.style.transformOrigin = "center center";
 });
 
-frame = null;
+animationFrame = 0;
 }
 
-function scheduleUpdate() {
-if (frame !== null) return;
-frame = requestAnimationFrame(update);
+function scheduleMotion() {
+if (animationFrame) return;
+animationFrame = requestAnimationFrame(updateMotion);
 }
 
-window.addEventListener("scroll", scheduleUpdate, { passive: true });
-window.addEventListener("resize", scheduleUpdate);
-window.addEventListener("load", update);
+window.addEventListener("scroll", scheduleMotion, { passive: true });
+window.addEventListener("resize", scheduleMotion);
+window.addEventListener("load", updateMotion);
 
-update();
+updateMotion();
 })();
 </script>
 </body>
