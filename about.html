@@ -2,252 +2,232 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#eef0f2">
-
-<title>About — SCENE404 Studio</title>
-<meta name="description" content="SCENE404 is an independent creative studio building distinctive worlds, digital experiences and character-led projects.">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#EEF0F2">
+<meta name="description" content="Explore the characters, objects, ideas, and digital moments taking shape at SCENE404 studio.">
+<title>The World — SCENE404 studio</title>
 <link rel="stylesheet" href="./style.css">
+
+<style>
+/* WORLD FOOTER — LOCAL OVERRIDE */
+body.world-page footer.site-footer {
+display: block !important;
+padding: 48px clamp(24px, 5vw, 72px) 22px !important;
+background: #eef0f2 !important;
+color: #45494d !important;
+text-align: left !important;
+overflow: hidden !important;
+}
+body.world-page footer.site-footer .footer-brand {
+display: flex !important;
+flex-direction: column !important;
+align-items: center !important;
+padding: 10px 0 38px !important;
+text-align: center !important;
+}
+body.world-page footer.site-footer .footer-logo {
+display: block !important;
+font-size: clamp(42px, 7vw, 88px) !important;
+line-height: 1.1 !important;
+text-align: center !important;
+}
+body.world-page footer.site-footer .footer-main {
+display: grid !important;
+grid-template-columns: minmax(220px, .85fr) minmax(0, 1.5fr) !important;
+align-items: start !important;
+gap: 48px !important;
+padding: 36px 0 42px !important;
+border-top: 1px solid rgba(32,35,38,.14) !important;
+}
+body.world-page footer.site-footer .footer-newsletter {
+display: block !important;
+grid-column: 1 !important;
+grid-row: 1 !important;
+width: 100% !important;
+max-width: 440px !important;
+min-width: 0 !important;
+margin: 0 !important;
+}
+body.world-page footer.site-footer .footer-columns {
+display: grid !important;
+grid-column: 2 !important;
+grid-row: 1 !important;
+grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+align-items: start !important;
+gap: 20px !important;
+width: 100% !important;
+min-width: 0 !important;
+margin: 0 !important;
+}
+body.world-page footer.site-footer .footer-column {
+display: flex !important;
+flex-direction: column !important;
+align-items: flex-start !important;
+gap: 10px !important;
+min-width: 0 !important;
+}
+body.world-page footer.site-footer .footer-heading {
+margin: 0 0 8px !important;
+font-size: 10px !important;
+font-weight: 600 !important;
+letter-spacing: .1em !important;
+text-transform: uppercase !important;
+}
+body.world-page footer.site-footer .footer-column a {
+display: block !important;
+font-size: 11px !important;
+line-height: 1.7 !important;
+overflow-wrap: anywhere !important;
+}
+body.world-page footer.site-footer .footer-waitlist-form {
+display: flex !important;
+flex-direction: row !important;
+align-items: center !important;
+gap: 10px !important;
+width: 100% !important;
+margin-top: 18px !important;
+}
+body.world-page footer.site-footer .footer-waitlist-form input {
+flex: 1 1 auto !important;
+width: 100% !important;
+min-width: 0 !important;
+}
+body.world-page footer.site-footer .footer-bottom {
+display: flex !important;
+align-items: center !important;
+justify-content: space-between !important;
+flex-wrap: wrap !important;
+gap: 12px 20px !important;
+padding-top: 16px !important;
+border-top: 1px solid rgba(32,35,38,.14) !important;
+}
+@media (max-width: 1000px) {
+body.world-page footer.site-footer .footer-main {
+grid-template-columns: minmax(0, 1fr) !important;
+gap: 32px !important;
+}
+body.world-page footer.site-footer .footer-newsletter {
+grid-column: 1 !important;
+grid-row: 1 !important;
+}
+body.world-page footer.site-footer .footer-columns {
+grid-column: 1 !important;
+grid-row: 2 !important;
+}
+}
+@media (max-width: 680px) {
+body.world-page footer.site-footer {
+padding: 30px 22px 20px !important;
+}
+body.world-page footer.site-footer .footer-main {
+grid-template-columns: minmax(0, 1fr) !important;
+gap: 28px !important;
+}
+body.world-page footer.site-footer .footer-columns {
+grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+gap: 24px 18px !important;
+}
+}
+</style>
 </head>
 
-<body class="about-page">
+<body class="world-page">
 
-<!-- HEADER -->
 <header class="site-header">
-<a class="header-logo" href="./index.html" aria-label="SCENE404 Studio home">
-SCENE404<span>™</span>
-</a>
-
-<nav class="desktop-nav" aria-label="Main navigation">
+<nav class="nav-links" aria-label="Main navigation">
 <a href="./index.html">Studio</a>
 <a href="./brb.html">BRB</a>
-<a href="./world.html">The World</a>
-<a href="./about.html" aria-current="page">About</a>
+<a href="./world.html" aria-current="page">The World</a>
+<a href="./about.html">About</a>
 </nav>
-
-<a class="header-cta" href="./brb.html">Discover BRB</a>
-
-<button
-class="mobile-menu-toggle"
-type="button"
-aria-label="Open navigation"
-aria-expanded="false"
-aria-controls="mobile-menu"
-onclick="toggleSceneMenu()"
->
-<span></span>
-<span></span>
-</button>
+<a class="logo" href="./index.html" aria-label="SCENE404 studio home">SCENE404 studio</a>
 </header>
 
-<!-- MOBILE NAVIGATION -->
-<div
-class="mobile-menu-backdrop"
-id="mobile-menu-backdrop"
-onclick="toggleSceneMenu(false)"
-></div>
-
-<nav
-class="mobile-menu-drawer"
-id="mobile-menu"
-aria-label="Mobile navigation"
->
-<a href="./index.html">Studio</a>
-<a href="./brb.html">BRB</a>
-<a href="./world.html">The World</a>
-<a href="./about.html" aria-current="page">About</a>
-<a href="./brb.html">Discover BRB ↗</a>
-</nav>
-
 <main>
-
-<!-- ABOUT HERO -->
-<section class="about-hero section">
-
-<div class="about-hero-copy">
-<p class="eyebrow">ABOUT SCENE404</p>
-<h1>An independent<br>creative studio.</h1>
-
-<p class="section-description">
-SCENE404 creates distinctive visual worlds,
-digital experiences and character-led projects
-shaped by a clear point of view.
-</p>
+<section class="hero section world-hero">
+<div class="hero-copy world-hero-copy">
+<p class="eyebrow">THE WORLD OF SCENE404</p>
+<h1>More than a product.</h1>
+<p class="hero-description">A collection of characters, objects, ideas, and digital moments that belong to the same world.</p>
+<p>We build beyond the screen itself, exploring the details that give a product its own identity.</p>
+<a class="pill-link" href="#objects">Explore the world</a>
 </div>
-
-<div class="about-logo-media">
-<img
-class="about-logo-image"
-src="./brb-logo.PNG"
-alt="BRB project identity"
-loading="lazy"
->
+<div class="hero-media big-image motion-media">
+<img src="./moments.png" alt="Small moments and character details from the BRB world" loading="eager">
 </div>
-
 </section>
 
-<!-- STUDIO STORY -->
-<section class="about-story section">
-
-<div class="about-story-heading">
-<p class="eyebrow">01 — THE STUDIO</p>
-<h2>Ideas become worlds.</h2>
+<section class="world section world-feature" id="objects">
+<div class="world-copy world-feature-copy">
+<p class="eyebrow">01 / OBJECTS</p>
+<h2>Little things, their own way.</h2>
+<p>Objects with personality become part of the BRB world. Familiar shapes, a little color, and details made to be remembered.</p>
 </div>
-
-<div class="about-story-copy">
-<p>
-SCENE404 is an independent creative studio working
-across identity, digital experiences and original
-creative concepts.
-</p>
-
-<p>
-Each project begins with an idea and develops into
-its own visual language, atmosphere and identity.
-We bring together design, storytelling and digital
-culture to create work that feels distinctive.
-</p>
-
-<p>
-Our projects can take different forms, but the
-intention remains the same: to build something
-recognisable, considered and memorable.
-</p>
-
-<a class="text-link" href="./world.html">
-Explore The World ↗
-</a>
+<div class="world-media big-image motion-media world-feature-media">
+<img src="./brb-object-milk.PNG" alt="BRB beside its signature red milk carton" loading="lazy">
 </div>
-
 </section>
 
-<!-- PROJECT -->
-<section class="world-feature section">
-
-<div class="world-feature-copy">
-<p class="eyebrow">02 — CURRENT PROJECT</p>
-<h2>Meet BRB.</h2>
-
-<p>
-BRB is a character-led creative project with its
-own visual identity and playful point of view.
-It is one expression of the wider SCENE404 world.
-</p>
-
-<a class="pill-link" href="./brb.html">
-Discover BRB ↗
-</a>
+<section class="app section world-feature world-feature-reverse">
+<div class="app-copy world-feature-copy">
+<p class="eyebrow">02 / LITTLE TREATS</p>
+<h2>Sweet little details.</h2>
+<p>Because the smallest things can become the most memorable.</p>
 </div>
-
-<div class="world-feature-media">
-<img
-src="./brb-logo.PNG"
-alt="BRB visual identity"
-loading="lazy"
->
+<div class="app-media big-image motion-media world-feature-media">
+<img src="./brb-object-treat.PNG" alt="Glossy red ice pop from the BRB visual world" loading="lazy">
 </div>
-
 </section>
 
-<!-- FOUNDER'S NOTE -->
-<section class="founders-note-section section">
-
-<div class="founders-note-copy">
-<p class="eyebrow">03 — A NOTE FROM THE FOUNDER</p>
-<h2>Built from a point of view.</h2>
-
-<p>
-SCENE404 was created to give original ideas the
-space to become complete creative worlds — each
-with its own character, visual language and purpose.
-</p>
-
-<p>
-The studio is an ongoing exploration of what
-thoughtful design and imagination can make possible.
-</p>
+<section class="moments section world-idea">
+<div class="moments-copy">
+<p class="eyebrow">THE STUDIO POV</p>
+<h2>Things worth keeping around.</h2>
+<p>The world will keep growing as we make new products, explore new ideas, and find new reasons to return.</p>
+<a class="pill-link" href="./about.html">About the studio</a>
 </div>
-
-<div class="founders-note-media">
-<img
-class="founders-note-image"
-src="./founders-note.PNG"
-alt="A note from the founder of SCENE404 Studio"
-loading="lazy"
->
-</div>
-
 </section>
-
-<!-- FINAL CTA -->
-<section class="world-idea section">
-<p class="eyebrow">KEEP EXPLORING</p>
-<h2>There is more to come.</h2>
-<a class="pill-link" href="./world.html">Explore The World ↗</a>
-</section>
-
 </main>
 
-<!-- FOOTER -->
 <footer class="site-footer">
-
 <div class="footer-brand">
-<a href="./index.html" class="footer-logo">SCENE404™</a>
-<p>Independent creative studio.</p>
+<a class="footer-logo" href="./index.html">SCENE404 studio</a>
+<p class="footer-tagline">Thanks for skipping around.</p>
 </div>
 
 <div class="footer-main">
-
-<!-- NEWSLETTER -->
 <div class="footer-newsletter">
-<p class="eyebrow">SOFT UPDATES</p>
-<h2>Follow what comes next.</h2>
+<p class="eyebrow">STAY IN THE LOOP</p>
+<h2>Be first in line.</h2>
+<p>Updates from the studio, when there is something to share.</p>
 
-<form
-action="https://formspree.io/f/xjgdddne"
-method="POST"
-class="newsletter-form"
->
-<label class="visually-hidden" for="about-email">
-Email address
-</label>
-
-<input
-id="about-email"
-type="email"
-name="email"
-placeholder="Your email address"
-autocomplete="email"
-required
->
-
-<button type="submit" aria-label="Subscribe">↗</button>
+<form class="footer-waitlist-form" action="https://formspree.io/f/xjgdddne" method="POST">
+<label class="visually-hidden" for="footer-world-email">Email address</label>
+<input id="footer-world-email" type="email" name="email" placeholder="Email address" autocomplete="email" required>
+<button type="submit">Join the waitlist</button>
 </form>
+
+<p class="footer-form-note">Not spam, just first in line.</p>
+<p class="footer-form-consent">By joining, you agree to our <a href="./privacy.html">Privacy Policy</a> and <a href="./terms.html">Terms</a>.</p>
 </div>
 
-<!-- FOUR FOOTER COLUMNS -->
 <div class="footer-columns">
-
 <div class="footer-column">
-<p class="footer-heading">Studio</p>
-<a href="./index.html">Home</a>
-<a href="./about.html">About</a>
-<a href="./world.html">The World</a>
+<p class="footer-heading">Navigation</p>
+<a href="./index.html">Studio</a>
 <a href="./brb.html">BRB</a>
+<a href="./world.html">The World</a>
+<a href="./about.html">About</a>
 </div>
 
 <div class="footer-column">
 <p class="footer-heading">Social</p>
-<a
-href="https://www.instagram.com/scene404.studio/"
-target="_blank"
-rel="noopener noreferrer"
->Instagram ↗</a>
+<a href="https://instagram.com/scene404.studio" target="_blank" rel="noopener noreferrer">Instagram</a>
 </div>
 
 <div class="footer-column">
 <p class="footer-heading">Official</p>
+<a href="./FAQ.html">FAQ</a>
 <a href="./privacy.html">Privacy</a>
 <a href="./terms.html">Terms</a>
 </div>
@@ -255,53 +235,112 @@ rel="noopener noreferrer"
 <div class="footer-column">
 <p class="footer-heading">Support</p>
 <a href="./contact.html">Contact</a>
-<a href="./faq.html">FAQ</a>
-<a href="./accessibility.html">Accessibility</a>
 </div>
-
 </div>
 </div>
 
 <div class="footer-bottom">
-<p>© <span class="current-year">2026</span> SCENE404 Studio</p>
-<a
-href="https://www.instagram.com/scene404.studio/"
-target="_blank"
-rel="noopener noreferrer"
->Instagram ↗</a>
+<p class="privacy-statement">Do Not Sell or Share My Personal Information</p>
+<p class="copyright">© 2026 SCENE404 studio</p>
 </div>
-
 </footer>
 
 <script>
-// Current year
-document.querySelectorAll(".current-year").forEach(function (element) {
-element.textContent = new Date().getFullYear();
-});
+(() => {
+const header = document.querySelector(".site-header");
+const nav = header && header.querySelector(".nav-links");
+if (!header || !nav) return;
 
-// Mobile navigation
-function toggleSceneMenu(forceState) {
-const menu = document.getElementById("mobile-menu");
-const backdrop = document.getElementById("mobile-menu-backdrop");
-const button = document.querySelector(".mobile-menu-toggle");
+const toggle = document.createElement("button");
+toggle.className = "mobile-menu-toggle";
+toggle.type = "button";
+toggle.setAttribute("aria-label", "Open navigation");
+toggle.setAttribute("aria-expanded", "false");
+toggle.innerHTML = "<span></span><span></span><span></span>";
+header.appendChild(toggle);
 
-if (!menu || !backdrop || !button) return;
+const backdrop = document.createElement("div");
+backdrop.className = "mobile-menu-backdrop";
+backdrop.setAttribute("aria-hidden", "true");
 
-const shouldOpen =
-typeof forceState === "boolean"
-? forceState
-: !menu.classList.contains("is-visible");
+const drawer = document.createElement("nav");
+drawer.className = "mobile-menu-drawer";
+drawer.setAttribute("aria-label", "Mobile navigation");
+nav.querySelectorAll("a").forEach(a => drawer.appendChild(a.cloneNode(true)));
+document.body.append(backdrop, drawer);
 
-menu.classList.toggle("is-visible", shouldOpen);
-backdrop.classList.toggle("is-visible", shouldOpen);
-button.setAttribute("aria-expanded", String(shouldOpen));
-document.body.classList.toggle("mobile-menu-open", shouldOpen);
+function closeMenu() {
+drawer.classList.remove("is-visible");
+backdrop.classList.remove("is-visible");
+document.body.classList.remove("mobile-menu-open");
+toggle.setAttribute("aria-expanded", "false");
+toggle.setAttribute("aria-label", "Open navigation");
 }
 
-document.addEventListener("keydown", function (event) {
-if (event.key === "Escape") toggleSceneMenu(false);
-});
-</script>
+function openMenu() {
+drawer.classList.add("is-visible");
+backdrop.classList.add("is-visible");
+document.body.classList.add("mobile-menu-open");
+toggle.setAttribute("aria-expanded", "true");
+toggle.setAttribute("aria-label", "Close navigation");
+}
 
+toggle.addEventListener("click", () =>
+drawer.classList.contains("is-visible") ? closeMenu() : openMenu()
+);
+backdrop.addEventListener("click", closeMenu);
+drawer.addEventListener("click", e => {
+if (e.target.closest("a")) closeMenu();
+});
+document.addEventListener("keydown", e => {
+if (e.key === "Escape") closeMenu();
+});
+
+function updateHeader() {
+if (window.innerWidth <= 680) {
+header.classList.toggle("is-compact", window.scrollY > 70);
+} else {
+header.classList.remove("is-compact");
+}
+}
+
+window.addEventListener("scroll", updateHeader, { passive: true });
+window.addEventListener("resize", () => {
+closeMenu();
+updateHeader();
+});
+updateHeader();
+
+const images = document.querySelectorAll(".motion-media img, .big-image img");
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !images.length) return;
+
+let frame = null;
+
+function updateImages() {
+const vh = window.innerHeight;
+const max = window.innerWidth <= 680 ? .02 : .03;
+
+images.forEach(img => {
+const r = img.getBoundingClientRect();
+if (r.bottom < 0 || r.top > vh) return;
+const p = Math.max(0, 1 - Math.abs((r.top + r.height / 2) - vh * .5) / (vh * .8));
+img.style.transformOrigin = "center center";
+img.style.transform = `scale(${1 + p * max})`;
+});
+
+frame = null;
+}
+
+function requestUpdate() {
+if (frame !== null) return;
+frame = requestAnimationFrame(updateImages);
+}
+
+window.addEventListener("scroll", requestUpdate, { passive: true });
+window.addEventListener("resize", requestUpdate);
+window.addEventListener("load", updateImages);
+updateImages();
+})();
+</script>
 </body>
 </html>
