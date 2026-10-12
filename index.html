@@ -7,147 +7,6 @@
 <meta name="description" content="SCENE404 studio makes digital products, characters, and worlds worth keeping around.">
 <title>SCENE404 studio — Things worth keeping around.</title>
 <link rel="stylesheet" href="./style.css">
-
-<style>
-/* DESKTOP HEADER */
-.site-header {
-position: fixed !important;
-top: 14px !important;
-left: 50% !important;
-z-index: 1000 !important;
-transform: translate(-50%, 0) !important;
-opacity: 1;
-visibility: visible;
-pointer-events: auto;
-transition:
-transform .35s cubic-bezier(.22, 1, .36, 1),
-opacity .25s ease,
-visibility .25s ease !important;
-}
-
-.site-header.is-hidden {
-transform: translate(-50%, calc(-100% - 32px)) !important;
-opacity: 0 !important;
-visibility: hidden !important;
-pointer-events: none !important;
-}
-
-.mobile-menu-toggle {
-display: none !important;
-}
-
-/* MOBILE FLOATING MENU BUTTON */
-@media (max-width: 680px) {
-.site-header {
-top: 12px !important;
-left: 50% !important;
-transform: translate(-50%, 0) !important;
-}
-
-.site-header.is-hidden {
-transform: translate(-50%, calc(-100% - 24px)) !important;
-opacity: 0 !important;
-visibility: hidden !important;
-pointer-events: none !important;
-}
-
-.mobile-menu-toggle {
-position: fixed !important;
-top: 18px !important;
-left: 16px !important;
-z-index: 1200 !important;
-display: flex !important;
-align-items: center;
-justify-content: center;
-flex-direction: column;
-gap: 5px;
-width: 48px;
-height: 48px;
-padding: 12px;
-border: 1px solid #d5d8dc;
-border-radius: 50%;
-background: #eef0f2;
-box-shadow: 0 3px 14px rgba(32, 35, 38, .06);
-opacity: 0;
-visibility: hidden;
-pointer-events: none;
-transform: translateY(-16px);
-transition:
-opacity .25s ease,
-transform .35s cubic-bezier(.22, 1, .36, 1),
-visibility .25s ease;
-}
-
-.mobile-menu-toggle.is-visible {
-opacity: 1 !important;
-visibility: visible !important;
-pointer-events: auto !important;
-transform: translateY(0) !important;
-}
-
-.mobile-menu-toggle span {
-display: block;
-width: 21px;
-height: 2px;
-border-radius: 2px;
-background: #202326;
-}
-}
-
-/* NEW EDITORIAL BLOCKS */
-.brand-mark-section {
-display: grid;
-grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-align-items: center;
-gap: clamp(32px, 7vw, 100px);
-}
-
-.brand-mark-copy,
-.founder-note-copy {
-max-width: 480px;
-}
-
-.brand-mark-media,
-.founder-note-media {
-width: 100%;
-min-width: 0;
-overflow: hidden;
-border-radius: 22px;
-}
-
-.brand-mark-media img,
-.founder-note-media img {
-display: block;
-width: 100%;
-height: auto;
-object-fit: contain;
-}
-
-.founder-note-section {
-display: grid;
-grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
-align-items: center;
-gap: clamp(32px, 7vw, 100px);
-}
-
-.founder-note-copy p:not(.eyebrow) {
-max-width: 440px;
-line-height: 1.8;
-}
-
-@media (max-width: 680px) {
-.brand-mark-section,
-.founder-note-section {
-grid-template-columns: 1fr;
-gap: 24px;
-}
-
-.brand-mark-media,
-.founder-note-media {
-border-radius: 16px;
-}
-}
-</style>
 </head>
 
 <body class="studio-page">
@@ -202,53 +61,17 @@ border-radius: 16px;
 </div>
 </section>
 
-<!-- THE WORLD -->
+<!-- SMALL MOMENTS -->
 <section class="moments section">
 <div class="moments-copy">
-<p class="eyebrow">IN THE MAKING</p>
-<h2>One product. A world to explore.</h2>
-<p>Character, objects, interactions, and details are all part of the same idea. We are building BRB one piece at a time.</p>
-<a class="pill-link" href="./world.html">Explore the world</a>
-</div>
-<div class="moments-media big-image motion-media">
-<img src="./moments.png" alt="Small moments and character details from the BRB world" loading="lazy">
-</div>
-</section>
-
-<!-- BRB SIGNATURE -->
-<section class="brand-mark-section section">
-<div class="brand-mark-copy">
-<p class="eyebrow">THE SIGNATURE</p>
-<h2>A little pink mark.</h2>
-<p>The signature of a world still taking shape. Small details, familiar characters, and things worth keeping around.</p>
+<p class="eyebrow">SMALL MOMENTS</p>
+<h2>The ones you keep coming back for.</h2>
+<p>A few small scenes from the BRB world, made to feel familiar over time.</p>
 <a class="pill-link" href="./brb.html">Discover BRB</a>
 </div>
-<div class="brand-mark-media motion-media">
-<img src="./brb-logo.PNG" alt="Pink BRB logo" loading="lazy">
+<div class="moments-media big-image motion-media">
+<img src="./brb-small-moments.png" alt="Small Moments: five scenes from the BRB world" loading="lazy">
 </div>
-</section>
-
-<!-- FOUNDER'S NOTE -->
-<section class="founder-note-section section" id="founders-note">
-<div class="founder-note-copy">
-<p class="eyebrow">A NOTE FROM THE FOUNDER</p>
-<h2>Why I started building BRB.</h2>
-<p>I’ve always been drawn to the little things — the things you return to, the things that become part of your everyday life without you even noticing.</p>
-<p>BRB started with a simple idea: to make a small digital world with personality, curiosity, and moments worth coming back to.</p>
-<p>Thank you for being here at the beginning.</p>
-<p><strong>xoxo,</strong><br>SCENE404 studio</p>
-</div>
-<div class="founder-note-media motion-media">
-<img src="./founders-note.PNG" alt="A note from the founder of SCENE404 studio" loading="lazy">
-</div>
-</section>
-
-<!-- STUDIO -->
-<section class="studio-about section">
-<p class="eyebrow">SCENE404 STUDIO</p>
-<h2>Things worth keeping around.</h2>
-<p>An independent studio exploring what digital products can become when character, design, and interaction are treated as parts of the same world.</p>
-<a class="pill-link" href="./about.html">Get to know the studio</a>
 </section>
 
 </main>
@@ -267,8 +90,8 @@ border-radius: 16px;
 <p>Get updates from SCENE404 studio and hear when BRB is ready.</p>
 
 <form class="footer-waitlist-form" action="https://formspree.io/f/xjgdddne" method="POST">
-<label class="visually-hidden" for="footer-index-email">Email address</label>
-<input id="footer-index-email" type="email" name="email" placeholder="Email address" autocomplete="email" required>
+<label class="visually-hidden" for="footer-home-email">Email address</label>
+<input id="footer-home-email" type="email" name="email" placeholder="Email address" autocomplete="email" required>
 <button type="submit">Join the waitlist</button>
 </form>
 
@@ -302,11 +125,10 @@ border-radius: 16px;
 <a href="./contact.html">Contact</a>
 </div>
 </div>
-
-<p class="privacy-statement">Do Not Sell or Share My Personal Information</p>
 </div>
 
 <div class="footer-bottom">
+<p class="privacy-statement">Do Not Sell or Share My Personal Information</p>
 <p class="copyright">© 2026 SCENE404 studio</p>
 </div>
 </footer>
@@ -314,18 +136,16 @@ border-radius: 16px;
 <script>
 (() => {
 const header = document.querySelector(".site-header");
-if (!header) return;
-
-const nav = header.querySelector(".nav-links");
-const mobileQuery = window.matchMedia("(max-width: 680px)");
+const nav = header && header.querySelector(".nav-links");
+if (!header || !nav) return;
 
 const toggle = document.createElement("button");
 toggle.className = "mobile-menu-toggle";
 toggle.type = "button";
 toggle.setAttribute("aria-label", "Open navigation");
 toggle.setAttribute("aria-expanded", "false");
-toggle.setAttribute("aria-controls", "mobile-navigation");
 toggle.innerHTML = "<span></span><span></span><span></span>";
+header.appendChild(toggle);
 
 const backdrop = document.createElement("div");
 backdrop.className = "mobile-menu-backdrop";
@@ -333,14 +153,13 @@ backdrop.setAttribute("aria-hidden", "true");
 
 const drawer = document.createElement("nav");
 drawer.className = "mobile-menu-drawer";
-drawer.id = "mobile-navigation";
 drawer.setAttribute("aria-label", "Mobile navigation");
 
 nav.querySelectorAll("a").forEach(link => {
 drawer.appendChild(link.cloneNode(true));
 });
 
-document.body.append(toggle, backdrop, drawer);
+document.body.append(backdrop, drawer);
 
 function closeMenu() {
 drawer.classList.remove("is-visible");
@@ -372,82 +191,30 @@ document.addEventListener("keydown", event => {
 if (event.key === "Escape") closeMenu();
 });
 
-let previousY = Math.max(0, window.scrollY);
-let lastDirection = 0;
-let pending = false;
-let lastActionY = previousY;
-
-const topThreshold = 40;
-const desktopThreshold = 3;
-
 function updateHeader() {
-const currentY = Math.max(0, window.scrollY);
-const delta = currentY - previousY;
-previousY = currentY;
-
-if (currentY <= topThreshold) {
-header.classList.remove("is-hidden", "is-compact");
-toggle.classList.remove("is-visible");
-lastDirection = 0;
-lastActionY = currentY;
-closeMenu();
-pending = false;
-return;
-}
-
-if (mobileQuery.matches) {
-header.classList.add("is-hidden");
-header.classList.remove("is-compact");
-toggle.classList.add("is-visible");
+if (window.innerWidth <= 680) {
+header.classList.toggle("is-compact", window.scrollY > 70);
 } else {
-if (Math.abs(currentY - lastActionY) >= desktopThreshold) {
-const direction = delta > 0 ? 1 : delta < 0 ? -1 : lastDirection;
-
-if (direction === 1) {
-header.classList.add("is-hidden");
 header.classList.remove("is-compact");
-} else if (direction === -1) {
-header.classList.remove("is-hidden", "is-compact");
+}
 }
 
-if (direction !== 0) lastDirection = direction;
-lastActionY = currentY;
-}
-
-toggle.classList.remove("is-visible");
-}
-
-pending = false;
-}
-
-function onScroll() {
-if (pending) return;
-pending = true;
-window.requestAnimationFrame(updateHeader);
-}
-
-window.addEventListener("scroll", onScroll, { passive: true });
-
+window.addEventListener("scroll", updateHeader, { passive: true });
 window.addEventListener("resize", () => {
 closeMenu();
-header.classList.remove("is-hidden", "is-compact");
-toggle.classList.remove("is-visible");
-previousY = Math.max(0, window.scrollY);
-lastActionY = previousY;
-lastDirection = 0;
+updateHeader();
 });
-
 updateHeader();
 
-/* Existing subtle image movement */
 const images = document.querySelectorAll(".motion-media img, .big-image img");
 
-if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && images.length) {
-let imageFrame = null;
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !images.length) return;
+
+let frame = null;
 
 function updateImages() {
 const viewportHeight = window.innerHeight;
-const maxScale = window.innerWidth <= 680 ? 0.035 : 0.055;
+const maxScale = window.innerWidth <= 680 ? 0.02 : 0.03;
 
 images.forEach(img => {
 const rect = img.getBoundingClientRect();
@@ -459,22 +226,22 @@ const proximity = Math.max(
 1 - Math.abs(center - viewportHeight * 0.5) / (viewportHeight * 0.8)
 );
 
+img.style.transformOrigin = "center center";
 img.style.transform = `scale(${1 + proximity * maxScale})`;
 });
 
-imageFrame = null;
+frame = null;
 }
 
-function requestImageUpdate() {
-if (imageFrame !== null) return;
-imageFrame = window.requestAnimationFrame(updateImages);
+function requestUpdate() {
+if (frame !== null) return;
+frame = requestAnimationFrame(updateImages);
 }
 
-window.addEventListener("scroll", requestImageUpdate, { passive: true });
-window.addEventListener("resize", requestImageUpdate);
+window.addEventListener("scroll", requestUpdate, { passive: true });
+window.addEventListener("resize", requestUpdate);
 window.addEventListener("load", updateImages);
 updateImages();
-}
 })();
 </script>
 
