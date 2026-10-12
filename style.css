@@ -1494,10 +1494,6 @@ transition: none;
 translate: none;
 }
 }
-/* ==================================================
-SCENE404 — FOOTER FIX
-Keep this block at the VERY END of style.css
-================================================== */
 
 body .site-footer {
 display: block !important;
