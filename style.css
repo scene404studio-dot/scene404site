@@ -731,11 +731,32 @@ overflow-wrap: anywhere;
 .site-footer .footer-nav {
 grid-column: 2;
 grid-row: 1;
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-gap: 10px;
+display: grid;
+grid-template-columns: repeat(4, minmax(0, 1fr));
+align-items: start;
+gap: 10px 24px;
 min-width: 0;
+}
+
+.site-footer .footer-nav a {
+display: block;
+min-width: 0;
+font-size: 12px;
+line-height: 1.65;
+}
+
+@media (max-width: 1000px) {
+.site-footer .footer-nav {
+grid-column: 1;
+grid-row: 2;
+}
+}
+
+@media (max-width: 680px) {
+.site-footer .footer-nav {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 16px 20px;
+}
 }
 
 .site-footer .footer-nav a { display: block; font-size: 12px; line-height: 1.65; }
