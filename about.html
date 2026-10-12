@@ -2,20 +2,18 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f8f5f0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#eef0f2">
 
 <title>About — SCENE404 Studio</title>
-<meta
-name="description"
-content="Meet SCENE404 Studio and discover the thinking behind BRB."
->
+<meta name="description" content="SCENE404 is an independent creative studio building distinctive worlds, digital experiences and character-led projects.">
 
 <link rel="stylesheet" href="./style.css">
 </head>
 
 <body class="about-page">
 
+<!-- HEADER -->
 <header class="site-header">
 <a class="header-logo" href="./index.html" aria-label="SCENE404 Studio home">
 SCENE404<span>™</span>
@@ -33,93 +31,175 @@ SCENE404<span>™</span>
 <button
 class="mobile-menu-toggle"
 type="button"
-aria-label="Open navigation menu"
+aria-label="Open navigation"
 aria-expanded="false"
+aria-controls="mobile-menu"
+onclick="toggleSceneMenu()"
 >
 <span></span>
 <span></span>
 </button>
 </header>
 
+<!-- MOBILE NAVIGATION -->
+<div
+class="mobile-menu-backdrop"
+id="mobile-menu-backdrop"
+onclick="toggleSceneMenu(false)"
+></div>
+
+<nav
+class="mobile-menu-drawer"
+id="mobile-menu"
+aria-label="Mobile navigation"
+>
+<a href="./index.html">Studio</a>
+<a href="./brb.html">BRB</a>
+<a href="./world.html">The World</a>
+<a href="./about.html" aria-current="page">About</a>
+<a href="./brb.html">Discover BRB ↗</a>
+</nav>
+
 <main>
 
 <!-- ABOUT HERO -->
 <section class="about-hero section">
+
 <div class="about-hero-copy">
 <p class="eyebrow">ABOUT SCENE404</p>
-
-<h1>
-A studio for<br>
-worlds worth<br>
-<em>feeling.</em>
-</h1>
+<h1>An independent<br>creative studio.</h1>
 
 <p class="section-description">
-SCENE404 is an independent creative studio building distinctive
-worlds, characters and digital experiences.
+SCENE404 creates distinctive visual worlds,
+digital experiences and character-led projects
+shaped by a clear point of view.
 </p>
 </div>
 
 <div class="about-logo-media">
 <img
-src="./brb-logo.PNG"
-alt="BRB brand logo"
 class="about-logo-image"
+src="./brb-logo.PNG"
+alt="BRB project identity"
+loading="lazy"
 >
 </div>
+
 </section>
 
-<!-- STUDIO NOTE -->
+<!-- STUDIO STORY -->
 <section class="about-story section">
+
 <div class="about-story-heading">
-<p class="eyebrow">THE STUDIO</p>
-<h2>Ideas become <em>worlds.</em></h2>
+<p class="eyebrow">01 — THE STUDIO</p>
+<h2>Ideas become worlds.</h2>
 </div>
 
 <div class="about-story-copy">
 <p>
-We bring together visual identity, storytelling and digital
-experiences to create brands with their own point of view.
+SCENE404 is an independent creative studio working
+across identity, digital experiences and original
+creative concepts.
 </p>
 
 <p>
-BRB is one of those worlds — a playful universe built around
-everyday rituals, collectible objects and character.
+Each project begins with an idea and develops into
+its own visual language, atmosphere and identity.
+We bring together design, storytelling and digital
+culture to create work that feels distinctive.
 </p>
 
-<a class="text-link" href="./brb.html">Explore BRB <span>↗</span></a>
+<p>
+Our projects can take different forms, but the
+intention remains the same: to build something
+recognisable, considered and memorable.
+</p>
+
+<a class="text-link" href="./world.html">
+Explore The World ↗
+</a>
 </div>
+
 </section>
 
-<!-- FOUNDERS NOTE -->
+<!-- PROJECT -->
+<section class="world-feature section">
+
+<div class="world-feature-copy">
+<p class="eyebrow">02 — CURRENT PROJECT</p>
+<h2>Meet BRB.</h2>
+
+<p>
+BRB is a character-led creative project with its
+own visual identity and playful point of view.
+It is one expression of the wider SCENE404 world.
+</p>
+
+<a class="pill-link" href="./brb.html">
+Discover BRB ↗
+</a>
+</div>
+
+<div class="world-feature-media">
+<img
+src="./brb-logo.PNG"
+alt="BRB visual identity"
+loading="lazy"
+>
+</div>
+
+</section>
+
+<!-- FOUNDER'S NOTE -->
 <section class="founders-note-section section">
+
 <div class="founders-note-copy">
-<p class="eyebrow">A PERSONAL NOTE</p>
-<h2>From the <em>founder.</em></h2>
-<p class="section-description">
-A note on the ideas and intention behind the studio.
+<p class="eyebrow">03 — A NOTE FROM THE FOUNDER</p>
+<h2>Built from a point of view.</h2>
+
+<p>
+SCENE404 was created to give original ideas the
+space to become complete creative worlds — each
+with its own character, visual language and purpose.
+</p>
+
+<p>
+The studio is an ongoing exploration of what
+thoughtful design and imagination can make possible.
 </p>
 </div>
 
 <div class="founders-note-media">
 <img
-src="./founders-note.PNG"
-alt="Founder's Note from SCENE404 Studio"
 class="founders-note-image"
+src="./founders-note.PNG"
+alt="A note from the founder of SCENE404 Studio"
+loading="lazy"
 >
 </div>
+
+</section>
+
+<!-- FINAL CTA -->
+<section class="world-idea section">
+<p class="eyebrow">KEEP EXPLORING</p>
+<h2>There is more to come.</h2>
+<a class="pill-link" href="./world.html">Explore The World ↗</a>
 </section>
 
 </main>
 
-<!-- ONE FOOTER ONLY -->
+<!-- FOOTER -->
 <footer class="site-footer">
+
 <div class="footer-brand">
 <a href="./index.html" class="footer-logo">SCENE404™</a>
 <p>Independent creative studio.</p>
 </div>
 
 <div class="footer-main">
+
+<!-- NEWSLETTER -->
 <div class="footer-newsletter">
 <p class="eyebrow">SOFT UPDATES</p>
 <h2>Follow what comes next.</h2>
@@ -146,82 +226,81 @@ required
 </form>
 </div>
 
-<nav class="footer-nav" aria-label="Footer navigation">
-<a href="./index.html">Studio</a>
-<a href="./brb.html">BRB</a>
-<a href="./world.html">The World</a>
+<!-- FOUR FOOTER COLUMNS -->
+<div class="footer-columns">
+
+<div class="footer-column">
+<p class="footer-heading">Studio</p>
+<a href="./index.html">Home</a>
 <a href="./about.html">About</a>
-</nav>
+<a href="./world.html">The World</a>
+<a href="./brb.html">BRB</a>
+</div>
+
+<div class="footer-column">
+<p class="footer-heading">Social</p>
+<a
+href="https://www.instagram.com/scene404.studio/"
+target="_blank"
+rel="noopener noreferrer"
+>Instagram ↗</a>
+</div>
+
+<div class="footer-column">
+<p class="footer-heading">Official</p>
+<a href="./privacy.html">Privacy</a>
+<a href="./terms.html">Terms</a>
+</div>
+
+<div class="footer-column">
+<p class="footer-heading">Support</p>
+<a href="./contact.html">Contact</a>
+<a href="./faq.html">FAQ</a>
+<a href="./accessibility.html">Accessibility</a>
+</div>
+
+</div>
 </div>
 
 <div class="footer-bottom">
-<p>© <span id="current-year"></span> SCENE404 Studio</p>
-<a href="https://www.instagram.com/scene404.studio/" target="_blank" rel="noopener noreferrer">
-Instagram ↗
-</a>
+<p>© <span class="current-year">2026</span> SCENE404 Studio</p>
+<a
+href="https://www.instagram.com/scene404.studio/"
+target="_blank"
+rel="noopener noreferrer"
+>Instagram ↗</a>
 </div>
+
 </footer>
 
 <script>
 // Current year
-document.getElementById("current-year").textContent =
-new Date().getFullYear();
+document.querySelectorAll(".current-year").forEach(function (element) {
+element.textContent = new Date().getFullYear();
+});
 
 // Mobile navigation
-const menuButton = document.querySelector(".mobile-menu-toggle");
-const header = document.querySelector(".site-header");
+function toggleSceneMenu(forceState) {
+const menu = document.getElementById("mobile-menu");
+const backdrop = document.getElementById("mobile-menu-backdrop");
+const button = document.querySelector(".mobile-menu-toggle");
 
-if (menuButton && header) {
-const backdrop = document.createElement("div");
-backdrop.className = "mobile-menu-backdrop";
+if (!menu || !backdrop || !button) return;
 
-const drawer = document.createElement("nav");
-drawer.className = "mobile-menu-drawer";
-drawer.setAttribute("aria-label", "Mobile navigation");
+const shouldOpen =
+typeof forceState === "boolean"
+? forceState
+: !menu.classList.contains("is-visible");
 
-[
-["Studio", "./index.html"],
-["BRB", "./brb.html"],
-["The World", "./world.html"],
-["About", "./about.html"]
-].forEach(([label, url]) => {
-const link = document.createElement("a");
-link.href = url;
-link.textContent = label;
-drawer.appendChild(link);
-});
-
-document.body.append(backdrop, drawer);
-
-function closeMenu() {
-drawer.classList.remove("is-visible");
-backdrop.classList.remove("is-visible");
-document.body.classList.remove("mobile-menu-open");
-menuButton.setAttribute("aria-expanded", "false");
-menuButton.setAttribute("aria-label", "Open navigation menu");
+menu.classList.toggle("is-visible", shouldOpen);
+backdrop.classList.toggle("is-visible", shouldOpen);
+button.setAttribute("aria-expanded", String(shouldOpen));
+document.body.classList.toggle("mobile-menu-open", shouldOpen);
 }
 
-menuButton.addEventListener("click", () => {
-const isOpen = drawer.classList.toggle("is-visible");
-backdrop.classList.toggle("is-visible", isOpen);
-document.body.classList.toggle("mobile-menu-open", isOpen);
-menuButton.setAttribute("aria-expanded", String(isOpen));
-menuButton.setAttribute(
-"aria-label",
-isOpen ? "Close navigation menu" : "Open navigation menu"
-);
+document.addEventListener("keydown", function (event) {
+if (event.key === "Escape") toggleSceneMenu(false);
 });
-
-backdrop.addEventListener("click", closeMenu);
-
-drawer.querySelectorAll("a").forEach(link => {
-link.addEventListener("click", closeMenu);
-});
-
-document.addEventListener("keydown", event => {
-if (event.key === "Escape") closeMenu();
-});
-}
 </script>
 
 </body>
