@@ -1762,10 +1762,10 @@ content: none !important;
 display: none !important;
 }
 
-/* HIDE THE LARGE BRB HERO IMAGE ON THE WORLD PAGE */
-body.world-page .world-hero .hero-media,
-body.world-page .world-hero .big-image,
-body.world-page .world-hero .motion-media {
+/* Hide BRB images on About and The World pages */
+body.about-page .world-media,
+body.about-page .hero-media,
+body.about-page .founders-note-media,
+body.world-page .world-hero .hero-media {
 display: none !important;
-}
 }
