@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#ffffff">
 <meta
 name="description"
@@ -28,6 +28,7 @@ SCENE404 studio
 </header>
 
 <main class="legal-page">
+
 <section class="legal-hero">
 <p class="eyebrow">OFFICIAL</p>
 <h1>Privacy Policy</h1>
@@ -35,7 +36,7 @@ SCENE404 studio
 This policy explains what information SCENE404 studio may
 collect through this website and how it may be used.
 </p>
-<p class="legal-updated">Last updated: October 11, 2026</p>
+<p class="legal-updated">Last updated: October 12, 2026</p>
 </section>
 
 <article class="legal-content">
@@ -149,17 +150,16 @@ targeted advertising, sale, or sharing.
 </p>
 <p>
 To submit a privacy request, email
-<a href="mailto:hello@scene404.studio">hello@scene404.studio</a>
+<a href="mailto:privacy@scene404.studio">privacy@scene404.studio</a>
 with the subject “Privacy Request.” We may need to verify
 your request before acting on it. We will not unlawfully
 discriminate against you for exercising a privacy right.
 </p>
 <p>
-The text “Do Not Sell or Share My Personal Information”
-in the footer is provided as a privacy-related notice. It
+Any “Do Not Sell or Share My Personal Information” notice
 should be connected to an appropriate opt-out process if
-applicable law requires one; the text alone does not process
-an opt-out request.
+applicable law requires one. The notice alone does not
+process an opt-out request.
 </p>
 </section>
 
@@ -196,7 +196,7 @@ be posted on this page with its updated date.
 <h2>13. Contact</h2>
 <p>
 For questions or privacy requests, contact
-<a href="mailto:hello@scene404.studio"hello@scene404.studio</a>.
+<a href="mailto:privacy@scene404.studio">privacy@scene404.studio</a>.
 </p>
 </section>
 
@@ -208,6 +208,7 @@ For questions or privacy requests, contact
 <p>We’re happy to hear from you.</p>
 <a class="pill-link" href="./contact.html">Contact the studio</a>
 </section>
+
 </main>
 
 <footer class="site-footer">
@@ -217,6 +218,7 @@ For questions or privacy requests, contact
 </div>
 
 <div class="footer-main">
+
 <div class="footer-columns">
 
 <div class="footer-column">
@@ -230,10 +232,10 @@ For questions or privacy requests, contact
 <div class="footer-column">
 <p class="footer-heading">Social</p>
 <a
-href="https://instagram.com/scene404.studio"
+href="https://www.instagram.com/scene404.studio/"
 target="_blank"
 rel="noopener noreferrer"
->Instagram</a>
+>Instagram ↗</a>
 </div>
 
 <div class="footer-column">
@@ -276,53 +278,52 @@ required
 
 <p class="footer-form-note">Not spam, just first in line.</p>
 </div>
+
 </div>
 
 <div class="footer-bottom">
 <p class="privacy-statement">
-Do Not Sell or Share My Personal Information
+<a href="./privacy.html">Privacy Policy</a>
 </p>
-<p class="copyright">© 2026 SCENE404 studio</p>
+<p class="copyright">
+© <span class="current-year">2026</span> SCENE404 studio
+</p>
 </div>
 </footer>
 
-</body>
-</html>
 <script>
 (() => {
 const header = document.querySelector(".site-header");
 if (!header) return;
 
 const nav = header.querySelector(".nav-links");
-const logo = header.querySelector(".logo");
+if (!nav) return;
 
-/* Mobile drawer */
-let toggle = null;
-let backdrop = null;
-let drawer = null;
+const mobileQuery = window.matchMedia("(max-width: 680px)");
 
-if (nav && logo) {
-toggle = document.createElement("button");
-toggle.className = "mobile-menu-toggle";
+if (!header.querySelector(".mobile-menu-toggle")) {
+const toggle = document.createElement("button");
 toggle.type = "button";
+toggle.className = "mobile-menu-toggle";
 toggle.setAttribute("aria-label", "Open navigation");
 toggle.setAttribute("aria-expanded", "false");
-toggle.innerHTML = "<span></span><span></span><span></span>";
-header.appendChild(toggle);
+toggle.setAttribute("aria-controls", "mobile-navigation");
+toggle.innerHTML = "<span></span><span></span>";
 
-backdrop = document.createElement("div");
+const backdrop = document.createElement("div");
 backdrop.className = "mobile-menu-backdrop";
 backdrop.setAttribute("aria-hidden", "true");
 
-drawer = document.createElement("nav");
+const drawer = document.createElement("nav");
+drawer.id = "mobile-navigation";
 drawer.className = "mobile-menu-drawer";
 drawer.setAttribute("aria-label", "Mobile navigation");
 
 nav.querySelectorAll("a").forEach((link) => {
-const copy = link.cloneNode(true);
-drawer.appendChild(copy);
+drawer.appendChild(link.cloneNode(true));
 });
 
+header.appendChild(toggle);
 document.body.append(backdrop, drawer);
 
 function closeMenu() {
@@ -342,24 +343,33 @@ toggle.setAttribute("aria-label", "Close navigation");
 }
 
 toggle.addEventListener("click", () => {
-drawer.classList.contains("is-visible")
-? closeMenu()
-: openMenu();
+if (drawer.classList.contains("is-visible")) {
+closeMenu();
+} else {
+openMenu();
+}
 });
 
 backdrop.addEventListener("click", closeMenu);
-drawer.addEventListener("click", (event) => {
-if (event.target.closest("a")) closeMenu();
+
+drawer.querySelectorAll("a").forEach((link) => {
+link.addEventListener("click", closeMenu);
 });
 
 document.addEventListener("keydown", (event) => {
 if (event.key === "Escape") closeMenu();
 });
+
+window.addEventListener("resize", () => {
+if (!mobileQuery.matches) {
+closeMenu();
+header.classList.remove("is-compact");
+}
+});
 }
 
-/* Compact header after scrolling */
 function updateHeader() {
-if (window.innerWidth <= 680) {
+if (mobileQuery.matches) {
 header.classList.toggle("is-compact", window.scrollY > 70);
 } else {
 header.classList.remove("is-compact");
@@ -370,50 +380,11 @@ window.addEventListener("scroll", updateHeader, { passive: true });
 window.addEventListener("resize", updateHeader);
 updateHeader();
 
-/* Scroll-responsive image motion */
-const images = document.querySelectorAll(
-".motion-media img, .big-image img, .hero-media img, " +
-".world-media img, .app-media img, .moments-media img"
-);
-
-const reduceMotion = window.matchMedia(
-"(prefers-reduced-motion: reduce)"
-);
-
-if (reduceMotion.matches || !images.length) return;
-
-let frame = null;
-
-function updateImages() {
-const vh = window.innerHeight;
-const maxScale = window.innerWidth <= 680 ? 0.035 : 0.055;
-
-images.forEach((img) => {
-const rect = img.getBoundingClientRect();
-
-if (rect.bottom < 0 || rect.top > vh) return;
-
-const center = rect.top + rect.height / 2;
-const distance = Math.abs(center - vh * 0.5);
-const proximity = Math.max(0, 1 - distance / (vh * 0.8));
-const scale = 1 + proximity * maxScale;
-
-img.style.transformOrigin = "center center";
-img.style.transform = `scale(${scale})`;
+document.querySelectorAll(".current-year").forEach((element) => {
+element.textContent = new Date().getFullYear();
 });
-
-frame = null;
-}
-
-function requestUpdate() {
-if (frame !== null) return;
-frame = requestAnimationFrame(updateImages);
-}
-
-window.addEventListener("scroll", requestUpdate, { passive: true });
-window.addEventListener("resize", requestUpdate);
-window.addEventListener("load", updateImages);
-updateImages();
 })();
 </script>
+
 </body>
+</html>
