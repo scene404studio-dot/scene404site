@@ -1209,3 +1209,64 @@ font-size: 13px;
 padding: 22px 0;
 }
 }
+/* SCENE404 — final layout corrections */
+
+/* Images: show the complete original composition */
+.hero-media,
+.world-media,
+.app-media,
+.moments-media,
+.big-image {
+height: auto;
+min-height: 0;
+aspect-ratio: auto;
+overflow: visible;
+background: transparent;
+}
+
+.hero-media img,
+.world-media img,
+.app-media img,
+.moments-media img,
+.big-image img {
+display: block;
+width: 100%;
+height: auto;
+max-height: none;
+object-fit: contain;
+object-position: center;
+}
+
+/* Product and app visuals should never be cropped */
+.brb-page .hero-media,
+.brb-page .world-media,
+.brb-page .app-media,
+.brb-page .moments-media,
+.world-page .world-hero-media,
+.world-page .world-feature-media,
+.world-page .world-moments-media {
+height: auto;
+min-height: 0;
+aspect-ratio: auto;
+}
+
+/* Main-page action links: outlined, not filled */
+main .pill-link {
+border: 1px solid var(--black);
+background: transparent;
+color: var(--black);
+}
+
+main .pill-link:hover {
+background: var(--black);
+color: var(--white);
+}
+
+/* Keep legal and consent links as normal text */
+.form-consent a,
+.legal-content a,
+.faq-item a,
+.contact-note a {
+border: 0;
+background: none;
+}
