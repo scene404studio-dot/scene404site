@@ -1,78 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<title>Contact — SCENE404 studio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
 <meta
 name="description"
-content="Contact SCENE404 studio about BRB, partnerships, and press."
-/>
-
-<link rel="stylesheet" href="./style.css" />
+content="Contact SCENE404 studio with questions about the studio, BRB, or general inquiries."
+>
+<title>Contact — SCENE404 studio</title>
+<link rel="stylesheet" href="./style.css">
 </head>
 
-<body>
-<header class="site-header">
-<a
-class="logo"
-href="./index.html"
-aria-label="SCENE404 studio home"
->SCENE404 studio</a>
+<body class="contact-page">
 
+<header class="site-header">
 <nav class="nav-links" aria-label="Main navigation">
-<a href="./index.html#waitlist">Waitlist</a>
+<a href="./index.html">Studio</a>
+<a href="./brb.html">BRB</a>
+<a href="./world.html">The World</a>
+<a href="./about.html">About</a>
+</nav>
+
+<a class="logo" href="./index.html" aria-label="SCENE404 studio home">
+SCENE404 studio
+</a>
+</header>
+
+<main class="legal-page contact-main">
+
+<section class="legal-hero">
+<p class="eyebrow">GET IN TOUCH</p>
+<h1>We'd like to hear from you.</h1>
+<p class="legal-intro">
+Questions about SCENE404 studio, BRB, or something we're making?
+Send us a note.
+</p>
+</section>
+
+<section class="contact-content">
+
+<div class="contact-block">
+<p class="eyebrow">GENERAL INQUIRIES</p>
+<h2>Say hello.</h2>
+<p>
+For general questions, studio inquiries, or anything that
+doesn't fit another category, email us directly.
+</p>
+<a href="mailto:hello@scene404.studio">
+hello@scene404.studio
+</a>
+</div>
+
+<div class="contact-block">
+<p class="eyebrow">PRODUCT 001</p>
+<h2>Something about BRB?</h2>
+<p>
+BRB is currently in development. For product questions
+and updates, you can join the waitlist.
+</p>
+<a class="pill-link" href="./index.html#waitlist">
+Join the waitlist
+</a>
+</div>
+
+<div class="contact-block">
+<p class="eyebrow">PRIVACY</p>
+<h2>Questions about your information?</h2>
+<p>
+For privacy-related questions or requests, contact us
+using the email below and include “Privacy Request”
+in the subject line.
+</p>
+<a href="mailto:hello@scene404.studio?subject=Privacy%20Request">
+Contact about privacy
+</a>
+<p class="contact-note">
+You can also read our
+<a href="./privacy.html">Privacy Policy</a>.
+</p>
+</div>
+
+</section>
+
+<section class="legal-cta">
+<p class="eyebrow">FOLLOW THE STUDIO</p>
+<h2>There's more on Instagram.</h2>
+<p>See what we're making and what's taking shape.</p>
+<a
+class="pill-link"
+href="https://instagram.com/scene404.studio"
+target="_blank"
+rel="noopener noreferrer"
+>Follow SCENE404 studio</a>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div class="footer-brand">
+<a class="footer-logo" href="./index.html">SCENE404 studio</a>
+<p class="footer-tagline">Thanks for skipping around.</p>
+</div>
+
+<div class="footer-main">
+<div class="footer-columns">
+
+<div class="footer-column">
+<p class="footer-heading">Navigation</p>
+<a href="./index.html">Studio</a>
+<a href="./brb.html">BRB</a>
+<a href="./world.html">The World</a>
+<a href="./about.html">About</a>
+</div>
+
+<div class="footer-column">
+<p class="footer-heading">Social</p>
 <a
 href="https://instagram.com/scene404.studio"
 target="_blank"
 rel="noopener noreferrer"
 >Instagram</a>
-</nav>
-</header>
-
-<main class="section legal-page">
-<a class="back-link" href="./index.html">← Back to SCENE404 studio</a>
-
-<div class="copy">
-<p class="eyebrow">SCENE404 studio</p>
-<h1>Contact.</h1>
 </div>
 
-<div class="contact-copy">
-<p class="body-text">Questions?</p>
-<p class="body-text">Partnerships?</p>
-<p class="body-text">Press?</p>
-
-<p class="contact-link">
-<a href="mailto:hello@scene404.studio">
-hello@scene404.studio
-</a>
-</p>
-
-<p class="contact-link">
-<a
-href="https://instagram.com/scene404.studio"
-target="_blank"
-rel="noopener noreferrer"
->
-Instagram — @scene404.studio
-</a>
-</p>
-</div>
-</main>
-
-<footer class="site-footer">
-<nav class="footer-links" aria-label="Footer navigation">
-<a href="./index.html">Studio</a>
+<div class="footer-column">
+<p class="footer-heading">Official</p>
 <a href="./FAQ.html">FAQ</a>
 <a href="./privacy.html">Privacy</a>
 <a href="./terms.html">Terms</a>
-<a href="./contact.html">Contact</a>
-</nav>
+</div>
 
-<p class="studio-note">SCENE404 studio</p>
+<div class="footer-column">
+<p class="footer-heading">Support</p>
+<a href="./contact.html" aria-current="page">Contact</a>
+</div>
+
+</div>
+
+<div class="footer-newsletter">
+<p class="eyebrow">STAY IN THE LOOP</p>
+<h2>Be first in line.</h2>
+<p>Updates from the studio, when there is something to share.</p>
+
+<form
+class="footer-waitlist-form"
+action="https://formspree.io/f/xjgdddne"
+method="POST"
+>
+<label class="visually-hidden" for="footer-contact-email">
+Email address
+</label>
+<input
+id="footer-contact-email"
+type="email"
+name="email"
+placeholder="Email address"
+autocomplete="email"
+required
+>
+<button type="submit">Join the waitlist</button>
+</form>
+
+<p class="footer-form-note">Not spam, just first in line.</p>
+</div>
+</div>
+
+<div class="footer-bottom">
+<p class="privacy-statement">
+Do Not Sell or Share My Personal Information
+</p>
 <p class="copyright">© 2026 SCENE404 studio</p>
+</div>
 </footer>
+
 </body>
 </html>
