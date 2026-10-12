@@ -1770,3 +1770,10 @@ body.world-page .world-hero .hero-media {
 display: none !important;
 }
 
+/* Remove duplicate newsletter sections on About and The World */
+body.about-page main .final-waitlist,
+body.world-page main .final-waitlist,
+body.about-page main .world-waitlist,
+body.world-page main .world-waitlist {
+display: none !important;
+}
