@@ -1343,3 +1343,48 @@ scroll-behavior: auto !important;
 transition-duration: .01ms !important;
 }
 }
+
+/* ======================= FOUNDER'S NOTE — STUDIO HOME ======================= */
+
+.studio-page .founder-note {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  width: 100%;
+  max-width: 1000px;
+  margin-inline: auto;
+  padding-top: var(--section-space);
+  padding-bottom: var(--section-space);
+  border-top: 1px solid var(--line);
+}
+
+.studio-page .founder-note-copy {
+  width: 100%;
+  max-width: 760px;
+  min-width: 0;
+}
+
+.studio-page .founder-note-copy .eyebrow {
+  margin-bottom: 22px;
+}
+
+.studio-page .founder-note-copy h2 {
+  max-width: 760px;
+  margin-bottom: 24px;
+}
+
+.studio-page .founder-note-copy > p:not(.eyebrow) {
+  max-width: 650px;
+  color: var(--grey);
+}
+
+@media (max-width: 680px) {
+  .studio-page .founder-note {
+    padding-top: var(--section-space);
+    padding-bottom: var(--section-space);
+  }
+
+  .studio-page .founder-note-copy h2 {
+    font-size: clamp(30px, 8.5vw, 43px);
+  }
+}
