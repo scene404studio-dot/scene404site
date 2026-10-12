@@ -7,7 +7,93 @@
 <meta name="description" content="SCENE404 studio makes digital products, characters, and worlds worth keeping around.">
 <title>SCENE404 studio — Things worth keeping around.</title>
 <link rel="stylesheet" href="./style.css">
+<style>
+.site-header {
+position: fixed;
+top: 14px;
+left: 50%;
+z-index: 1000;
+transform: translate(-50%, 0);
+transition: transform .35s cubic-bezier(.22,1,.36,1), opacity .25s ease;
+opacity: 1;
+pointer-events: auto;
+}
+
+.site-header.is-hidden {
+transform: translate(-50%, calc(-100% - 32px));
+opacity: 0;
+pointer-events: none;
+}
+
+.mobile-menu-toggle {
+display: none;
+}
+
+@media (max-width: 680px) {
+.site-header {
+top: 12px;
+left: 50%;
+transform: translate(-50%, 0);
+}
+
+.site-header.is-hidden {
+transform: translate(-50%, calc(-100% - 24px));
+opacity: 0;
+pointer-events: none;
+}
+
+.mobile-menu-toggle {
+position: fixed;
+top: 18px;
+left: 16px;
+z-index: 1200;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+gap: 5px;
+width: 48px;
+height: 48px;
+padding: 12px;
+border: 1px solid #d5d8dc;
+border-radius: 50%;
+background: #eef0f2;
+box-shadow: 0 3px 14px rgba(32,35,38,.06);
+opacity: 0;
+visibility: hidden;
+pointer-events: none;
+transform: translateY(-80px);
+transition:
+opacity .22s ease,
+transform .3s cubic-bezier(.22,1,.36,1),
+visibility .22s ease;
+}
+
+.mobile-menu-toggle.is-visible {
+opacity: 1;
+visibility: visible;
+pointer-events: auto;
+transform: translateY(0);
+}
+
+.mobile-menu-toggle.is-hidden {
+opacity: 0;
+visibility: hidden;
+pointer-events: none;
+transform: translateY(-80px);
+}
+
+.mobile-menu-toggle span {
+display: block;
+width: 21px;
+height: 2px;
+border-radius: 2px;
+background: #202326;
+}
+}
+</style>
 </head>
+
 <body class="studio-page">
 
 <header class="site-header">
@@ -140,9 +226,8 @@ if (!header) return;
 
 const nav = header.querySelector(".nav-links");
 const mobileQuery = window.matchMedia("(max-width: 680px)");
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-/* Create mobile navigation. */
+// Create the mobile menu button outside the header.
 const toggle = document.createElement("button");
 toggle.className = "mobile-menu-toggle";
 toggle.type = "button";
@@ -150,7 +235,6 @@ toggle.setAttribute("aria-label", "Open navigation");
 toggle.setAttribute("aria-expanded", "false");
 toggle.setAttribute("aria-controls", "mobile-navigation");
 toggle.innerHTML = "<span></span><span></span><span></span>";
-header.appendChild(toggle);
 
 const backdrop = document.createElement("div");
 backdrop.className = "mobile-menu-backdrop";
@@ -165,7 +249,7 @@ nav.querySelectorAll("a").forEach(link => {
 drawer.appendChild(link.cloneNode(true));
 });
 
-document.body.append(backdrop, drawer);
+document.body.append(toggle, backdrop, drawer);
 
 function closeMenu() {
 drawer.classList.remove("is-visible");
@@ -201,42 +285,78 @@ document.addEventListener("keydown", event => {
 if (event.key === "Escape") closeMenu();
 });
 
-/* Header scroll behaviour. */
-let previousY = window.scrollY;
-let scheduled = false;
-const threshold = 5;
+// Detect scroll direction reliably on desktop and mobile.
+let lastY = Math.max(0, window.scrollY);
+let movement = 0;
+let direction = 0;
+let framePending = false;
+
+const directionThreshold = 12;
 const topThreshold = 40;
 
-function updateHeader() {
-const currentY = Math.max(0, window.scrollY);
-const delta = currentY - previousY;
+function updateScroll() {
+const y = Math.max(0, window.scrollY);
+const step = y - lastY;
+lastY = y;
 
-if (currentY <= topThreshold) {
+if (y <= topThreshold) {
 header.classList.remove("is-hidden", "is-compact");
+toggle.classList.remove("is-visible", "is-hidden");
+movement = 0;
+direction = 0;
 closeMenu();
-} else if (delta > threshold) {
-// Moving down: hide the header.
+framePending = false;
+return;
+}
+
+const nextDirection = step > 0 ? 1 : step < 0 ? -1 : 0;
+
+if (nextDirection && nextDirection !== direction) {
+direction = nextDirection;
+movement = 0;
+}
+
+movement += Math.abs(step);
+
+if (movement >= directionThreshold && direction !== 0) {
+if (mobileQuery.matches) {
+// Mobile: hide the full header and control the floating button separately.
 header.classList.add("is-hidden");
 header.classList.remove("is-compact");
-} else if (delta < -threshold) {
-// Moving up: reveal the header.
-header.classList.remove("is-hidden");
 
-if (mobileQuery.matches) {
-header.classList.add("is-compact");
+if (direction > 0) {
+toggle.classList.remove("is-visible");
+toggle.classList.add("is-hidden");
+
+if (drawer.classList.contains("is-visible")) {
+closeMenu();
+}
 } else {
+toggle.classList.remove("is-hidden");
+toggle.classList.add("is-visible");
+}
+} else {
+// Desktop: hide the complete navigation down; reveal it up.
+toggle.classList.remove("is-visible", "is-hidden");
+
+if (direction > 0) {
+header.classList.add("is-hidden");
 header.classList.remove("is-compact");
+} else {
+header.classList.remove("is-hidden", "is-compact");
 }
 }
 
-previousY = currentY;
-scheduled = false;
+movement = 0;
+}
+
+framePending = false;
 }
 
 function onScroll() {
-if (scheduled) return;
-scheduled = true;
-window.requestAnimationFrame(updateHeader);
+if (framePending) return;
+framePending = true;
+window.requestAnimationFrame(updateScroll);
 }
 
 window.addEventListener("scroll", onScroll, { passive: true });
@@ -244,16 +364,18 @@ window.addEventListener("scroll", onScroll, { passive: true });
 window.addEventListener("resize", () => {
 closeMenu();
 header.classList.remove("is-hidden", "is-compact");
-previousY = window.scrollY;
+toggle.classList.remove("is-visible", "is-hidden");
+lastY = Math.max(0, window.scrollY);
+movement = 0;
+direction = 0;
 });
 
-updateHeader();
+updateScroll();
 
-/* Subtle image scale while scrolling. */
+// Subtle image scale while scrolling.
 const images = document.querySelectorAll(".motion-media img, .big-image img");
 
-if (reduceMotion.matches || !images.length) return;
-
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && images.length) {
 let imageFrame = null;
 
 function updateImages() {
@@ -266,8 +388,10 @@ const rect = img.getBoundingClientRect();
 if (rect.bottom < 0 || rect.top > viewportHeight) return;
 
 const center = rect.top + rect.height / 2;
-const distance = Math.abs(center - viewportHeight * 0.5);
-const proximity = Math.max(0, 1 - distance / (viewportHeight * 0.8));
+const proximity = Math.max(
+0,
+1 - Math.abs(center - viewportHeight * 0.5) / (viewportHeight * 0.8)
+);
 
 img.style.setProperty(
 "--scroll-image-scale",
@@ -288,6 +412,7 @@ window.addEventListener("resize", requestImageUpdate);
 window.addEventListener("load", updateImages);
 
 updateImages();
+}
 })();
 </script>
 
