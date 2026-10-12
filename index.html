@@ -93,6 +93,60 @@ border-radius: 2px;
 background: #202326;
 }
 }
+
+/* NEW EDITORIAL BLOCKS */
+.brand-mark-section {
+display: grid;
+grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+align-items: center;
+gap: clamp(32px, 7vw, 100px);
+}
+
+.brand-mark-copy,
+.founder-note-copy {
+max-width: 480px;
+}
+
+.brand-mark-media,
+.founder-note-media {
+width: 100%;
+min-width: 0;
+overflow: hidden;
+border-radius: 22px;
+}
+
+.brand-mark-media img,
+.founder-note-media img {
+display: block;
+width: 100%;
+height: auto;
+object-fit: contain;
+}
+
+.founder-note-section {
+display: grid;
+grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+align-items: center;
+gap: clamp(32px, 7vw, 100px);
+}
+
+.founder-note-copy p:not(.eyebrow) {
+max-width: 440px;
+line-height: 1.8;
+}
+
+@media (max-width: 680px) {
+.brand-mark-section,
+.founder-note-section {
+grid-template-columns: 1fr;
+gap: 24px;
+}
+
+.brand-mark-media,
+.founder-note-media {
+border-radius: 16px;
+}
+}
 </style>
 </head>
 
@@ -109,6 +163,8 @@ background: #202326;
 </header>
 
 <main>
+
+<!-- HERO -->
 <section class="hero section">
 <div class="hero-copy">
 <p class="eyebrow">INDEPENDENT DIGITAL STUDIO</p>
@@ -118,6 +174,7 @@ background: #202326;
 </div>
 </section>
 
+<!-- THE IDEA -->
 <section class="world section" id="studio">
 <div class="world-copy">
 <p class="eyebrow">THE IDEA</p>
@@ -131,6 +188,7 @@ background: #202326;
 </div>
 </section>
 
+<!-- FEATURED PRODUCT -->
 <section class="app section" id="featured">
 <div class="app-copy">
 <p class="eyebrow">PRODUCT 001</p>
@@ -144,6 +202,7 @@ background: #202326;
 </div>
 </section>
 
+<!-- THE WORLD -->
 <section class="moments section">
 <div class="moments-copy">
 <p class="eyebrow">IN THE MAKING</p>
@@ -156,14 +215,45 @@ background: #202326;
 </div>
 </section>
 
+<!-- BRB SIGNATURE -->
+<section class="brand-mark-section section">
+<div class="brand-mark-copy">
+<p class="eyebrow">THE SIGNATURE</p>
+<h2>A little pink mark.</h2>
+<p>The signature of a world still taking shape. Small details, familiar characters, and things worth keeping around.</p>
+<a class="pill-link" href="./brb.html">Discover BRB</a>
+</div>
+<div class="brand-mark-media motion-media">
+<img src="./brb-logo.PNG" alt="Pink BRB logo" loading="lazy">
+</div>
+</section>
+
+<!-- FOUNDER'S NOTE -->
+<section class="founder-note-section section" id="founders-note">
+<div class="founder-note-copy">
+<p class="eyebrow">A NOTE FROM THE FOUNDER</p>
+<h2>Why I started building BRB.</h2>
+<p>I’ve always been drawn to the little things — the things you return to, the things that become part of your everyday life without you even noticing.</p>
+<p>BRB started with a simple idea: to make a small digital world with personality, curiosity, and moments worth coming back to.</p>
+<p>Thank you for being here at the beginning.</p>
+<p><strong>xoxo,</strong><br>SCENE404 studio</p>
+</div>
+<div class="founder-note-media motion-media">
+<img src="./founders-note.PNG" alt="A note from the founder of SCENE404 studio" loading="lazy">
+</div>
+</section>
+
+<!-- STUDIO -->
 <section class="studio-about section">
 <p class="eyebrow">SCENE404 STUDIO</p>
 <h2>Things worth keeping around.</h2>
 <p>An independent studio exploring what digital products can become when character, design, and interaction are treated as parts of the same world.</p>
 <a class="pill-link" href="./about.html">Get to know the studio</a>
 </section>
+
 </main>
 
+<!-- FOOTER -->
 <footer class="site-footer">
 <div class="footer-brand">
 <a class="footer-logo" href="./index.html">SCENE404 studio</a>
@@ -229,7 +319,6 @@ if (!header) return;
 const nav = header.querySelector(".nav-links");
 const mobileQuery = window.matchMedia("(max-width: 680px)");
 
-/* Create a separate mobile button outside the header. */
 const toggle = document.createElement("button");
 toggle.className = "mobile-menu-toggle";
 toggle.type = "button";
@@ -270,11 +359,7 @@ toggle.setAttribute("aria-label", "Close navigation");
 }
 
 toggle.addEventListener("click", () => {
-if (drawer.classList.contains("is-visible")) {
-closeMenu();
-} else {
-openMenu();
-}
+drawer.classList.contains("is-visible") ? closeMenu() : openMenu();
 });
 
 backdrop.addEventListener("click", closeMenu);
@@ -287,16 +372,6 @@ document.addEventListener("keydown", event => {
 if (event.key === "Escape") closeMenu();
 });
 
-/*
-Desktop:
-down = hide full header
-up = reveal full header
-
-Mobile:
-at top = show full header, hide floating button
-after scrolling = hide full header, keep floating button visible
-The floating button stays visible in both scroll directions.
-*/
 let previousY = Math.max(0, window.scrollY);
 let lastDirection = 0;
 let pending = false;
@@ -321,12 +396,10 @@ return;
 }
 
 if (mobileQuery.matches) {
-// Mobile button remains available while scrolling either direction.
 header.classList.add("is-hidden");
 header.classList.remove("is-compact");
 toggle.classList.add("is-visible");
 } else {
-// Desktop direction detection with a small dead zone to prevent flicker.
 if (Math.abs(currentY - lastActionY) >= desktopThreshold) {
 const direction = delta > 0 ? 1 : delta < 0 ? -1 : lastDirection;
 
@@ -366,7 +439,7 @@ lastDirection = 0;
 
 updateHeader();
 
-/* Keep the existing subtle image movement. */
+/* Existing subtle image movement */
 const images = document.querySelectorAll(".motion-media img, .big-image img");
 
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && images.length) {
@@ -386,10 +459,7 @@ const proximity = Math.max(
 1 - Math.abs(center - viewportHeight * 0.5) / (viewportHeight * 0.8)
 );
 
-img.style.setProperty(
-"--scroll-image-scale",
-String(1 + proximity * maxScale)
-);
+img.style.transform = `scale(${1 + proximity * maxScale})`;
 });
 
 imageFrame = null;
