@@ -4,10 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#ffffff">
-<meta
-name="description"
-content="Explore the characters, objects, ideas, and digital moments taking shape at SCENE404 studio."
->
+<meta name="description" content="Explore the characters, objects, ideas, and digital moments taking shape at SCENE404 studio.">
 <title>The World — SCENE404 studio</title>
 <link rel="stylesheet" href="./style.css">
 </head>
@@ -29,6 +26,7 @@ SCENE404 studio
 
 <main>
 
+<!-- HERO -->
 <section class="hero section world-hero">
 <div class="hero-copy world-hero-copy">
 <p class="eyebrow">THE WORLD OF SCENE404</p>
@@ -38,21 +36,23 @@ A collection of characters, objects, ideas, and digital
 moments that belong to the same world.
 </p>
 <p>
-We build beyond the screen itself — exploring the details
+We build beyond the screen itself, exploring the details
 that give a product its own identity.
 </p>
-<a class="pill-link" href="#world-details">Explore the world</a>
+<a class="pill-link" href="#character">Explore the world</a>
 </div>
 
-<div class="hero-media big-image motion-media world-hero-media">
+<div class="hero-media big-image motion-media">
 <img
 src="./world.png"
 alt="A visual glimpse into the SCENE404 studio world"
+loading="eager"
 >
 </div>
 </section>
 
-<section class="world section world-feature" id="world-details">
+<!-- CHARACTER -->
+<section class="world section world-feature" id="character">
 <div class="world-copy world-feature-copy">
 <p class="eyebrow">01 / CHARACTER</p>
 <h2>A character gives the world a point of view.</h2>
@@ -73,6 +73,7 @@ loading="lazy"
 </div>
 </section>
 
+<!-- DIGITAL THINGS -->
 <section class="app section world-feature world-feature-reverse">
 <div class="app-copy world-feature-copy">
 <p class="eyebrow">02 / DIGITAL THINGS</p>
@@ -87,31 +88,36 @@ rather than interchangeable.
 <div class="app-media big-image motion-media world-feature-media">
 <img
 src="./app.png"
-alt="A detail from the digital experiments at SCENE404 studio"
+alt="Digital product screens from the SCENE404 world"
 loading="lazy"
 >
 </div>
 </section>
 
+<!-- MOMENTS -->
 <section class="moments section world-moments">
 <div class="moments-copy">
 <p class="eyebrow">03 / MOMENTS</p>
-<h2>A world is built one detail at a time.</h2>
+<h2>Small moments.</h2>
+<p class="hero-description">
+The ones you keep coming back for.
+</p>
 <p>
-We pay attention to the objects, visual references, and
-little moments that make a larger idea feel recognizable.
+Objects, discoveries, and little interactions help a
+product world become recognizable over time.
 </p>
 </div>
 
 <div class="moments-media big-image motion-media world-moments-media">
 <img
 src="./moments.png"
-alt="Visual details from the SCENE404 world"
+alt="Character moments and details from the SCENE404 world"
 loading="lazy"
 >
 </div>
 </section>
 
+<!-- STUDIO POINT OF VIEW -->
 <section class="moments section world-idea">
 <div class="moments-copy">
 <p class="eyebrow">THE STUDIO POV</p>
@@ -124,44 +130,45 @@ explore new ideas, and find new reasons to return.
 </div>
 </section>
 
-<form
-class="waitlist-form"
-action="https://formspree.io/f/xjgdddne"
-method="POST"
->
-<label for="world-email">Email address</label>
-<div class="waitlist-form-row">
-<input
-id="world-email"
-type="email"
-name="email"
-placeholder="Your email address"
-autocomplete="email"
-required
->
-<button type="submit">Join the waitlist</button>
-</div>
-
-<p class="form-note">Not spam, just first in line.</p>
-
-<p class="form-consent">
-By joining, you agree to our
-<a href="./privacy.html">Privacy Policy</a>
-and
-<a href="./terms.html">Terms</a>.
-</p>
-</form>
-</section>
-
 </main>
 
+<!-- SHARED FOOTER: the only waitlist form on this page -->
 <footer class="site-footer">
+
 <div class="footer-brand">
 <a class="footer-logo" href="./index.html">SCENE404 studio</a>
 <p class="footer-tagline">Thanks for skipping around.</p>
 </div>
 
 <div class="footer-main">
+
+<div class="footer-newsletter">
+<p class="eyebrow">STAY IN THE LOOP</p>
+<h2>Be first in line.</h2>
+<p>Updates from the studio, when there is something to share.</p>
+
+<form
+class="footer-waitlist-form"
+action="https://formspree.io/f/xjgdddne"
+method="POST"
+>
+<label class="visually-hidden" for="footer-world-email">
+Email address
+</label>
+<input
+id="footer-world-email"
+type="email"
+name="email"
+placeholder="Email address"
+autocomplete="email"
+required
+>
+<button type="submit">Join the waitlist</button>
+</form>
+
+<p class="footer-form-note">Not spam, just first in line.</p>
+</div>
+
 <div class="footer-columns">
 
 <div class="footer-column">
@@ -194,33 +201,6 @@ rel="noopener noreferrer"
 </div>
 
 </div>
-
-<div class="footer-newsletter">
-<p class="eyebrow">STAY IN THE LOOP</p>
-<h2>Be first in line.</h2>
-<p>Updates from the studio, when there is something to share.</p>
-
-<form
-class="footer-waitlist-form"
-action="https://formspree.io/f/xjgdddne"
-method="POST"
->
-<label class="visually-hidden" for="footer-world-email">
-Email address
-</label>
-<input
-id="footer-world-email"
-type="email"
-name="email"
-placeholder="Email address"
-autocomplete="email"
-required
->
-<button type="submit">Join the waitlist</button>
-</form>
-
-<p class="footer-form-note">Not spam, just first in line.</p>
-</div>
 </div>
 
 <div class="footer-bottom">
@@ -229,6 +209,7 @@ Do Not Sell or Share My Personal Information
 </p>
 <p class="copyright">© 2026 SCENE404 studio</p>
 </div>
+
 </footer>
 
 </body>
