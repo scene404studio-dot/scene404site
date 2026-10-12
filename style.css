@@ -1777,3 +1777,62 @@ body.about-page main .world-waitlist,
 body.world-page main .world-waitlist {
 display: none !important;
 }
+
+/* SCENE404 — IMAGE LAYOUT FIX */
+
+/* Keep images visible and prevent accidental duplicates */
+body.about-page main .hero-media img,
+body.about-page main .world-media img,
+body.about-page main .app-media img,
+body.world-page main .world-media img,
+body.world-page main .app-media img {
+display: block !important;
+visibility: visible !important;
+opacity: 1 !important;
+width: 100% !important;
+height: auto !important;
+object-fit: contain !important;
+}
+
+/* Consistent image containers */
+body.about-page main .hero-media,
+body.about-page main .world-media,
+body.about-page main .app-media,
+body.world-page main .world-media,
+body.world-page main .app-media {
+min-width: 0 !important;
+overflow: hidden;
+}
+
+/* Prevent excessive empty space between sections */
+body.about-page main > section,
+body.world-page main > section {
+min-height: auto;
+}
+
+/* Mobile image visibility */
+@media (max-width: 680px) {
+body.about-page main .hero-media,
+body.about-page main .world-media,
+body.about-page main .app-media,
+body.world-page main .world-media,
+body.world-page main .app-media {
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+margin: 24px 0 !important;
+}
+
+body.about-page main img,
+body.world-page main img {
+max-width: 100% !important;
+height: auto !important;
+}
+
+body.about-page main > section,
+body.world-page main > section {
+gap: 24px !important;
+padding-top: 32px;
+padding-bottom: 32px;
+}
+}
