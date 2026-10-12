@@ -224,52 +224,130 @@ Do Not Sell or Share My Personal Information
 <!-- Subtle scroll-based image motion -->
 <script>
 (() => {
+const header = document.querySelector(".site-header");
+if (!header) return;
+
+const nav = header.querySelector(".nav-links");
+const logo = header.querySelector(".logo");
+
+/* Mobile drawer */
+let toggle = null;
+let backdrop = null;
+let drawer = null;
+
+if (nav && logo) {
+toggle = document.createElement("button");
+toggle.className = "mobile-menu-toggle";
+toggle.type = "button";
+toggle.setAttribute("aria-label", "Open navigation");
+toggle.setAttribute("aria-expanded", "false");
+toggle.innerHTML = "<span></span><span></span><span></span>";
+header.appendChild(toggle);
+
+backdrop = document.createElement("div");
+backdrop.className = "mobile-menu-backdrop";
+backdrop.setAttribute("aria-hidden", "true");
+
+drawer = document.createElement("nav");
+drawer.className = "mobile-menu-drawer";
+drawer.setAttribute("aria-label", "Mobile navigation");
+
+nav.querySelectorAll("a").forEach((link) => {
+const copy = link.cloneNode(true);
+drawer.appendChild(copy);
+});
+
+document.body.append(backdrop, drawer);
+
+function closeMenu() {
+drawer.classList.remove("is-visible");
+backdrop.classList.remove("is-visible");
+document.body.classList.remove("mobile-menu-open");
+toggle.setAttribute("aria-expanded", "false");
+toggle.setAttribute("aria-label", "Open navigation");
+}
+
+function openMenu() {
+drawer.classList.add("is-visible");
+backdrop.classList.add("is-visible");
+document.body.classList.add("mobile-menu-open");
+toggle.setAttribute("aria-expanded", "true");
+toggle.setAttribute("aria-label", "Close navigation");
+}
+
+toggle.addEventListener("click", () => {
+drawer.classList.contains("is-visible")
+? closeMenu()
+: openMenu();
+});
+
+backdrop.addEventListener("click", closeMenu);
+drawer.addEventListener("click", (event) => {
+if (event.target.closest("a")) closeMenu();
+});
+
+document.addEventListener("keydown", (event) => {
+if (event.key === "Escape") closeMenu();
+});
+}
+
+/* Compact header after scrolling */
+function updateHeader() {
+if (window.innerWidth <= 680) {
+header.classList.toggle("is-compact", window.scrollY > 70);
+} else {
+header.classList.remove("is-compact");
+}
+}
+
+window.addEventListener("scroll", updateHeader, { passive: true });
+window.addEventListener("resize", updateHeader);
+updateHeader();
+
+/* Scroll-responsive image motion */
 const images = document.querySelectorAll(
-".motion-media img, .big-image img, .hero-media img, .world-media img, .app-media img, .moments-media img"
+".motion-media img, .big-image img, .hero-media img, " +
+".world-media img, .app-media img, .moments-media img"
 );
 
-if (
-!images.length ||
-window.matchMedia("(prefers-reduced-motion: reduce)").matches
-) return;
+const reduceMotion = window.matchMedia(
+"(prefers-reduced-motion: reduce)"
+);
 
-let animationFrame = 0;
+if (reduceMotion.matches || !images.length) return;
 
-function updateMotion() {
-const viewportHeight = window.innerHeight;
-const mobile = window.innerWidth <= 680;
-const maxScale = mobile ? 0.025 : 0.045;
+let frame = null;
+
+function updateImages() {
+const vh = window.innerHeight;
+const maxScale = window.innerWidth <= 680 ? 0.035 : 0.055;
 
 images.forEach((img) => {
 const rect = img.getBoundingClientRect();
 
-if (rect.bottom < 0 || rect.top > viewportHeight) return;
+if (rect.bottom < 0 || rect.top > vh) return;
 
 const center = rect.top + rect.height / 2;
-const distance = Math.abs(center - viewportHeight / 2);
-const proximity = Math.max(
-0,
-1 - distance / (viewportHeight * 0.75)
-);
-
+const distance = Math.abs(center - vh * 0.5);
+const proximity = Math.max(0, 1 - distance / (vh * 0.8));
 const scale = 1 + proximity * maxScale;
-img.style.transform = `scale(${scale.toFixed(4)})`;
+
 img.style.transformOrigin = "center center";
+img.style.transform = `scale(${scale})`;
 });
 
-animationFrame = 0;
+frame = null;
 }
 
-function scheduleMotion() {
-if (animationFrame) return;
-animationFrame = requestAnimationFrame(updateMotion);
+function requestUpdate() {
+if (frame !== null) return;
+frame = requestAnimationFrame(updateImages);
 }
 
-window.addEventListener("scroll", scheduleMotion, { passive: true });
-window.addEventListener("resize", scheduleMotion);
-window.addEventListener("load", updateMotion);
-
-updateMotion();
+window.addEventListener("scroll", requestUpdate, { passive: true });
+window.addEventListener("resize", requestUpdate);
+window.addEventListener("load", updateImages);
+updateImages();
 })();
 </script>
 </body>
