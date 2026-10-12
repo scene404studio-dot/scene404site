@@ -136,14 +136,19 @@
 <script>
 (() => {
 const header = document.querySelector(".site-header");
-const nav = header && header.querySelector(".nav-links");
+const nav = header?.querySelector(".nav-links");
 if (!header || !nav) return;
+
+const mobile = window.matchMedia("(max-width: 680px)");
+let lastY = window.scrollY;
+let ticking = false;
 
 const toggle = document.createElement("button");
 toggle.className = "mobile-menu-toggle";
 toggle.type = "button";
 toggle.setAttribute("aria-label", "Open navigation");
 toggle.setAttribute("aria-expanded", "false");
+toggle.setAttribute("aria-controls", "mobile-navigation");
 toggle.innerHTML = "<span></span><span></span><span></span>";
 header.appendChild(toggle);
 
@@ -152,6 +157,7 @@ backdrop.className = "mobile-menu-backdrop";
 backdrop.setAttribute("aria-hidden", "true");
 
 const drawer = document.createElement("nav");
+drawer.id = "mobile-navigation";
 drawer.className = "mobile-menu-drawer";
 drawer.setAttribute("aria-label", "Mobile navigation");
 
@@ -192,58 +198,46 @@ if (event.key === "Escape") closeMenu();
 });
 
 function updateHeader() {
-if (window.innerWidth <= 680) {
-header.classList.toggle("is-compact", window.scrollY > 70);
+const y = window.scrollY;
+const delta = y - lastY;
+
+if (y < 40) {
+header.classList.remove("is-hidden", "is-compact");
+} else {
+if (mobile.matches) {
+header.classList.add("is-compact");
 } else {
 header.classList.remove("is-compact");
 }
+
+if (delta > 4 && y > 120) {
+header.classList.add("is-hidden");
+closeMenu();
+} else if (delta < -4) {
+header.classList.remove("is-hidden");
+}
 }
 
-window.addEventListener("scroll", updateHeader, { passive: true });
+lastY = y;
+ticking = false;
+}
+
+window.addEventListener("scroll", () => {
+if (!ticking) {
+requestAnimationFrame(updateHeader);
+ticking = true;
+}
+}, { passive: true });
+
 window.addEventListener("resize", () => {
 closeMenu();
-updateHeader();
-});
-updateHeader();
-
-const images = document.querySelectorAll(".motion-media img, .big-image img");
-
-if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !images.length) return;
-
-let frame = null;
-
-function updateImages() {
-const viewportHeight = window.innerHeight;
-const maxScale = window.innerWidth <= 680 ? 0.02 : 0.03;
-
-images.forEach(img => {
-const rect = img.getBoundingClientRect();
-if (rect.bottom < 0 || rect.top > viewportHeight) return;
-
-const center = rect.top + rect.height / 2;
-const proximity = Math.max(
-0,
-1 - Math.abs(center - viewportHeight * 0.5) / (viewportHeight * 0.8)
-);
-
-img.style.transformOrigin = "center center";
-img.style.transform = `scale(${1 + proximity * maxScale})`;
+if (!mobile.matches) {
+header.classList.remove("is-compact");
+}
 });
 
-frame = null;
-}
-
-function requestUpdate() {
-if (frame !== null) return;
-frame = requestAnimationFrame(updateImages);
-}
-
-window.addEventListener("scroll", requestUpdate, { passive: true });
-window.addEventListener("resize", requestUpdate);
-window.addEventListener("load", updateImages);
-updateImages();
+updateHeader();
 })();
 </script>
-
 </body>
 </html>
