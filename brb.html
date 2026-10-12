@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#EEF0F2">
-<meta name="description" content="Meet BRB — a character-led digital world by SCENE404 studio.">
+<meta name="description" content="Meet BRB, a character-led digital world by SCENE404 studio.">
 <title>BRB — SCENE404 studio</title>
 <link rel="stylesheet" href="./style.css">
 </head>
@@ -18,15 +18,11 @@
 <a href="./world.html">The World</a>
 <a href="./about.html">About</a>
 </nav>
-
-<a class="logo" href="./index.html" aria-label="SCENE404 studio home">
-SCENE404 studio
-</a>
+<a class="logo" href="./index.html">SCENE404 studio</a>
 </header>
 
 <main>
 
-<!-- BRB HERO -->
 <section class="hero section">
 <div class="hero-copy">
 <p class="eyebrow">PRODUCT 001 · IN DEVELOPMENT</p>
@@ -35,17 +31,11 @@ SCENE404 studio
 A little world of characters, small discoveries, and things worth coming back to.
 </p>
 </div>
-
 <div class="hero-media big-image motion-media">
-<img
-src="./app.png"
-alt="BRB digital product preview"
-loading="eager"
->
+<img src="./app.png" alt="BRB digital product preview" fetchpriority="high">
 </div>
 </section>
 
-<!-- THE IDEA -->
 <section class="world section">
 <div class="world-copy">
 <p class="eyebrow">THE IDEA</p>
@@ -54,99 +44,57 @@ loading="eager"
 BRB begins with a simple idea: digital experiences can have character,
 personality, and a world of their own.
 </p>
-<p>
-We are building the world one piece at a time.
-</p>
+<p>We are building the world one piece at a time.</p>
 </div>
-
 <div class="world-media big-image motion-media">
-<img
-src="./brb-feed.PNG"
-alt="A look at the BRB feed experience"
-loading="lazy"
->
+<img src="./brb-feed.PNG" alt="A look at the BRB feed experience" loading="lazy">
 </div>
 </section>
 
-<!-- INSIDE BRB -->
 <section class="app section">
 <div class="app-copy">
-<p class="eyebrow">INSIDE BRB</p>
-<h2>Little things, their own universe.</h2>
+<p class="eyebrow">A MOMENT TO YOURSELF</p>
+<h2>Your own little corner.</h2>
 <p>
-Characters, playful details, and a digital world designed to feel
-like more than another screen.
+A digital world made of characters, familiar details, and little moments
+to discover at your own pace.
 </p>
 </div>
-
 <div class="app-media big-image motion-media">
-<img
-src="./brb-sleep.PNG"
-alt="A glimpse of the BRB sleep experience"
-loading="lazy"
->
+<img src="./brb-sleep.PNG" alt="A glimpse of the BRB sleep experience" loading="lazy">
 </div>
 </section>
 
-<!-- PLAY -->
 <section class="moments section">
 <div class="moments-copy">
 <p class="eyebrow">MADE TO PLAY</p>
-<h2>A little room for discovery.</h2>
+<h2>Little things, big personality.</h2>
 <p>
-Every character and every detail belongs to a larger world
-that is still taking shape.
+Every character has a place in the BRB world. This is just the beginning.
 </p>
 </div>
-
 <div class="moments-media big-image motion-media">
-<img
-src="./brb-play.PNG"
-alt="A playful moment from BRB"
-loading="lazy"
->
+<img src="./brb-play.PNG" alt="A playful moment from BRB" loading="lazy">
 </div>
 </section>
 
 </main>
 
-<!-- FOOTER -->
 <footer class="site-footer">
 <a class="logo" href="./index.html">SCENE404 studio</a>
+<p>Thanks for skipping around.</p>
 
-<p>
-A character-led digital world, created by SCENE404 studio.
-</p>
-
-<form
-class="newsletter-form"
-action="mailto:hello@scene404.studio"
-method="post"
-enctype="text/plain"
->
-<label for="brb-email">Soft updates from our world.</label>
-
-<div class="newsletter-field">
-<input
-type="email"
-id="brb-email"
-name="email"
-placeholder="Your email address"
-required
->
-<button type="submit">Subscribe</button>
-</div>
-</form>
-
-<div class="footer-bottom">
-<span>© SCENE404 studio</span>
-
-<div class="footer-links">
+<nav class="footer-links" aria-label="Footer navigation">
+<a href="./index.html">Studio</a>
+<a href="./brb.html">BRB</a>
+<a href="./world.html">The World</a>
+<a href="./about.html">About</a>
 <a href="./privacy.html">Privacy</a>
 <a href="./terms.html">Terms</a>
 <a href="./contact.html">Contact</a>
-</div>
-</div>
+</nav>
+
+<p class="footer-copyright">© SCENE404 studio</p>
 </footer>
 
 <script>
@@ -154,13 +102,12 @@ required
 const header = document.querySelector(".site-header");
 if (!header) return;
 
-let lastScrollY = window.scrollY;
-let ticking = false;
+const mobile = window.matchMedia("(max-width: 680px)");
 
 const toggle = document.createElement("button");
 toggle.type = "button";
 toggle.className = "mobile-menu-toggle";
-toggle.setAttribute("aria-label", "Open navigation menu");
+toggle.setAttribute("aria-label", "Open navigation");
 toggle.setAttribute("aria-expanded", "false");
 toggle.innerHTML = "<span></span><span></span>";
 
@@ -180,11 +127,6 @@ drawer.setAttribute("aria-label", "Mobile navigation");
 const link = document.createElement("a");
 link.href = href;
 link.textContent = label;
-
-if (href === "./brb.html") {
-link.setAttribute("aria-current", "page");
-}
-
 drawer.appendChild(link);
 });
 
@@ -193,27 +135,19 @@ document.body.appendChild(backdrop);
 document.body.appendChild(drawer);
 
 function closeMenu() {
-toggle.classList.remove("is-visible");
-backdrop.classList.remove("is-visible");
 drawer.classList.remove("is-visible");
+backdrop.classList.remove("is-visible");
 document.body.classList.remove("mobile-menu-open");
 toggle.setAttribute("aria-expanded", "false");
-toggle.setAttribute("aria-label", "Open navigation menu");
-}
-
-function openMenu() {
-toggle.classList.add("is-visible");
-backdrop.classList.add("is-visible");
-drawer.classList.add("is-visible");
-document.body.classList.add("mobile-menu-open");
-toggle.setAttribute("aria-expanded", "true");
-toggle.setAttribute("aria-label", "Close navigation menu");
+toggle.setAttribute("aria-label", "Open navigation");
 }
 
 toggle.addEventListener("click", () => {
-const isOpen = drawer.classList.contains("is-visible");
-if (isOpen) closeMenu();
-else openMenu();
+const open = drawer.classList.toggle("is-visible");
+backdrop.classList.toggle("is-visible", open);
+document.body.classList.toggle("mobile-menu-open", open);
+toggle.setAttribute("aria-expanded", String(open));
+toggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
 });
 
 backdrop.addEventListener("click", closeMenu);
@@ -221,42 +155,40 @@ drawer.querySelectorAll("a").forEach(link => {
 link.addEventListener("click", closeMenu);
 });
 
+let previousY = window.scrollY;
+let framePending = false;
+
 window.addEventListener("scroll", () => {
-if (ticking) return;
-ticking = true;
+if (framePending) return;
+framePending = true;
 
 window.requestAnimationFrame(() => {
-const currentY = window.scrollY;
-const mobile = window.matchMedia("(max-width: 680px)").matches;
+const y = window.scrollY;
 
-if (currentY < 20) {
+if (y <= 20) {
 header.classList.remove("is-hidden", "is-compact");
-toggle.classList.remove("is-visible");
 } else {
-if (mobile) {
+if (mobile.matches) {
 header.classList.add("is-compact");
-toggle.classList.add("is-visible");
-} else {
-header.classList.remove("is-compact");
 }
 
-if (currentY > lastScrollY + 5 && currentY > 120) {
+if (y > previousY + 5 && y > 120) {
 header.classList.add("is-hidden");
 closeMenu();
-} else if (currentY < lastScrollY - 5) {
+} else if (y < previousY - 5) {
 header.classList.remove("is-hidden");
 }
 }
 
-lastScrollY = currentY;
-ticking = false;
+previousY = y;
+framePending = false;
 });
 }, { passive: true });
 
 window.addEventListener("resize", () => {
-if (window.matchMedia("(min-width: 681px)").matches) {
+if (!mobile.matches) {
 closeMenu();
-header.classList.remove("is-compact", "is-hidden");
+header.classList.remove("is-hidden", "is-compact");
 }
 });
 })();
