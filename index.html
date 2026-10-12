@@ -142,7 +142,7 @@ const nav = header.querySelector(".nav-links");
 const mobileQuery = window.matchMedia("(max-width: 680px)");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-/* Create the mobile menu button and drawer. */
+/* Create mobile navigation. */
 const toggle = document.createElement("button");
 toggle.className = "mobile-menu-toggle";
 toggle.type = "button";
@@ -184,7 +184,11 @@ toggle.setAttribute("aria-label", "Close navigation");
 }
 
 toggle.addEventListener("click", () => {
-drawer.classList.contains("is-visible") ? closeMenu() : openMenu();
+if (drawer.classList.contains("is-visible")) {
+closeMenu();
+} else {
+openMenu();
+}
 });
 
 backdrop.addEventListener("click", closeMenu);
@@ -197,7 +201,7 @@ document.addEventListener("keydown", event => {
 if (event.key === "Escape") closeMenu();
 });
 
-/* One scroll handler controls the header. */
+/* Header scroll behaviour. */
 let previousY = window.scrollY;
 let scheduled = false;
 const threshold = 5;
@@ -210,22 +214,18 @@ const delta = currentY - previousY;
 if (currentY <= topThreshold) {
 header.classList.remove("is-hidden", "is-compact");
 closeMenu();
-} else if (mobileQuery.matches) {
-if (delta > threshold) {
-// Down: keep only the floating menu button.
-header.classList.remove("is-hidden");
-header.classList.add("is-compact");
+} else if (delta > threshold) {
+// Moving down: hide the header.
+header.classList.add("is-hidden");
+header.classList.remove("is-compact");
 } else if (delta < -threshold) {
-// Up: restore the full navigation.
-header.classList.remove("is-hidden", "is-compact");
-}
+// Moving up: reveal the header.
+header.classList.remove("is-hidden");
+
+if (mobileQuery.matches) {
+header.classList.add("is-compact");
 } else {
 header.classList.remove("is-compact");
-
-if (delta > threshold) {
-header.classList.add("is-hidden");
-} else if (delta < -threshold) {
-header.classList.remove("is-hidden");
 }
 }
 
@@ -245,7 +245,6 @@ window.addEventListener("resize", () => {
 closeMenu();
 header.classList.remove("is-hidden", "is-compact");
 previousY = window.scrollY;
-updateHeader();
 });
 
 updateHeader();
