@@ -1390,16 +1390,17 @@ transition-duration: .01ms !important;
 }
 /* ABOUT — FOUNDER'S NOTE */ .about-page .founders-note-section { display: grid; grid-template-columns: 1fr; width: 100%; padding: 100px 8%; box-sizing: border-box; } .about-page .founders-note-copy { display: block; width: 100%; max-width: 760px; margin: 0 auto; } .about-page .founders-note-copy h2, .about-page .founders-note-copy p { display: block; } @media (max-width: 768px) { .about-page .founders-note-section { padding: 64px 6%; } } 
 /* =========================================
-ABOUT PAGE — DESKTOP LAYOUT
+SCENE404 ABOUT — DESKTOP & MOBILE
 ========================================= */
 
-/* HERO: full-width section, text only */
+/* HERO — FULL WIDTH, TEXT ONLY */
+
 .about-page .about-hero {
 display: block;
 width: 100%;
 max-width: none;
-padding-top: clamp(150px, 16vw, 220px);
-padding-bottom: clamp(90px, 12vw, 160px);
+padding-top: clamp(150px, 16vw, 210px);
+padding-bottom: clamp(90px, 11vw, 145px);
 }
 
 .about-page .about-hero-copy {
@@ -1408,32 +1409,42 @@ max-width: none;
 }
 
 .about-page .about-hero-copy h1 {
-max-width: 760px;
-font-size: clamp(48px, 6.2vw, 88px);
+width: 100%;
+max-width: 1100px;
+font-size: clamp(54px, 7.2vw, 100px);
 line-height: 0.98;
 letter-spacing: -0.055em;
+margin-bottom: 24px;
 }
 
 .about-page .about-hero-copy .hero-description {
-max-width: 460px;
+max-width: 520px;
+font-size: clamp(16px, 1.35vw, 19px);
+line-height: 1.6;
 }
 
-/* FOUNDER'S NOTE: image left, text right */
+
+/* FOUNDER'S NOTE — IMAGE LEFT, TEXT RIGHT */
+
 .about-page .founders-note-section {
 display: grid;
-grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
 align-items: center;
-gap: clamp(36px, 7vw, 96px);
-padding-top: clamp(72px, 9vw, 120px);
-padding-bottom: clamp(72px, 9vw, 120px);
+gap: clamp(32px, 5vw, 76px);
+padding-top: clamp(72px, 8vw, 112px);
+padding-bottom: clamp(72px, 8vw, 112px);
+border-top: 1px solid var(--line);
 }
 
+/* Founder image: readable, but not oversized */
+
 .about-page .founders-note-media {
+display: block;
 width: 100%;
-max-width: 440px;
+max-width: 460px;
 justify-self: start;
 overflow: hidden;
-border-radius: 12px;
+border-radius: 10px;
 }
 
 .about-page .founders-note-image {
@@ -1444,21 +1455,60 @@ height: auto;
 object-fit: contain;
 }
 
+/* Text to the right */
+
 .about-page .founders-note-copy {
+display: block;
 width: 100%;
-max-width: 600px;
+max-width: 620px;
 margin: 0;
 justify-self: end;
 }
 
-.about-page .founders-note-copy h2 {
-max-width: 560px;
-font-size: clamp(36px, 4vw, 56px);
-line-height: 1.05;
-letter-spacing: -0.045em;
+.about-page .founders-note-copy .eyebrow {
+margin-bottom: 20px;
 }
 
+.about-page .founders-note-copy h2 {
+max-width: 620px;
+font-size: clamp(38px, 4.2vw, 60px);
+line-height: 1.04;
+letter-spacing: -0.045em;
+margin-bottom: 24px;
+}
+
+.about-page .founders-note-copy p:not(.eyebrow) {
+font-size: clamp(15px, 1.15vw, 17px);
+line-height: 1.7;
+margin-bottom: 18px;
+}
+
+
+/* TABLET */
+
+@media (min-width: 681px) and (max-width: 1000px) {
+.about-page .about-hero-copy h1 {
+max-width: 850px;
+font-size: clamp(52px, 7vw, 72px);
+}
+
+.about-page .founders-note-section {
+grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+gap: 32px;
+}
+
+.about-page .founders-note-media {
+max-width: 100%;
+}
+
+.about-page .founders-note-copy h2 {
+font-size: clamp(34px, 4.5vw, 44px);
+}
+}
+
+
 /* MOBILE */
+
 @media (max-width: 680px) {
 .about-page .about-hero {
 padding-top: 140px;
@@ -1469,6 +1519,11 @@ padding-bottom: 72px;
 max-width: 100%;
 font-size: clamp(42px, 11vw, 58px);
 line-height: 1.02;
+}
+
+.about-page .about-hero-copy .hero-description {
+max-width: 100%;
+font-size: 16px;
 }
 
 .about-page .founders-note-section {
@@ -1488,5 +1543,10 @@ max-width: 100%;
 
 .about-page .founders-note-copy h2 {
 font-size: clamp(34px, 9vw, 44px);
+}
+
+.about-page .founders-note-copy p:not(.eyebrow) {
+font-size: 15px;
+line-height: 1.7;
 }
 }
