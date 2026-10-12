@@ -1117,3 +1117,156 @@ animation-duration: 0.01ms !important;
 animation-iteration-count: 1 !important;
 }
 }
+/* =====================================================
+SCENE404 — FINAL SHARED FOOTER AND BUTTON FIX
+===================================================== */
+
+/* Remove the extra pre-footer signup section on every page */
+main .final-waitlist,
+main .world-waitlist,
+main .brb-waitlist,
+main .about-waitlist {
+display: none !important;
+}
+
+/* Keep the footer in the same order on every page */
+.site-footer .footer-main {
+display: grid !important;
+grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.5fr) !important;
+align-items: start !important;
+gap: clamp(32px, 5vw, 72px) !important;
+}
+
+/* Newsletter always on the LEFT */
+.site-footer .footer-newsletter {
+grid-column: 1 !important;
+grid-row: 1 !important;
+order: 0 !important;
+width: 100% !important;
+max-width: 440px !important;
+min-width: 0 !important;
+justify-self: start !important;
+}
+
+/* Navigation groups always on the RIGHT */
+.site-footer .footer-columns {
+grid-column: 2 !important;
+grid-row: 1 !important;
+order: 0 !important;
+display: grid !important;
+grid-template-columns: 1.3fr 0.9fr 0.9fr 0.9fr !important;
+align-items: start !important;
+gap: clamp(18px, 2.5vw, 34px) !important;
+width: 100% !important;
+min-width: 0 !important;
+}
+
+.site-footer .footer-column {
+display: flex !important;
+flex-direction: column !important;
+align-items: flex-start !important;
+gap: 10px !important;
+min-width: 0 !important;
+}
+
+.site-footer .footer-heading {
+margin: 0 0 8px !important;
+font-size: 11px !important;
+line-height: 1.6 !important;
+white-space: normal !important;
+}
+
+.site-footer .footer-column a {
+font-size: 13px !important;
+line-height: 1.7 !important;
+}
+
+/* Legal links remain ordinary inline text */
+.site-footer .footer-form-consent {
+margin-top: 10px !important;
+font-size: 11px !important;
+line-height: 1.7 !important;
+}
+
+.site-footer .footer-form-consent a {
+display: inline !important;
+color: var(--graphite) !important;
+text-decoration: underline !important;
+text-underline-offset: 3px !important;
+}
+
+/* Legal statement above copyright, both centered */
+.site-footer .footer-bottom {
+display: flex !important;
+flex-direction: column !important;
+align-items: center !important;
+justify-content: center !important;
+gap: 8px !important;
+text-align: center !important;
+}
+
+.site-footer .privacy-statement,
+.site-footer .copyright {
+width: 100% !important;
+margin: 0 !important;
+text-align: center !important;
+}
+
+/* All regular action buttons: white background, black outline */
+main .pill-link,
+main a.pill-link,
+main button.pill-link {
+border: 1px solid var(--black) !important;
+background: var(--white) !important;
+color: var(--black) !important;
+box-shadow: none !important;
+}
+
+main .pill-link:hover,
+main a.pill-link:hover,
+main button.pill-link:hover,
+main .pill-link:focus,
+main a.pill-link:focus {
+border-color: var(--black) !important;
+background: var(--white) !important;
+color: var(--black) !important;
+}
+
+/* Footer signup button remains dark as in the approved reference */
+.site-footer .footer-waitlist-form button {
+border: 1px solid var(--black) !important;
+background: var(--black) !important;
+color: var(--white) !important;
+}
+
+/* Tablet and mobile */
+@media (max-width: 1000px) {
+.site-footer .footer-main {
+grid-template-columns: minmax(0, 1fr) !important;
+gap: 40px !important;
+}
+
+.site-footer .footer-newsletter {
+grid-column: 1 !important;
+grid-row: 1 !important;
+max-width: 540px !important;
+}
+
+.site-footer .footer-columns {
+grid-column: 1 !important;
+grid-row: 2 !important;
+grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+gap: 24px !important;
+}
+}
+
+@media (max-width: 560px) {
+.site-footer .footer-columns {
+grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+gap: 28px 24px !important;
+}
+
+.site-footer .footer-column a {
+font-size: 13px !important;
+}
+}
