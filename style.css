@@ -1112,3 +1112,216 @@ visibility 400ms ease !important;
 will-change: transform, opacity;
 }
 }
+/* ==================================================
+PAGE STRUCTURE FIX — ABOUT + THE WORLD
+Append this block at the very end of style.css
+================================================== */
+
+/* ABOUT: hero */
+.about-page .about-hero {
+display: grid;
+grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+align-items: center;
+gap: clamp(40px, 7vw, 100px);
+padding-top: clamp(150px, 13vw, 190px);
+padding-bottom: clamp(70px, 9vw, 124px);
+}
+
+.about-page .about-hero-copy {
+min-width: 0;
+max-width: 600px;
+}
+
+.about-page .about-hero-copy h1 {
+margin-bottom: 24px;
+}
+
+.about-page .section-description {
+max-width: 560px;
+color: var(--grey);
+font-size: clamp(16px, 1.8vw, 20px);
+line-height: 1.7;
+}
+
+.about-page .about-logo-media,
+.about-page .founders-note-media {
+width: 100%;
+min-width: 0;
+overflow: hidden;
+border-radius: 14px;
+background: var(--soft-grey);
+}
+
+.about-page .about-logo-image,
+.about-page .founders-note-image {
+display: block;
+width: 100%;
+height: auto;
+object-fit: contain;
+object-position: center;
+}
+
+/* ABOUT: studio story */
+.about-page .about-story {
+display: grid;
+grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+align-items: start;
+gap: clamp(40px, 7vw, 100px);
+padding-top: var(--section-space);
+padding-bottom: var(--section-space);
+border-top: 1px solid var(--line);
+}
+
+.about-page .about-story-heading,
+.about-page .about-story-copy {
+min-width: 0;
+max-width: 600px;
+}
+
+.about-page .about-story-heading h2 {
+max-width: 520px;
+}
+
+.about-page .about-story-copy p {
+color: var(--grey);
+}
+
+/* ABOUT: founder note */
+.about-page .founders-note-section {
+display: grid;
+grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+align-items: center;
+gap: clamp(40px, 7vw, 100px);
+padding-top: var(--section-space);
+padding-bottom: var(--section-space);
+border-top: 1px solid var(--line);
+}
+
+.about-page .founders-note-copy {
+min-width: 0;
+max-width: 520px;
+}
+
+.about-page .founders-note-copy h2 {
+margin-bottom: 24px;
+}
+
+/* THE WORLD: intro has text only */
+.world-page .world-hero {
+display: block;
+padding-top: clamp(160px, 16vw, 220px);
+padding-bottom: clamp(70px, 9vw, 124px);
+}
+
+.world-page .world-hero-copy {
+max-width: 850px;
+}
+
+.world-page .world-hero-copy h1 {
+margin-bottom: 24px;
+}
+
+.world-page .world-hero-copy .hero-description {
+max-width: 600px;
+}
+
+/* THE WORLD: two object sections */
+.world-page .world-feature {
+display: grid;
+grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+align-items: center;
+gap: clamp(40px, 7vw, 100px);
+padding-top: var(--section-space);
+padding-bottom: var(--section-space);
+border-top: 1px solid var(--line);
+}
+
+.world-page .world-feature-copy {
+min-width: 0;
+max-width: 560px;
+}
+
+.world-page .world-feature-copy h2 {
+margin-bottom: 24px;
+}
+
+.world-page .world-feature-copy > p:not(.eyebrow) {
+color: var(--grey);
+}
+
+.world-page .world-feature-media {
+width: 100%;
+min-width: 0;
+height: auto;
+overflow: hidden;
+border-radius: 14px;
+background: var(--soft-grey);
+}
+
+.world-page .world-feature-media img {
+display: block;
+width: 100%;
+height: auto;
+object-fit: contain;
+object-position: center;
+}
+
+/* Reverse the second object layout */
+.world-page .world-feature-reverse .world-feature-copy {
+order: 2;
+}
+
+.world-page .world-feature-reverse .world-feature-media {
+order: 1;
+}
+
+/* THE WORLD: final studio statement */
+.world-page .world-point-of-view {
+max-width: 100%;
+padding-top: var(--section-space);
+padding-bottom: var(--section-space);
+border-top: 1px solid var(--line);
+}
+
+.world-page .world-point-of-view h2 {
+max-width: 720px;
+margin-bottom: 24px;
+}
+
+.world-page .world-point-of-view > p:not(.eyebrow) {
+max-width: 600px;
+color: var(--grey);
+}
+
+/* Responsive layouts */
+@media (max-width: 1000px) {
+.about-page .about-hero,
+.about-page .about-story,
+.about-page .founders-note-section,
+.world-page .world-feature {
+gap: 32px;
+}
+}
+
+@media (max-width: 680px) {
+.about-page .about-hero,
+.about-page .about-story,
+.about-page .founders-note-section,
+.world-page .world-feature {
+grid-template-columns: minmax(0, 1fr);
+gap: 28px;
+}
+
+.about-page .about-hero {
+padding-top: 140px;
+}
+
+.world-page .world-hero {
+padding-top: 145px;
+}
+
+.world-page .world-feature-reverse .world-feature-copy,
+.world-page .world-feature-reverse .world-feature-media {
+order: initial;
+}
+}
