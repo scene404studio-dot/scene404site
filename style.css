@@ -945,3 +945,259 @@ h2 {
 font-size: 33px;
 }
 }
+/* =========================================
+SCENE404 — SHARED HEADER & FOOTER LAYOUT
+========================================= */
+
+/* Three-zone header: left link, centered logo, right links */
+
+.site-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+min-height: 88px;
+}
+
+.site-header .nav-links {
+display: grid;
+grid-template-columns: auto 1fr 1fr 1fr;
+align-items: center;
+justify-content: initial;
+gap: clamp(12px, 2vw, 28px);
+width: 100%;
+}
+
+.site-header .nav-links a:first-child {
+margin-right: 0;
+justify-self: start;
+}
+
+.site-header .nav-links a:nth-child(n+2) {
+justify-self: end;
+}
+
+.site-header .logo {
+max-width: 36%;
+text-align: center;
+pointer-events: auto;
+}
+
+@media (max-width: 640px) {
+.site-header {
+display: flex;
+flex-direction: column;
+gap: 16px;
+}
+
+.site-header .logo {
+position: static;
+order: 0;
+max-width: 100%;
+transform: none;
+}
+
+.site-header .nav-links {
+order: 1;
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 10px 20px;
+}
+
+.site-header .nav-links a:first-child,
+.site-header .nav-links a:nth-child(n+2) {
+justify-self: auto;
+}
+}
+
+/* Editorial footer */
+
+.site-footer {
+display: block;
+padding: clamp(36px, 5vw, 68px) var(--page-gutter) 24px;
+background: var(--color-surface);
+border-top: 1px solid var(--color-border);
+}
+
+.footer-brand {
+display: block;
+width: 100%;
+padding-bottom: clamp(28px, 4vw, 48px);
+border-bottom: 1px solid var(--color-border);
+}
+
+.footer-logo {
+display: block;
+width: fit-content;
+margin: 0 0 10px;
+color: var(--color-text);
+font-size: clamp(38px, 7vw, 88px);
+font-weight: 550;
+letter-spacing: -0.075em;
+line-height: 0.98;
+}
+
+.footer-tagline {
+margin: 0;
+color: var(--color-text-soft);
+font-size: clamp(17px, 2vw, 23px);
+letter-spacing: -0.025em;
+}
+
+.footer-main {
+display: grid;
+grid-template-columns: minmax(0, 1fr) minmax(280px, 0.75fr);
+gap: clamp(32px, 6vw, 88px);
+padding: clamp(32px, 5vw, 56px) 0;
+}
+
+.footer-columns {
+display: grid;
+grid-template-columns: repeat(4, minmax(0, 1fr));
+gap: 22px;
+align-content: start;
+}
+
+.footer-column {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+}
+
+.footer-column h2 {
+margin: 0 0 10px;
+font-size: 11px;
+font-weight: 650;
+letter-spacing: 0.14em;
+line-height: 1.5;
+text-transform: uppercase;
+}
+
+.footer-column a {
+color: var(--color-text-soft);
+font-size: 13px;
+line-height: 1.6;
+}
+
+.footer-column a:hover {
+color: var(--color-text);
+}
+
+.footer-newsletter {
+min-width: 0;
+max-width: 460px;
+}
+
+.footer-newsletter .eyebrow {
+margin-bottom: 14px;
+}
+
+.footer-newsletter h2 {
+margin-bottom: 14px;
+font-size: clamp(30px, 3vw, 42px);
+}
+
+.footer-newsletter > p:not(.eyebrow):not(.note) {
+color: var(--color-text-soft);
+font-size: 14px;
+line-height: 1.75;
+}
+
+.footer-newsletter .waitlist-form {
+margin-top: 22px;
+}
+
+.footer-newsletter .waitlist-form input,
+.footer-newsletter .waitlist-form button {
+min-height: 50px;
+font-size: 14px;
+}
+
+.footer-newsletter .note {
+margin-top: 12px;
+font-size: 12px;
+}
+
+.footer-bottom {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 12px;
+padding-top: 22px;
+border-top: 1px solid var(--color-border);
+text-align: center;
+}
+
+.footer-bottom .privacy-statement,
+.footer-bottom .copyright {
+margin: 0;
+color: var(--color-text-muted);
+font-size: 12px;
+line-height: 1.7;
+}
+
+.footer-bottom .privacy-statement {
+cursor: default;
+text-decoration: none;
+}
+
+/* Consent links are inline text, never oval buttons */
+
+.privacy-note a {
+display: inline !important;
+min-height: 0 !important;
+padding: 0 !important;
+border: 0 !important;
+border-radius: 0 !important;
+background: transparent !important;
+color: inherit;
+text-decoration: underline;
+text-underline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+.footer-main {
+grid-template-columns: 1fr;
+}
+
+.footer-newsletter {
+max-width: 600px;
+}
+}
+
+@media (max-width: 640px) {
+.footer-brand {
+padding-bottom: 26px;
+}
+
+.footer-logo {
+font-size: clamp(38px, 10vw, 58px);
+}
+
+.footer-main {
+gap: 36px;
+padding: 30px 0;
+}
+
+.footer-columns {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 28px 20px;
+}
+
+.footer-newsletter {
+max-width: none;
+}
+
+.footer-newsletter h2 {
+font-size: 34px;
+}
+
+.footer-bottom {
+gap: 10px;
+}
+
+.footer-bottom .privacy-statement {
+max-width: 300px;
+}
+}
