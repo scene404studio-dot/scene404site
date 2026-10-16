@@ -1381,3 +1381,139 @@ main .about-waitlist { display: none; }
  .world-feature-image-frame, .personality-board-frame { border-radius:16px; }
 }
 @media (prefers-reduced-motion:reduce) { .object-gallery-card img { transition:none; } }
+
+
+/* =========================================================
+   RESPONSIVE EDITORIAL IMAGE SIZING — desktop + mobile
+   Keep concept artwork legible without letting it dominate
+   the page. Images stay uncropped and scale down gracefully.
+   ========================================================= */
+.studio-page .hero {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 72px);
+}
+.studio-page .hero-copy { min-width: 0; }
+.studio-blueprint-media {
+  width: 100%;
+  max-width: 510px;
+  max-height: 390px;
+  justify-self: end;
+  margin-top: 0;
+  border-radius: 20px;
+}
+.studio-blueprint-media img {
+  width: 100%;
+  max-height: 390px;
+  object-fit: contain;
+}
+.studio-page .app-media,
+.studio-page .moments-media { max-width: 660px; justify-self: end; }
+.studio-page .app-media img,
+.studio-page .moments-media img { max-height: 430px; object-fit: contain; }
+
+/* World: editorial hero image and the seven-personalities artwork */
+.world-page .world-hero {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 72px);
+}
+.world-page .world-hero .hero-media {
+  width: 100%;
+  max-width: 650px;
+  max-height: 410px;
+  justify-self: end;
+}
+.world-page .world-hero .hero-media img {
+  width: 100%;
+  max-height: 410px;
+  object-fit: contain;
+}
+.world-feature-image-frame { max-width: 760px; max-height: 440px; justify-self: end; }
+.world-feature-image-frame img { max-height: 440px; object-fit: contain; }
+.world-page .world-personality-board .personality-board-frame {
+  width: min(100%, 760px);
+  max-height: 440px;
+  margin-inline: auto;
+}
+.world-page .world-personality-board .personality-board-frame img {
+  max-height: 440px;
+  object-fit: contain;
+}
+.world-page .world-feature-media { max-width: 680px; max-height: 420px; justify-self: end; }
+.world-page .world-feature-media img { max-height: 420px; object-fit: contain; }
+
+/* About: keep rare edition and POV artwork at editorial scale */
+.about-rare-image-section { width: min(calc(100% - 2 * var(--gutter)), 1000px); }
+.about-rare-image { max-width: 640px; max-height: 430px; }
+.about-rare-image img { max-height: 430px; object-fit: contain; }
+.about-page .about-point-of-view .moments-media { width: 100%; max-width: 640px; max-height: 420px; justify-self: end; }
+.about-page .about-point-of-view .moments-media img { max-height: 420px; object-fit: contain; }
+.about-page .about-founders-note {
+  display: grid;
+  grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 76px);
+}
+.about-page .about-founders-note .world-copy { max-width: 460px; }
+.about-page .about-founders-note .world-copy h2 { max-width: 450px; }
+.about-page .about-founders-note .world-media { width: 100%; max-width: 700px; max-height: 500px; justify-self: end; }
+.about-page .about-founders-note .world-media img { max-height: 500px; object-fit: contain; }
+
+@media (max-width: 1000px) {
+  .studio-page .hero,
+  .world-page .world-hero { gap: 28px; }
+  .studio-blueprint-media { max-width: 460px; max-height: 350px; }
+  .studio-blueprint-media img { max-height: 350px; }
+  .world-page .world-hero .hero-media,
+  .world-page .world-hero .hero-media img { max-height: 350px; }
+  .world-page .world-personality-board .personality-board-frame,
+  .world-page .world-personality-board .personality-board-frame img { max-height: 380px; }
+  .about-rare-image, .about-rare-image img { max-height: 360px; }
+  .about-page .about-point-of-view .moments-media,
+  .about-page .about-point-of-view .moments-media img { max-height: 360px; }
+}
+@media (max-width: 680px) {
+  .studio-page .hero,
+  .world-page .world-hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 26px;
+  }
+  .studio-blueprint-media {
+    width: 100%;
+    max-width: 100%;
+    max-height: 300px;
+    margin-top: 0;
+    justify-self: stretch;
+    border-radius: 16px;
+  }
+  .studio-blueprint-media img { max-height: 300px; object-fit: contain; }
+  .studio-page .app-media,
+  .studio-page .moments-media { max-width: 100%; justify-self: stretch; }
+  .studio-page .app-media img,
+  .studio-page .moments-media img { max-height: 330px; }
+  .world-page .world-hero .hero-media,
+  .world-page .world-hero .hero-media img { max-width: 100%; max-height: 320px; justify-self: stretch; }
+  .world-page .world-personality-board .personality-board-frame,
+  .world-page .world-personality-board .personality-board-frame img { max-height: 300px; }
+  .world-page .world-feature-media,
+  .world-page .world-feature-media img { max-height: 320px; }
+  .about-rare-image-section { width: calc(100% - 40px); padding-bottom: 52px; }
+  .about-rare-image,
+  .about-rare-image img { max-height: 300px; }
+  .about-page .about-point-of-view .moments-media,
+  .about-page .about-point-of-view .moments-media img { max-width: 100%; max-height: 300px; }
+  .about-page .about-founders-note {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+  .about-page .about-founders-note .world-media,
+  .about-page .about-founders-note .world-media img { max-width: 100%; max-height: 360px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .studio-blueprint-media img,
+  .about-rare-image img,
+  .world-feature-image-frame img { transition: none !important; }
+}
