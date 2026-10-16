@@ -1558,3 +1558,117 @@ max-width: 100%;
 font-size: clamp(34px, 8.5vw, 44px);
 }
 }
+
+/* SCENE404 — studio page refinements */
+
+/* Make the personality section more compact */
+.studio-page .personality-section {
+  padding-top: 64px;
+  padding-bottom: 72px;
+}
+
+.studio-page .personality-intro {
+  margin-bottom: 24px;
+  gap: 32px;
+}
+
+/* Smaller, quieter character cards */
+.studio-page .personality-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  align-items: stretch;
+}
+
+.studio-page .personality-card {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.studio-page .personality-card img {
+  width: 100%;
+  aspect-ratio: 4 / 4.5;
+  object-fit: contain;
+  background: #fff;
+}
+
+.studio-page .personality-card figcaption {
+  padding: 10px 12px 12px;
+  font-size: 10px;
+}
+
+/* Rare Edition: one balanced horizontal card */
+.studio-page .personality-card.rare-card {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 0;
+  background: #fff;
+}
+
+.studio-page .rare-card img {
+  width: 100%;
+  aspect-ratio: 4 / 4.5;
+  object-fit: contain;
+  background: #fff;
+}
+
+.studio-page .rare-card .rare-copy {
+  padding: 20px;
+}
+
+.studio-page .rare-card .rare-copy h3 {
+  font-size: clamp(18px, 2vw, 26px);
+  line-height: 1.05;
+  margin-bottom: 10px;
+}
+
+.studio-page .rare-card .rare-copy p:not(.eyebrow) {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #667176;
+}
+
+/* Keep the rest of the page calm */
+.studio-page .studio-art {
+  gap: clamp(28px, 5vw, 64px);
+}
+
+.studio-page .studio-art-image img {
+  max-height: 540px;
+  margin-inline: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 760px) {
+  .studio-page .personality-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .studio-page .personality-card.rare-card {
+    grid-column: span 2;
+  }
+
+  .studio-page .rare-card .rare-copy {
+    padding: 12px;
+  }
+
+  .studio-page .studio-art-image img {
+    max-height: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .studio-page .personality-card.rare-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .studio-page .rare-card img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .studio-page .rare-card .rare-copy {
+    padding: 16px;
+  }
+}
