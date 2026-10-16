@@ -1,77 +1,62 @@
 (() => {
-  const year = new Date().getFullYear();
-  document.querySelectorAll("[data-year]").forEach(el => el.textContent = year);
-
-  const toggle = document.querySelector(".mobile-menu-toggle");
-  const drawer = document.querySelector(".mobile-drawer");
-  const backdrop = document.querySelector(".mobile-backdrop");
-  const setMenu = (open) => {
-    if (!toggle || !drawer || !backdrop) return;
-    toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
-    drawer.classList.toggle("is-open", open);
-    backdrop.classList.toggle("is-open", open);
-    document.body.style.overflow = open ? "hidden" : "";
-  };
-  toggle?.addEventListener("click", () => setMenu(toggle.getAttribute("aria-expanded") !== "true"));
-  backdrop?.addEventListener("click", () => setMenu(false));
-  drawer?.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMenu(false)));
-  document.addEventListener("keydown", e => {
-    if (e.key === "Escape") setMenu(false);
-  });
-
-  const carousel = document.querySelector("[data-carousel]");
-  if (carousel) {
-    const editions = [
-      {name:"Moonlight", file:"brb-moonlight.jpeg", tagline:"Sees the softer side.", desc:"Quietly curious. Thoughtful. Finds beauty in the little things.", traits:"GENTLE · THOUGHTFUL · QUIETLY CURIOUS"},
-      {name:"Whisper", file:"brb-whisper.jpeg", tagline:"Not loud. Always here.", desc:"Calm, observant, and quietly playful. The kind of presence that doesn't need to announce itself.", traits:"CALM · OBSERVANT · QUIETLY PLAYFUL"},
-      {name:"Curator", file:"brb-curator.jpeg", tagline:"Keeps the good things.", desc:"Attentive and selective. Finds meaning in the small things worth keeping.", traits:"ATTENTIVE · SELECTIVE · CONSIDERED"},
-      {name:"Keeper", file:"brb-keeper.jpeg", tagline:"Holds what matters.", desc:"Loyal, steady, protective. Quietly strong.", traits:"LOYAL · STEADY · PROTECTIVE"},
-      {name:"Drifter", file:"brb-drifter.jpeg", tagline:"Always finding something.", desc:"Curious, observant, a wanderer who finds beauty in the in-between.", traits:"CURIOUS · OBSERVANT · WANDERER"},
-      {name:"Glitch", file:"brb-glitch.jpeg", tagline:"Turns mistakes into something new.", desc:"Playful, unpredictable, creative. Always up to something.", traits:"PLAYFUL · UNPREDICTABLE · CREATIVE"},
-      {name:"Secret", file:"brb-secret.jpeg", tagline:"For now.", desc:"Unknown, something different, still a mystery. Some things can wait.", traits:"UNKNOWN · DIFFERENT · STILL A MYSTERY"}
-    ];
-    let index = 0;
-    const main = carousel.querySelector("[data-main-image]");
-    const title = carousel.querySelector("[data-edition-title]");
-    const number = carousel.querySelector("[data-edition-number]");
-    const tagline = carousel.querySelector("[data-edition-tagline]");
-    const desc = carousel.querySelector("[data-edition-description]");
-    const traits = carousel.querySelector("[data-edition-traits]");
-    const thumbs = [...carousel.querySelectorAll("[data-slide]")];
-    function show(next) {
-      index = (next + editions.length) % editions.length;
-      const item = editions[index];
-      main.style.opacity = "0.25";
-      window.setTimeout(() => {
-        main.src = item.file;
-        main.alt = `BRB ${item.name} edition`;
-        title.textContent = item.name;
-        const dot = document.createElement("span"); dot.className = "accent-dot"; dot.textContent = ".";
-        title.appendChild(dot);
-        number.textContent = `Edition ${String(index + 1).padStart(2,"0")} / ${String(editions.length).padStart(2,"0")}`;
-        tagline.textContent = item.tagline;
-        desc.textContent = item.desc;
-        traits.textContent = item.traits;
-        main.style.opacity = "1";
-      }, 100);
-      thumbs.forEach((b,i) => b.setAttribute("aria-current", String(i === index)));
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const header = document.querySelector('.site-header');
+  if (header) {
+    const nav = header.querySelector('.nav-links');
+    if (nav && !header.querySelector('.mobile-menu-toggle')) {
+      const toggle = document.createElement('button');
+      toggle.className = 'mobile-menu-toggle'; toggle.type = 'button';
+      toggle.setAttribute('aria-label', 'Open navigation'); toggle.setAttribute('aria-expanded', 'false');
+      toggle.innerHTML = '<span></span><span></span><span></span>';
+      header.appendChild(toggle);
+      const backdrop = document.createElement('button');
+      backdrop.className = 'mobile-menu-backdrop'; backdrop.type = 'button';
+      backdrop.setAttribute('aria-label', 'Close navigation');
+      const drawer = document.createElement('nav'); drawer.className = 'mobile-menu-drawer';
+      drawer.setAttribute('aria-label', 'Mobile navigation');
+      nav.querySelectorAll('a').forEach(link => drawer.appendChild(link.cloneNode(true)));
+      document.body.append(backdrop, drawer);
+      const close = () => { drawer.classList.remove('is-visible'); backdrop.classList.remove('is-visible'); document.body.classList.remove('mobile-menu-open'); toggle.setAttribute('aria-expanded','false'); toggle.setAttribute('aria-label','Open navigation'); };
+      const open = () => { drawer.classList.add('is-visible'); backdrop.classList.add('is-visible'); document.body.classList.add('mobile-menu-open'); toggle.setAttribute('aria-expanded','true'); toggle.setAttribute('aria-label','Close navigation'); };
+      toggle.addEventListener('click', () => drawer.classList.contains('is-visible') ? close() : open());
+      backdrop.addEventListener('click', close);
+      drawer.addEventListener('click', event => { if (event.target.closest('a')) close(); });
+      document.addEventListener('keydown', event => { if (event.key === 'Escape') close(); });
+      window.addEventListener('resize', () => { if (window.innerWidth > 680) close(); });
     }
-    carousel.querySelector("[data-prev]")?.addEventListener("click", () => show(index - 1));
-    carousel.querySelector("[data-next]")?.addEventListener("click", () => show(index + 1));
-    thumbs.forEach((b,i) => b.addEventListener("click", () => show(i)));
-    carousel.addEventListener("keydown", e => {
-      if (e.key === "ArrowLeft") show(index - 1);
-      if (e.key === "ArrowRight") show(index + 1);
-    });
-    // Touch swipe for phones.
-    let startX = null;
-    main.addEventListener("touchstart", e => { startX = e.changedTouches[0].clientX; }, {passive:true});
-    main.addEventListener("touchend", e => {
-      if (startX === null) return;
-      const delta = e.changedTouches[0].clientX - startX;
-      if (Math.abs(delta) > 45) show(index + (delta < 0 ? 1 : -1));
-      startX = null;
-    }, {passive:true});
+    const updateHeader = () => header.classList.toggle('is-compact', window.scrollY > 30);
+    window.addEventListener('scroll', updateHeader, {passive:true}); updateHeader();
   }
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    const targets = document.querySelectorAll('main > section, .character-card, .footer-newsletter');
+    targets.forEach(el => el.classList.add('js-reveal'));
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('is-revealed'); observer.unobserve(entry.target); }
+    }), {threshold:0.08, rootMargin:'0px 0px -24px 0px'});
+    targets.forEach(el => observer.observe(el));
+  }
+  document.querySelectorAll('[data-character-carousel]').forEach(carousel => {
+    const slides = Array.from(carousel.querySelectorAll('.carousel-character'));
+    const dots = carousel.querySelector('.carousel-dots');
+    const prev = carousel.querySelector('.carousel-prev'); const next = carousel.querySelector('.carousel-next');
+    if (!slides.length || !dots || !prev || !next) return;
+    let active = Math.max(0, slides.findIndex(slide => slide.classList.contains('is-active')));
+    slides.forEach((slide, index) => {
+      const dot = document.createElement('button'); dot.type = 'button'; dot.className = 'carousel-dot';
+      dot.setAttribute('aria-label', `Show character ${index + 1}`); dot.addEventListener('click', () => show(index)); dots.appendChild(dot);
+    });
+    const dotButtons = Array.from(dots.querySelectorAll('button'));
+    function show(index) {
+      active = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => { slide.classList.toggle('is-active', i === active); slide.setAttribute('aria-hidden', String(i !== active)); });
+      dotButtons.forEach((dot, i) => { if (i === active) dot.setAttribute('aria-current','true'); else dot.removeAttribute('aria-current'); });
+    }
+    prev.addEventListener('click', () => show(active - 1)); next.addEventListener('click', () => show(active + 1));
+    let startX = null;
+    const stage = carousel.querySelector('.carousel-stage');
+    stage.addEventListener('touchstart', e => { startX = e.changedTouches[0].clientX; }, {passive:true});
+    stage.addEventListener('touchend', e => { if (startX === null) return; const delta = e.changedTouches[0].clientX - startX; if (Math.abs(delta) > 45) show(active + (delta < 0 ? 1 : -1)); startX = null; }, {passive:true});
+    carousel.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') show(active - 1); if (e.key === 'ArrowRight') show(active + 1); });
+    show(active);
+  });
 })();
