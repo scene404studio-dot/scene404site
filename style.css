@@ -1919,3 +1919,34 @@ main .about-waitlist { display: none; }
     height: 220px;
   }
 }
+
+
+/* Founder note: image only, centered and responsive. */
+.about-page .about-founders-note-image-only {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: 0;
+}
+.about-page .about-founders-note-image-only .world-media {
+  width: min(100%, 760px);
+  max-width: 760px;
+  max-height: none;
+  justify-self: center;
+  border-radius: 18px;
+  overflow: hidden;
+}
+.about-page .about-founders-note-image-only .world-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  border-radius: inherit;
+}
+@media (max-width: 700px) {
+  .about-page .about-founders-note-image-only .world-media {
+    width: 100%;
+    border-radius: 16px;
+  }
+}
