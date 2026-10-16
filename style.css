@@ -1847,3 +1847,46 @@ main .about-waitlist { display: none; }
 @media (prefers-reduced-motion: reduce) {
   .about-page .about-founders-note .world-media img { transform: none !important; }
 }
+
+/* LANGUAGE TOGGLE FIX — keep RU/EN separate from the mobile menu and clear of desktop links. */
+@media (min-width: 761px) {
+  .site-header .nav-links { padding-right: 62px; }
+  .site-header .language-toggle { right: 14px; }
+}
+
+@media (max-width: 760px) {
+  .site-header {
+    position: fixed;
+    padding: 10px 54px;
+  }
+  .site-header .logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: max-content;
+    max-width: calc(100% - 150px);
+    margin: 0;
+    text-align: center;
+    transform: translate(-50%, -50%);
+  }
+  .site-header .mobile-menu-toggle {
+    position: relative;
+    inset: auto;
+    z-index: 7;
+    flex: 0 0 40px;
+    margin: 0 auto 0 -44px;
+  }
+  .site-header .language-toggle {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    z-index: 8;
+    min-width: 38px;
+    height: 34px;
+    padding: 0 9px;
+    transform: translateY(-50%);
+  }
+  .site-header .language-toggle:hover { transform: translateY(-50%); }
+  .site-header.is-compact .language-toggle { display: none !important; }
+  .site-header.is-compact .mobile-menu-toggle { margin: 0; }
+}
