@@ -49,6 +49,45 @@
     }), {threshold:0.08, rootMargin:'0px 0px -24px 0px'});
     targets.forEach(el => observer.observe(el));
   }
+  /* Studio editorial carousel: arrows, dots, keyboard, and touch swipe. */
+  document.querySelectorAll('[data-studio-carousel]').forEach(carousel => {
+    const slides = Array.from(carousel.querySelectorAll('.studio-carousel-slide'));
+    const dots = Array.from(carousel.querySelectorAll('.studio-carousel-dots button'));
+    const prev = carousel.querySelector('.studio-carousel-prev');
+    const next = carousel.querySelector('.studio-carousel-next');
+    const stage = carousel.querySelector('.studio-carousel-stage');
+    if (slides.length !== 4 || dots.length !== slides.length || !prev || !next || !stage) return;
+    let active = 0;
+    const show = index => {
+      active = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('is-active', i === active);
+        slide.setAttribute('aria-hidden', String(i !== active));
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('is-active', i === active);
+        if (i === active) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
+      });
+    };
+    prev.addEventListener('click', () => show(active - 1));
+    next.addEventListener('click', () => show(active + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
+    let startX = null;
+    stage.addEventListener('touchstart', event => { startX = event.changedTouches[0].clientX; }, {passive:true});
+    stage.addEventListener('touchend', event => {
+      if (startX === null) return;
+      const delta = event.changedTouches[0].clientX - startX;
+      if (Math.abs(delta) > 45) show(active + (delta < 0 ? 1 : -1));
+      startX = null;
+    }, {passive:true});
+    carousel.tabIndex = 0;
+    carousel.addEventListener('keydown', event => {
+      if (event.key === 'ArrowLeft') show(active - 1);
+      if (event.key === 'ArrowRight') show(active + 1);
+    });
+    show(0);
+  });
   document.querySelectorAll('[data-character-carousel]').forEach(carousel => {
     const slides = Array.from(carousel.querySelectorAll('.carousel-character'));
     const dots = carousel.querySelector('.carousel-dots');

@@ -1,14 +1,17 @@
-SCENE404 studio — responsive image refinement
+SCENE404 STUDIO — FINAL STUDIO CAROUSEL UPDATE
 
-This package adjusts image sizing for desktop, tablet, and mobile, and updates the About page Founder’s Note section.
+This update changes only the Studio homepage carousel and adds three image assets. Other pages and existing styling are preserved.
 
-Changed:
-- Studio: concept blueprint is capped on desktop and mobile.
-- The World: hero image and “Seven personalities. Same BRB.” artwork are capped and kept uncropped.
-- About: One in a million and Useful isn’t enough artwork are smaller and responsive.
-- About: removed the duplicated typed Founder’s Note paragraphs; kept “Why I started building BRB.” and the founders-note.PNG image.
-- Existing images and filenames are preserved; the included image files are additions used by the site.
+Included files to upload to the ROOT of the existing GitHub repository:
+- index.html (updated Studio carousel)
+- script.js (arrow, dot, keyboard, and mobile swipe behavior)
+- style.css (responsive rounded carousel styling)
+- studio-idea-01.jpeg
+- studio-idea-02.jpeg
+- studio-idea-03.jpeg
 
-Install: upload/replace index.html, brb.html, world.html, about.html, style.css, and script.js in the repository root. Keep all existing root-level image files and other pages. Add the included new image assets to the same root folder if not already present. Do not delete FAQ.html, contact.html, privacy.html, or terms.html.
+Keep all your existing files and images. Do not delete or replace other pages. The fourth/final carousel slide uses the existing studio-blueprint.jpeg file, so that file must remain in the repository root.
 
-The HTML/CSS was checked for expected selectors and local image references. The published site was not directly deployed or browser-tested from this package.
+The carousel has four slides in this order: BRB concept sketch; “Not everything we use becomes something we keep.”; “It’s in the little things.”; and the existing Studio concept-board image. Use the side arrows or dots on desktop; on mobile, arrows and swipe both work.
+
+After uploading, wait for GitHub Pages/Vercel deployment to finish and refresh the site. This package does not publish to GitHub or Vercel automatically.
