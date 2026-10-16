@@ -1,198 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#EEF0F2">
-<meta name="description" content="Meet BRB, a character-led digital world by SCENE404 studio.">
-<title>BRB — SCENE404 studio</title>
-<link rel="stylesheet" href="./style.css">
-</head>
-
-<body class="brb-page">
-
-<header class="site-header">
-<nav class="nav-links" aria-label="Main navigation">
-<a href="./index.html">Studio</a>
-<a href="./brb.html" aria-current="page">BRB</a>
-<a href="./world.html">The World</a>
-<a href="./about.html">About</a>
-</nav>
-<a class="logo" href="./index.html">SCENE404 studio</a>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#ffffff"><title>BRB — A little character. A bigger world.</title><meta name="description" content="Meet BRB, a character-led digital world by SCENE404 studio."><link rel="stylesheet" href="style.css"></head>
+<body><header class="site-header">
+  <nav class="nav-links" aria-label="Primary navigation">
+    <a href="index.html">Studio</a>
+  </nav>
+  <a class="logo" href="index.html" aria-label="SCENE404 studio home">SCENE404 studio</a>
+  <nav class="nav-links header-right" aria-label="Pages">
+    <a href="brb.html">BRB</a><a href="world.html">The World</a><a href="about.html">About</a>
+  </nav>
+  <button class="mobile-menu-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
 </header>
-
-<main>
-
-<section class="hero section">
-<div class="hero-copy">
-<p class="eyebrow">PRODUCT 001 · IN DEVELOPMENT</p>
-<h1>Meet BRB.</h1>
-<p class="hero-description">
-A little world of characters, small discoveries, and things worth coming back to.
-</p>
-</div>
-<div class="hero-media big-image motion-media">
-<img src="./app.png" alt="BRB digital product preview" fetchpriority="high">
-</div>
+<div class="mobile-backdrop" aria-hidden="true"></div>
+<nav class="mobile-drawer" aria-label="Mobile navigation">
+  <a href="index.html">Studio</a><a href="brb.html">BRB</a><a href="world.html">The World</a><a href="about.html">About</a>
+</nav><main>
+<section class="section product-hero">
+  <div><p class="eyebrow">Product 001 / In development</p><h1>BRB<span class="accent-dot">.</span></h1><p class="lede">A little character.<br>A bigger world.</p><p class="body-copy">BRB is a digital companion shaped by curiosity, small rituals, and a world that changes with time. We are building it one considered detail at a time.</p><a class="button button-dark" href="https://scene404site.vercel.app" aria-label="Visit SCENE404 studio">From SCENE404 studio</a></div>
+  <div class="product-media"><img src="hero.png" alt="BRB chrome character with X eyes and a pixel heart" fetchpriority="high"></div>
 </section>
-
-<section class="world section">
-<div class="world-copy">
-<p class="eyebrow">THE IDEA</p>
-<h2>A world of its own.</h2>
-<p>
-BRB begins with a simple idea: digital experiences can have character,
-personality, and a world of their own.
-</p>
-<p>We are building the world one piece at a time.</p>
-</div>
-<div class="world-media big-image motion-media">
-<img src="./brb-feed.PNG" alt="A look at the BRB feed experience" loading="lazy">
-</div>
+<section class="section carousel-section" data-carousel>
+  <div class="carousel-top"><div><p class="eyebrow">A few sides of BRB</p><h2>Same world.<br>Different ways of being.</h2></div><div class="carousel-controls"><button class="carousel-arrow" type="button" data-prev aria-label="Previous BRB edition">←</button><button class="carousel-arrow" type="button" data-next aria-label="Next BRB edition">→</button></div></div>
+  <div class="carousel-stage">
+    <img class="carousel-main-image" data-main-image src="brb-moonlight.jpeg" alt="BRB Moonlight edition">
+    <div class="carousel-info"><p class="eyebrow" data-edition-number>Edition 01 / 07</p><h3 data-edition-title>Moonlight<span class="accent-dot">.</span></h3><p class="lede" data-edition-tagline>Sees the softer side.</p><p class="body-copy" data-edition-description>Quietly curious. Thoughtful. Finds beauty in the little things.</p><p class="traits" data-edition-traits>GENTLE · THOUGHTFUL · QUIETLY CURIOUS</p></div>
+  </div>
+  <div class="carousel-thumbs" aria-label="Choose a BRB edition">
+    <button class="carousel-thumb" data-slide="0" aria-label="Moonlight" aria-current="true"><img src="brb-moonlight.jpeg" alt=""></button>
+    <button class="carousel-thumb" data-slide="1" aria-label="Whisper" aria-current="false"><img src="brb-whisper.jpeg" alt=""></button>
+    <button class="carousel-thumb" data-slide="2" aria-label="Curator" aria-current="false"><img src="brb-curator.jpeg" alt=""></button>
+    <button class="carousel-thumb" data-slide="3" aria-label="Keeper" aria-current="false"><img src="brb-keeper.jpeg" alt=""></button>
+    <button class="carousel-thumb" data-slide="4" aria-label="Drifter" aria-current="false"><img src="brb-drifter.jpeg" alt=""></button>
+    <button class="carousel-thumb" data-slide="5" aria-label="Glitch" aria-current="false"><img src="brb-glitch.jpeg" alt=""></button>
+    <button class="carousel-thumb" data-slide="6" aria-label="Secret" aria-current="false"><img src="brb-secret.jpeg" alt=""></button>
+  </div>
 </section>
-
-<section class="app section">
-<div class="app-copy">
-<p class="eyebrow">A MOMENT TO YOURSELF</p>
-<h2>Your own little corner.</h2>
-<p>
-A digital world made of characters, familiar details, and little moments
-to discover at your own pace.
-</p>
-</div>
-<div class="app-media big-image motion-media">
-<img src="./brb-sleep.PNG" alt="A glimpse of the BRB sleep experience" loading="lazy">
-</div>
+<section class="feature-row">
+  <div class="feature-copy"><p class="eyebrow">The idea</p><h2>Not everything needs to be useful<span class="accent-dot">.</span></h2><p class="body-copy">Some things earn their place by becoming part of your day. BRB is being designed around presence, personality, and the small moments that make a digital world feel worth returning to.</p></div>
+  <div class="feature-image"><img src="brb-feed.PNG" alt="A glimpse of the BRB app interface" loading="lazy"></div>
 </section>
-
-<section class="moments section">
-<div class="moments-copy">
-<p class="eyebrow">MADE TO PLAY</p>
-<h2>Little things, big personality.</h2>
-<p>
-Every character has a place in the BRB world. This is just the beginning.
-</p>
-</div>
-<div class="moments-media big-image motion-media">
-<img src="./brb-play.PNG" alt="A playful moment from BRB" loading="lazy">
-</div>
-</section>
-
-</main>
-
-<footer class="site-footer">
-<a class="logo" href="./index.html">SCENE404 studio</a>
-<p>Thanks for skipping around.</p>
-
-<nav class="footer-links" aria-label="Footer navigation">
-<a href="./index.html">Studio</a>
-<a href="./brb.html">BRB</a>
-<a href="./world.html">The World</a>
-<a href="./about.html">About</a>
-<a href="./privacy.html">Privacy</a>
-<a href="./terms.html">Terms</a>
-<a href="./contact.html">Contact</a>
-</nav>
-
-<p class="footer-copyright">© SCENE404 studio</p>
-</footer>
-
-<script>
-(() => {
-const header = document.querySelector(".site-header");
-if (!header) return;
-
-const mobile = window.matchMedia("(max-width: 680px)");
-
-const toggle = document.createElement("button");
-toggle.type = "button";
-toggle.className = "mobile-menu-toggle";
-toggle.setAttribute("aria-label", "Open navigation");
-toggle.setAttribute("aria-expanded", "false");
-toggle.innerHTML = "<span></span><span></span>";
-
-const backdrop = document.createElement("div");
-backdrop.className = "mobile-menu-backdrop";
-
-const drawer = document.createElement("nav");
-drawer.className = "mobile-menu-drawer";
-drawer.setAttribute("aria-label", "Mobile navigation");
-
-[
-["Studio", "./index.html"],
-["BRB", "./brb.html"],
-["The World", "./world.html"],
-["About", "./about.html"]
-].forEach(([label, href]) => {
-const link = document.createElement("a");
-link.href = href;
-link.textContent = label;
-drawer.appendChild(link);
-});
-
-header.appendChild(toggle);
-document.body.appendChild(backdrop);
-document.body.appendChild(drawer);
-
-function closeMenu() {
-drawer.classList.remove("is-visible");
-backdrop.classList.remove("is-visible");
-document.body.classList.remove("mobile-menu-open");
-toggle.setAttribute("aria-expanded", "false");
-toggle.setAttribute("aria-label", "Open navigation");
-}
-
-toggle.addEventListener("click", () => {
-const open = drawer.classList.toggle("is-visible");
-backdrop.classList.toggle("is-visible", open);
-document.body.classList.toggle("mobile-menu-open", open);
-toggle.setAttribute("aria-expanded", String(open));
-toggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
-});
-
-backdrop.addEventListener("click", closeMenu);
-drawer.querySelectorAll("a").forEach(link => {
-link.addEventListener("click", closeMenu);
-});
-
-let previousY = window.scrollY;
-let framePending = false;
-
-window.addEventListener("scroll", () => {
-if (framePending) return;
-framePending = true;
-
-window.requestAnimationFrame(() => {
-const y = window.scrollY;
-
-if (y <= 20) {
-header.classList.remove("is-hidden", "is-compact");
-} else {
-if (mobile.matches) {
-header.classList.add("is-compact");
-}
-
-if (y > previousY + 5 && y > 120) {
-header.classList.add("is-hidden");
-closeMenu();
-} else if (y < previousY - 5) {
-header.classList.remove("is-hidden");
-}
-}
-
-previousY = y;
-framePending = false;
-});
-}, { passive: true });
-
-window.addEventListener("resize", () => {
-if (!mobile.matches) {
-closeMenu();
-header.classList.remove("is-hidden", "is-compact");
-}
-});
-})();
-</script>
-
-</body>
-</html>
+</main><footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a class="logo" href="index.html">SCENE404 studio</a>
+      <p class="footer-tagline">Thanks for skipping around.</p>
+    </div>
+    <div class="footer-newsletter">
+      <p><strong>Be first in line.</strong><br>Occasional notes from the studio. Nothing noisy.</p>
+      <form class="newsletter-form" action="https://formspree.io/f/xjgdddne" method="POST">
+        <label for="footer-email" class="visually-hidden">Email address</label>
+        <input id="footer-email" type="email" name="email" placeholder="Your email address" autocomplete="email" required>
+        <button type="submit" aria-label="Join the waitlist">↗</button>
+      </form>
+      <div class="footer-links"><a href="index.html">Studio</a><a href="brb.html">BRB</a><a href="world.html">The World</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><span>© <span data-year></span> SCENE404 studio</span><span>Things worth keeping around.</span></div>
+</footer><script src="script.js" defer></script></body></html>
