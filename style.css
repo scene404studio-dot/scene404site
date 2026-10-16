@@ -1757,3 +1757,93 @@ main .about-waitlist { display: none; }
 @media (prefers-reduced-motion: reduce) {
   .studio-carousel-slide, .studio-carousel-arrow, .studio-carousel-dots button { transition: none !important; }
 }
+
+
+/* Language switch — added without changing the existing page layout */
+.language-toggle {
+  position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+  z-index: 5; display: inline-flex; align-items: center; justify-content: center;
+  min-width: 38px; height: 34px; padding: 0 10px;
+  border: 1px solid var(--scene-grey-border, #d5d8dc); border-radius: 999px;
+  background: rgba(255,255,255,.72); color: var(--black, #202326);
+  font: inherit; font-size: 11px; font-weight: 600; letter-spacing: .04em;
+  cursor: pointer; transition: background .2s ease, transform .2s ease;
+}
+.language-toggle:hover { background: #fff; transform: translateY(-50%) scale(1.04); }
+.site-header .nav-links { padding-right: 48px; }
+@media (max-width: 760px) {
+  .language-toggle { right: 10px; min-width: 36px; height: 32px; padding: 0 8px; }
+  .site-header .nav-links { padding-right: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .language-toggle { transition: none; } }
+
+/* FINAL ABOUT PAGE POLISH: centered heading with the founder's note directly below */
+.about-page .about-founders-note {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(24px, 3.5vw, 42px);
+  width: min(100% - 2 * var(--page-gutter, 5vw), 1120px);
+  margin-inline: auto;
+  padding-top: clamp(36px, 6vw, 84px);
+  padding-bottom: clamp(64px, 9vw, 128px);
+}
+.about-page .about-founders-note .world-copy {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+.about-page .about-founders-note .world-copy .eyebrow {
+  text-align: center;
+  margin-bottom: clamp(14px, 2vw, 22px);
+}
+.about-page .about-founders-note .world-copy h2 {
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: clamp(34px, 4.4vw, 62px);
+  line-height: 1.06;
+  letter-spacing: -.055em;
+  text-wrap: balance;
+}
+.about-page .about-founders-note .world-media {
+  width: 100%;
+  max-width: 860px;
+  max-height: none;
+  margin: 0 auto;
+  justify-self: center;
+  overflow: hidden;
+  border: 1px solid rgba(32,35,38,.07);
+  border-radius: clamp(18px, 2.4vw, 30px);
+  background: #f7f8f8;
+  box-shadow: 0 18px 48px rgba(32,35,38,.045);
+}
+.about-page .about-founders-note .world-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+  border-radius: inherit;
+}
+@media (max-width: 680px) {
+  .about-page .about-founders-note {
+    width: calc(100% - 36px);
+    gap: 22px;
+    padding-top: 34px;
+    padding-bottom: 68px;
+  }
+  .about-page .about-founders-note .world-copy h2 {
+    font-size: clamp(32px, 8.5vw, 44px);
+    line-height: 1.08;
+  }
+  .about-page .about-founders-note .world-media {
+    border-radius: 22px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-page .about-founders-note .world-media img { transform: none !important; }
+}
