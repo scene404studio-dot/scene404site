@@ -1,522 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#EEF0F2">
-
-  <meta
-    name="description"
-    content="SCENE404 studio creates digital products, characters, and worlds worth keeping around."
-  >
-
-  <title>SCENE404 studio — Small studio. Distant ideas.</title>
-
-  <link rel="stylesheet" href="./style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="description" content="SCENE404 studio makes digital products, characters, and worlds with their own point of view. Meet BRB, the studio's first product.">
+<title>SCENE404 studio — Small studio. Distant ideas.</title>
+<link rel="stylesheet" href="./style.css">
+<style>
+/* Homepage update: scoped additions, designed to sit on top of the existing SCENE404 stylesheet. */
+.studio-page { background:#fff; }
+.studio-page .hero { min-height:76vh; display:flex; align-items:center; padding-top:150px; padding-bottom:clamp(64px,9vw,120px); }
+.studio-page .hero-copy { max-width:850px; }
+.studio-page .hero h1 { max-width:850px; }
+.studio-page .hero-description { max-width:610px; }
+.studio-page .studio-art { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(28px,6vw,88px); align-items:center; padding-top:clamp(64px,8vw,112px); padding-bottom:clamp(64px,8vw,112px); border-top:1px solid #edf0f1; }
+.studio-page .studio-art-copy { max-width:540px; }
+.studio-page .studio-art-copy p:not(.eyebrow) { color:#667176; }
+.studio-page .studio-art-image { overflow:hidden; background:#fff; }
+.studio-page .studio-art-image img { width:100%; height:auto; object-fit:contain; }
+.studio-page .studio-art.reverse .studio-art-copy { order:2; }
+.studio-page .studio-art.reverse .studio-art-image { order:1; }
+.studio-page .personality-section { padding-top:clamp(64px,8vw,112px); padding-bottom:clamp(64px,8vw,112px); border-top:1px solid #edf0f1; }
+.studio-page .personality-intro { display:flex; justify-content:space-between; align-items:end; gap:28px; margin-bottom:32px; }
+.studio-page .personality-intro > div { max-width:620px; }
+.studio-page .personality-intro p:not(.eyebrow) { color:#667176; max-width:430px; }
+.studio-page .personality-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
+.studio-page .personality-card { min-width:0; background:#fff; border:1px solid #edf0f1; }
+.studio-page .personality-card img { display:block; width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; }
+.studio-page .personality-card figcaption { padding:12px 14px 15px; font-size:11px; letter-spacing:.13em; text-transform:uppercase; }
+.studio-page .rare-card { grid-column:span 2; display:grid; grid-template-columns:1fr 1fr; align-items:center; background:#fbfaf8; }
+.studio-page .rare-card img { aspect-ratio:4/5; object-fit:cover; }
+.studio-page .rare-copy { padding:18px; }
+.studio-page .rare-copy h3 { margin-bottom:10px; }
+.studio-page .rare-copy p { color:#667176; font-size:13px; line-height:1.6; }
+.studio-page .studio-note { padding-top:clamp(64px,8vw,112px); padding-bottom:clamp(64px,8vw,112px); border-top:1px solid #edf0f1; }
+.studio-page .studio-note-inner { max-width:850px; }
+.studio-page .studio-note h2 { max-width:780px; }
+.studio-page .studio-note p:not(.eyebrow) { max-width:610px; color:#667176; }
+@media (max-width:760px) {
+ .studio-page .hero { min-height:auto; padding-top:140px; }
+ .studio-page .studio-art { grid-template-columns:1fr; gap:24px; }
+ .studio-page .studio-art.reverse .studio-art-copy,.studio-page .studio-art.reverse .studio-art-image { order:initial; }
+ .studio-page .personality-intro { display:block; }
+ .studio-page .personality-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; }
+ .studio-page .rare-card { grid-column:span 2; }
+ .studio-page .rare-copy { padding:12px; }
+}
+@media (max-width:420px) {
+ .studio-page .rare-card { grid-template-columns:1fr; }
+ .studio-page .rare-card img { aspect-ratio:4/3; object-fit:contain; }
+}
+</style>
 </head>
-
 <body class="studio-page">
-
-  <!-- HEADER -->
-  <header class="site-header">
-
-    <nav class="nav-links" aria-label="Main navigation">
-      <a href="./index.html" aria-current="page">Studio</a>
-      <a href="./brb.html">BRB</a>
-      <a href="./world.html">The World</a>
-      <a href="./about.html">About</a>
-    </nav>
-
-    <a
-      class="logo"
-      href="./index.html"
-      aria-label="SCENE404 studio home"
-    >
-      SCENE404 studio
-    </a>
-
-  </header>
-
-
-  <!-- MAIN CONTENT -->
-  <main>
-
-    <!-- HERO: STUDIO INTRODUCTION -->
-    <section class="hero section" id="home">
-
-      <div class="hero-copy">
-
-        <p class="eyebrow">
-          INDEPENDENT DIGITAL STUDIO
-        </p>
-
-        <h1>
-          Small studio.<br>
-          Distant ideas.
-        </h1>
-
-        <p class="hero-description">
-          We make digital products, characters, and worlds worth keeping around.
-        </p>
-
-        <a class="pill-link" href="./about.html">
-          About the studio
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <!-- THE IDEA -->
-    <section class="world section" id="studio">
-
-      <div class="world-copy">
-
-        <p class="eyebrow">
-          THE IDEA
-        </p>
-
-        <h2>
-          Useful isn't enough.
-        </h2>
-
-        <p>
-          The things we keep are rarely defined by function alone.
-          They become familiar. They gather meaning. We remember them.
-        </p>
-
-        <p>
-          We are interested in digital experiences that feel considered,
-          distinctive, and worth returning to.
-        </p>
-
-        <a class="pill-link" href="./world.html">
-          Explore the world
-        </a>
-
-      </div>
-
-      <div class="world-media big-image motion-media">
-
-        <img
-          src="./world.png"
-          alt="A glimpse into the SCENE404 studio world"
-          loading="lazy"
-        >
-
-      </div>
-
-    </section>
-
-
-    <!-- PRODUCT 001: BRB
-         The BRB hero image appears here only in this HTML. -->
-    <section class="app section" id="featured">
-
-      <div class="app-copy">
-
-        <p class="eyebrow">
-          PRODUCT 001
-        </p>
-
-        <h2>
-          Meet BRB.
-        </h2>
-
-        <p>
-          A character-led digital experiment about curiosity,
-          small discoveries, and the details that make a product
-          feel like its own world.
-        </p>
-
-        <p>
-          BRB is in development. More to come as it takes shape.
-        </p>
-
-        <a class="pill-link" href="./brb.html">
-          Discover BRB
-        </a>
-
-      </div>
-
-      <div class="app-media big-image motion-media">
-
-        <img
-          src="./hero.png"
-          alt="BRB, the first character-led product from SCENE404 studio"
-          loading="lazy"
-        >
-
-      </div>
-
-    </section>
-
-
-    <!-- BRB WORLD: ADDITIONAL VISUAL -->
-    <section class="moments section" id="moments">
-
-      <div class="moments-copy">
-
-        <p class="eyebrow">
-          IN THE MAKING
-        </p>
-
-        <h2>
-          One product.<br>
-          A world to explore.
-        </h2>
-
-        <p>
-          Character, objects, interactions, and details are all part
-          of the same idea. We are building BRB one piece at a time.
-        </p>
-
-        <a class="pill-link" href="./world.html">
-          Explore the world
-        </a>
-
-      </div>
-
-      <div class="moments-media big-image motion-media">
-
-        <img
-          src="./moments.PNG"
-          alt="Small moments and character details from the BRB world"
-          loading="lazy"
-        >
-
-      </div>
-
-    </section>
-
-
-    <!-- FOUNDER'S NOTE -->
-    <section class="founder-note section" id="founder-note">
-
-      <div class="founder-note-copy">
-
-        <p class="eyebrow">
-          03 — A NOTE FROM THE FOUNDER
-        </p>
-
-        <h2>
-          Built from a point of view.
-        </h2>
-
-        <p>
-          SCENE404 was created to give original ideas the space
-          to become complete creative worlds — each with its own
-          character, visual language, and purpose.
-        </p>
-
-        <p>
-          The studio is an ongoing exploration of what thoughtful
-          design and imagination can make possible.
-        </p>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- FOOTER: ONE FOOTER, FOUR COLUMNS -->
-  <footer class="site-footer" id="footer">
-
-    <div class="footer-brand">
-
-      <a class="footer-logo" href="./index.html">
-        SCENE404 studio
-      </a>
-
-      <p class="footer-tagline">
-        Thanks for skipping around.
-      </p>
-
+<header class="site-header">
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="./index.html" aria-current="page">Studio</a>
+    <a href="./brb.html">BRB</a>
+    <a href="./world.html">The World</a>
+    <a href="./about.html">About</a>
+  </nav>
+  <a class="logo" href="./index.html" aria-label="SCENE404 studio home">SCENE404 studio</a>
+</header>
+
+<main>
+  <section class="hero section">
+    <div class="hero-copy">
+      <p class="eyebrow">INDEPENDENT DIGITAL STUDIO</p>
+      <h1>Small studio.<br>Distant ideas.</h1>
+      <p class="hero-description">We make digital products, characters, and worlds with their own point of view.</p>
+      <a class="pill-link" href="./about.html">About the studio</a>
     </div>
+  </section>
 
-
-    <div class="footer-main">
-
-      <!-- NEWSLETTER -->
-      <div class="footer-newsletter">
-
-        <p class="eyebrow">
-          STAY IN THE LOOP
-        </p>
-
-        <h2>
-          Follow what comes next.
-        </h2>
-
-        <p>
-          Occasional updates from SCENE404 studio.
-        </p>
-
-        <form
-          class="footer-waitlist-form"
-          action="https://formspree.io/f/xjgdddne"
-          method="POST"
-        >
-
-          <label
-            class="visually-hidden"
-            for="studio-footer-email"
-          >
-            Email address
-          </label>
-
-          <input
-            id="studio-footer-email"
-            type="email"
-            name="email"
-            placeholder="Email address"
-            autocomplete="email"
-            required
-          >
-
-          <button
-            type="submit"
-            aria-label="Subscribe"
-          >
-            ↗
-          </button>
-
-        </form>
-
-        <p class="footer-form-consent">
-          By subscribing, you agree to our
-          <a href="./privacy.html">Privacy Policy</a>
-          and
-          <a href="./terms.html">Terms</a>.
-        </p>
-
-      </div>
-
-
-      <!-- FOOTER NAVIGATION -->
-      <div class="footer-columns">
-
-        <div class="footer-column">
-
-          <p class="footer-heading">
-            Navigation
-          </p>
-
-          <a href="./index.html" aria-current="page">
-            Studio
-          </a>
-
-          <a href="./brb.html">
-            BRB
-          </a>
-
-          <a href="./world.html">
-            The World
-          </a>
-
-          <a href="./about.html">
-            About
-          </a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-          <p class="footer-heading">
-            Social
-          </p>
-
-          <a
-            href="https://www.instagram.com/scene404.studio/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Instagram ↗
-          </a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-          <p class="footer-heading">
-            Official
-          </p>
-
-          <a href="./FAQ.html">
-            FAQ
-          </a>
-
-          <a href="./privacy.html">
-            Privacy
-          </a>
-
-          <a href="./terms.html">
-            Terms
-          </a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-          <p class="footer-heading">
-            Support
-          </p>
-
-          <a href="./contact.html">
-            Contact
-          </a>
-
-        </div>
-
-      </div>
-
+  <section class="studio-art section">
+    <div class="studio-art-copy">
+      <p class="eyebrow">THE STUDIO / IN PROGRESS</p>
+      <h2>Good things are thought through.</h2>
+      <p>From the first line on a page to the smallest interaction, we care about how a digital world comes together.</p>
+      <p>Design, technology, character, and storytelling — considered as one thing.</p>
+      <a class="pill-link" href="./about.html">How we think</a>
     </div>
-
-
-    <!-- COPYRIGHT -->
-    <div class="footer-bottom">
-
-      <p class="copyright">
-        © <span class="current-year">2026</span>
-        SCENE404 studio
-      </p>
-
+    <div class="studio-art-image">
+      <img src="./assets/brb-one-in-a-million.jpeg" alt="The rare gold BRB edition with an opal heart" loading="lazy">
     </div>
+  </section>
 
-  </footer>
+  <section class="studio-art section reverse">
+    <div class="studio-art-copy">
+      <p class="eyebrow">PRODUCT 001</p>
+      <h2>Meet BRB.</h2>
+      <p>A character-led digital experiment, built around curiosity, small discoveries, and the feeling of having a little world of your own.</p>
+      <p>BRB is in development. We are making it one considered detail at a time.</p>
+      <a class="pill-link" href="./brb.html">Discover BRB</a>
+    </div>
+    <div class="studio-art-image">
+      <img src="./assets/brb-drifter.jpeg" alt="Drifter, a chrome BRB personality" loading="lazy">
+    </div>
+  </section>
 
+  <section class="personality-section section">
+    <div class="personality-intro">
+      <div>
+        <p class="eyebrow">A FEW SIDES OF BRB</p>
+        <h2>Same world.<br>Different ways of being.</h2>
+      </div>
+      <p>Color is only the beginning. Each edition has its own character, mood, and little point of view.</p>
+    </div>
+    <div class="personality-grid">
+      <figure class="personality-card">
+        <img src="./assets/brb-moonlight.jpeg" alt="Moonlight, the soft and thoughtful BRB edition" loading="lazy">
+        <figcaption>Moonlight</figcaption>
+      </figure>
+      <figure class="personality-card">
+        <img src="./assets/brb-whisper.jpeg" alt="Whisper, the calm and quietly playful BRB edition" loading="lazy">
+        <figcaption>Whisper</figcaption>
+      </figure>
+      <figure class="personality-card">
+        <img src="./assets/brb-curator.jpeg" alt="Curator, the attentive BRB edition" loading="lazy">
+        <figcaption>Curator</figcaption>
+      </figure>
+      <figure class="personality-card">
+        <img src="./assets/brb-keeper.jpeg" alt="Keeper, the loyal BRB edition" loading="lazy">
+        <figcaption>Keeper</figcaption>
+      </figure>
+      <figure class="personality-card">
+        <img src="./assets/brb-phantom.jpeg" alt="Phantom, the independent BRB edition" loading="lazy">
+        <figcaption>Phantom</figcaption>
+      </figure>
+      <figure class="personality-card">
+        <img src="./assets/brb-glitch.jpeg" alt="Glitch, the playful and unpredictable BRB edition" loading="lazy">
+        <figcaption>Glitch</figcaption>
+      </figure>
+      <figure class="personality-card">
+        <img src="./assets/brb-secret.jpeg" alt="The unrevealed Secret BRB edition" loading="lazy">
+        <figcaption>Secret</figcaption>
+      </figure>
+      <div class="personality-card rare-card">
+        <img src="./assets/brb-one-in-a-million.jpeg" alt="One in a Million, the gold BRB edition with an opal heart" loading="lazy">
+        <div class="rare-copy">
+          <p class="eyebrow">RARE EDITION</p>
+          <h3>One in a million.</h3>
+          <p>A different kind of collector’s piece. The heart gives it away.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- MOBILE NAVIGATION AND CURRENT YEAR -->
-  <script>
-    (() => {
-      const header = document.querySelector(".site-header");
+  <section class="studio-note section">
+    <div class="studio-note-inner">
+      <p class="eyebrow">SCENE404 STUDIO</p>
+      <h2>We believe digital experiences deserve that kind of thought.</h2>
+      <p>We explore the space between design, technology, storytelling, and play — creating products and original worlds with their own visual language.</p>
+      <a class="pill-link" href="./world.html">Explore the world</a>
+    </div>
+  </section>
+</main>
 
-      if (!header) return;
+<footer class="site-footer">
+  <div class="footer-brand">
+    <a class="footer-logo" href="./index.html">SCENE404 studio</a>
+    <p class="footer-tagline">Thanks for skipping around.</p>
+  </div>
+  <div class="footer-main">
+    <div class="footer-newsletter">
+      <p class="eyebrow">STAY IN THE LOOP</p>
+      <h2>Be first in line.</h2>
+      <p>Get updates from SCENE404 studio and hear when BRB is ready.</p>
+      <form class="footer-waitlist-form" action="https://formspree.io/f/xjgdddne" method="POST">
+        <label class="visually-hidden" for="footer-index-email">Email address</label>
+        <input id="footer-index-email" type="email" name="email" placeholder="Email address" autocomplete="email" required>
+        <button type="submit">Join the waitlist</button>
+      </form>
+      <p class="footer-form-note">Not spam, just first in line.</p>
+      <p class="footer-form-consent">By joining, you agree to our <a href="./privacy.html">Privacy Policy</a> and <a href="./terms.html">Terms</a>.</p>
+    </div>
+    <div class="footer-columns">
+      <div class="footer-column"><p class="footer-heading">Navigation</p><a href="./index.html" aria-current="page">Studio</a><a href="./brb.html">BRB</a><a href="./world.html">The World</a><a href="./about.html">About</a></div>
+      <div class="footer-column"><p class="footer-heading">Social</p><a href="https://instagram.com/scene404.studio" target="_blank" rel="noopener noreferrer">Instagram</a></div>
+      <div class="footer-column"><p class="footer-heading">Official</p><a href="./FAQ.html">FAQ</a><a href="./privacy.html">Privacy</a><a href="./terms.html">Terms</a></div>
+      <div class="footer-column"><p class="footer-heading">Support</p><a href="./contact.html">Contact</a></div>
+    </div>
+    <p class="privacy-statement">Do Not Sell or Share My Personal Information</p>
+  </div>
+  <div class="footer-bottom"><p class="copyright">© 2026 SCENE404 studio</p></div>
+</footer>
 
-      const nav = header.querySelector(".nav-links");
-
-      if (!nav) return;
-
-      const mobileQuery = window.matchMedia("(max-width: 680px)");
-
-      // Prevent duplicate mobile controls if the script is initialized twice.
-      if (header.querySelector(".mobile-menu-toggle")) return;
-
-      const toggle = document.createElement("button");
-
-      toggle.type = "button";
-      toggle.className = "mobile-menu-toggle";
-      toggle.setAttribute("aria-label", "Open navigation");
-      toggle.setAttribute("aria-expanded", "false");
-      toggle.setAttribute("aria-controls", "mobile-navigation");
-      toggle.innerHTML = "<span></span><span></span>";
-
-      const backdrop = document.createElement("div");
-
-      backdrop.className = "mobile-menu-backdrop";
-      backdrop.setAttribute("aria-hidden", "true");
-
-      const drawer = document.createElement("nav");
-
-      drawer.id = "mobile-navigation";
-      drawer.className = "mobile-menu-drawer";
-      drawer.setAttribute("aria-label", "Mobile navigation");
-
-      nav.querySelectorAll("a").forEach((link) => {
-        drawer.appendChild(link.cloneNode(true));
-      });
-
-      header.appendChild(toggle);
-      document.body.append(backdrop, drawer);
-
-      function closeMenu() {
-        drawer.classList.remove("is-visible");
-        backdrop.classList.remove("is-visible");
-        document.body.classList.remove("mobile-menu-open");
-
-        toggle.setAttribute("aria-expanded", "false");
-        toggle.setAttribute("aria-label", "Open navigation");
+<script>
+(() => {
+  const header = document.querySelector(".site-header");
+  const nav = header && header.querySelector(".nav-links");
+  if (!header || !nav) return;
+  const mobileQuery = window.matchMedia("(max-width: 680px)");
+  const toggle = document.createElement("button");
+  toggle.className = "mobile-menu-toggle";
+  toggle.type = "button";
+  toggle.setAttribute("aria-label", "Open navigation");
+  toggle.setAttribute("aria-expanded", "false");
+  toggle.setAttribute("aria-controls", "mobile-navigation");
+  toggle.innerHTML = "<span></span><span></span><span></span>";
+  const backdrop = document.createElement("div");
+  backdrop.className = "mobile-menu-backdrop";
+  backdrop.setAttribute("aria-hidden", "true");
+  const drawer = document.createElement("nav");
+  drawer.className = "mobile-menu-drawer";
+  drawer.id = "mobile-navigation";
+  drawer.setAttribute("aria-label", "Mobile navigation");
+  nav.querySelectorAll("a").forEach(link => drawer.appendChild(link.cloneNode(true)));
+  document.body.append(toggle, backdrop, drawer);
+  function closeMenu() {
+    drawer.classList.remove("is-visible");
+    backdrop.classList.remove("is-visible");
+    document.body.classList.remove("mobile-menu-open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Open navigation");
+  }
+  function openMenu() {
+    drawer.classList.add("is-visible");
+    backdrop.classList.add("is-visible");
+    document.body.classList.add("mobile-menu-open");
+    toggle.setAttribute("aria-expanded", "true");
+    toggle.setAttribute("aria-label", "Close navigation");
+  }
+  toggle.addEventListener("click", () => drawer.classList.contains("is-visible") ? closeMenu() : openMenu());
+  backdrop.addEventListener("click", closeMenu);
+  drawer.addEventListener("click", event => { if (event.target.closest("a")) closeMenu(); });
+  document.addEventListener("keydown", event => { if (event.key === "Escape") closeMenu(); });
+  let lastY = Math.max(0, window.scrollY), movement = 0, direction = 0, framePending = false;
+  function updateScroll() {
+    const y = Math.max(0, window.scrollY), step = y - lastY;
+    lastY = y;
+    if (y <= 40) {
+      header.classList.remove("is-hidden", "is-compact");
+      toggle.classList.remove("is-visible", "is-hidden");
+      movement = 0; direction = 0; closeMenu(); framePending = false; return;
+    }
+    const nextDirection = step > 0 ? 1 : step < 0 ? -1 : 0;
+    if (nextDirection && nextDirection !== direction) { direction = nextDirection; movement = 0; }
+    movement += Math.abs(step);
+    if (movement >= 12 && direction !== 0) {
+      if (mobileQuery.matches) {
+        header.classList.add("is-hidden"); header.classList.remove("is-compact");
+        if (direction > 0) { toggle.classList.remove("is-visible"); toggle.classList.add("is-hidden"); if (drawer.classList.contains("is-visible")) closeMenu(); }
+        else { toggle.classList.remove("is-hidden"); toggle.classList.add("is-visible"); }
+      } else {
+        toggle.classList.remove("is-visible", "is-hidden");
+        if (direction > 0) header.classList.add("is-hidden");
+        else header.classList.remove("is-hidden", "is-compact");
       }
-
-      function openMenu() {
-        drawer.classList.add("is-visible");
-        backdrop.classList.add("is-visible");
-        document.body.classList.add("mobile-menu-open");
-
-        toggle.setAttribute("aria-expanded", "true");
-        toggle.setAttribute("aria-label", "Close navigation");
-      }
-
-      toggle.addEventListener("click", () => {
-        if (drawer.classList.contains("is-visible")) {
-          closeMenu();
-        } else {
-          openMenu();
-        }
-      });
-
-      backdrop.addEventListener("click", closeMenu);
-
-      drawer.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", closeMenu);
-      });
-
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-          closeMenu();
-        }
-      });
-
-      let previousY = window.scrollY;
-      let ticking = false;
-
-      window.addEventListener("scroll", () => {
-        if (ticking) return;
-
-        ticking = true;
-
-        window.requestAnimationFrame(() => {
-          const currentY = window.scrollY;
-
-          if (currentY < 25) {
-            header.classList.remove("is-hidden", "is-compact");
-            closeMenu();
-          } else if (currentY > previousY + 6) {
-            header.classList.add("is-hidden");
-            closeMenu();
-          } else if (currentY < previousY - 6) {
-            header.classList.remove("is-hidden");
-
-            if (mobileQuery.matches) {
-              header.classList.add("is-compact");
-            }
-          }
-
-          previousY = currentY;
-          ticking = false;
-        });
-      }, { passive: true });
-
-      window.addEventListener("resize", () => {
-        closeMenu();
-
-        if (!mobileQuery.matches) {
-          header.classList.remove("is-hidden", "is-compact");
-        }
-      });
-    })();
-
-    // Update the copyright year.
-    document.querySelectorAll(".current-year").forEach((element) => {
-      element.textContent = new Date().getFullYear();
-    });
-  </script>
-
+      movement = 0;
+    }
+    framePending = false;
+  }
+  window.addEventListener("scroll", () => {
+    if (!framePending) { framePending = true; window.requestAnimationFrame(updateScroll); }
+  }, { passive: true });
+  window.addEventListener("resize", () => {
+    closeMenu(); header.classList.remove("is-hidden", "is-compact");
+    toggle.classList.remove("is-visible", "is-hidden"); lastY = Math.max(0, window.scrollY); movement = 0; direction = 0;
+  });
+  updateScroll();
+})();
+</script>
 </body>
 </html>
