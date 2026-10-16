@@ -1517,3 +1517,132 @@ main .about-waitlist { display: none; }
   .about-rare-image img,
   .world-feature-image-frame img { transition: none !important; }
 }
+
+
+/* FINAL POLISH — remove grey image rails and add subtle, responsive motion */
+:root { --image-glow: rgba(219, 170, 194, .22); }
+
+/* Artwork should sit directly on the white page, not inside a grey panel/frame. */
+.motion-media,
+.big-image,
+.studio-blueprint-media,
+.about-rare-image,
+.world-feature-image-frame,
+.personality-board-frame,
+.hero-media,
+.world-media,
+.app-media,
+.moments-media,
+.world-feature-media {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  overflow: visible;
+  isolation: isolate;
+}
+.motion-media::after,
+.big-image::after,
+.studio-point-image::after,
+.about-rare-image::after,
+.world-feature-image-frame::after,
+.personality-board-frame::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 12%; right: 12%; bottom: -3%; height: 12%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, var(--image-glow) 0%, rgba(219,170,194,0) 72%);
+  filter: blur(15px);
+  opacity: .72;
+  pointer-events: none;
+  transition: opacity .45s ease, transform .55s var(--ease);
+}
+.motion-media img,
+.big-image img,
+.studio-point-image img,
+.about-rare-image img,
+.world-feature-image-frame img,
+.personality-board-frame img {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: scale(var(--scroll-image-scale, .985));
+  transform-origin: center center;
+  transition: transform .65s var(--ease), filter .65s var(--ease);
+  will-change: transform;
+}
+.motion-media.is-in-view img,
+.big-image.is-in-view img,
+.studio-point-image.is-in-view img,
+.about-rare-image.is-in-view img,
+.world-feature-image-frame.is-in-view img,
+.personality-board-frame.is-in-view img {
+  transform: scale(var(--scroll-image-scale, 1));
+  filter: drop-shadow(0 14px 15px rgba(32,35,38,.055));
+}
+@media (hover:hover) and (pointer:fine) {
+  .motion-media:hover::after,
+  .big-image:hover::after,
+  .studio-point-image:hover::after,
+  .about-rare-image:hover::after,
+  .world-feature-image-frame:hover::after,
+  .personality-board-frame:hover::after { opacity: 1; transform: translateY(3px) scale(1.08); }
+  .motion-media:hover img,
+  .big-image:hover img,
+  .studio-point-image:hover img,
+  .about-rare-image:hover img,
+  .world-feature-image-frame:hover img,
+  .personality-board-frame:hover img { transform: scale(1.018); }
+}
+
+/* The blueprint belongs with the studio's point of view, not the opening headline. */
+.studio-page .hero { grid-template-columns: minmax(0,1fr); min-height: min(650px, 72vh); }
+.studio-page .hero-copy { max-width: 780px; }
+.studio-page .world.section#studio {
+  grid-template-columns: minmax(0,.88fr) minmax(0,1.12fr);
+  align-items: center;
+  gap: clamp(32px,6vw,88px);
+}
+.studio-point-image { position:relative; width:100%; max-width:660px; justify-self:end; align-self:center; overflow:visible; }
+.studio-point-image img { display:block; width:100%; max-height:460px; object-fit:contain; }
+.studio-page .world.section#studio .world-copy { max-width:600px; }
+
+/* Keep the character and editorial artwork comfortably sized on large screens. */
+.world-feature-image-frame { width:100%; max-width:760px; max-height:none; }
+.world-feature-image-frame img,
+.personality-board-frame img,
+.about-rare-image img,
+.about-page .about-point-of-view .moments-media img { max-height:460px; object-fit:contain; }
+.world-page .world-personality-board .personality-board-frame { max-width:900px; }
+.about-rare-image { max-width:720px; }
+.about-page .about-point-of-view .moments-media { max-width:680px; }
+
+@media (max-width: 900px) {
+  .studio-page .world.section#studio { grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:28px; }
+  .studio-point-image img { max-height:360px; }
+}
+@media (max-width: 680px) {
+  .studio-page .hero { min-height:0; padding-top:145px; padding-bottom:72px; }
+  .studio-page .world.section#studio { grid-template-columns:minmax(0,1fr); gap:26px; }
+  .studio-point-image { max-width:100%; justify-self:stretch; margin-top:4px; }
+  .studio-point-image img { width:100%; max-height:300px; object-fit:contain; }
+  .world-feature-image { grid-template-columns:minmax(0,1fr); }
+  .world-feature-image-frame img,
+  .personality-board-frame img,
+  .about-rare-image img,
+  .about-page .about-point-of-view .moments-media img { max-height:320px; }
+  .about-rare-image-section { width:calc(100% - 2 * var(--gutter)); }
+  .motion-media::after, .big-image::after, .studio-point-image::after,
+  .about-rare-image::after, .world-feature-image-frame::after,
+  .personality-board-frame::after { bottom:-2%; height:9%; filter:blur(12px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .motion-media img, .big-image img, .studio-point-image img,
+  .about-rare-image img, .world-feature-image-frame img,
+  .personality-board-frame img { transition:none !important; transform:none !important; }
+  .motion-media::after, .big-image::after, .studio-point-image::after,
+  .about-rare-image::after, .world-feature-image-frame::after,
+  .personality-board-frame::after { transition:none !important; }
+}

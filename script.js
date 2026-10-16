@@ -27,6 +27,20 @@
     const updateHeader = () => header.classList.toggle('is-compact', window.scrollY > 30);
     window.addEventListener('scroll', updateHeader, {passive:true}); updateHeader();
   }
+  /* Scroll-linked image scale: subtle enough to feel alive, not distracting. */
+  const motionImages = document.querySelectorAll('.motion-media, .big-image, .studio-point-image, .about-rare-image, .world-feature-image-frame, .personality-board-frame');
+  if (motionImages.length) {
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+        entry.target.classList.toggle('is-in-view', entry.isIntersecting);
+        if (entry.isIntersecting) entry.target.style.setProperty('--scroll-image-scale', '1');
+        else entry.target.style.setProperty('--scroll-image-scale', '.985');
+      }), {threshold:0.12, rootMargin:'-6% 0px -6% 0px'});
+      motionImages.forEach(el => imageObserver.observe(el));
+    } else {
+      motionImages.forEach(el => { el.classList.add('is-in-view'); el.style.setProperty('--scroll-image-scale','1'); });
+    }
+  }
   if (!reduceMotion && 'IntersectionObserver' in window) {
     const targets = document.querySelectorAll('main > section, .character-card, .footer-newsletter');
     targets.forEach(el => el.classList.add('js-reveal'));
