@@ -1646,3 +1646,104 @@ main .about-waitlist { display: none; }
   .about-rare-image::after, .world-feature-image-frame::after,
   .personality-board-frame::after { transition:none !important; }
 }
+
+/* FINAL IMAGE FINISH — unified soft cards, clipped corners, no pasted-on edges */
+:root { --image-card-radius: 24px; --image-card-line: #edf0f1; }
+.motion-media,
+.big-image,
+.hero-media,
+.world-media,
+.app-media,
+.moments-media,
+.studio-point-image,
+.about-rare-image,
+.world-feature-image-frame,
+.personality-board-frame,
+.founders-note-media {
+  position: relative;
+  isolation: isolate;
+  border: 1px solid var(--image-card-line) !important;
+  border-radius: var(--image-card-radius) !important;
+  background: linear-gradient(145deg, #fff 0%, #f8f9fa 100%) !important;
+  overflow: hidden !important;
+  clip-path: inset(0 round var(--image-card-radius));
+  box-shadow: 0 10px 32px rgba(32,35,38,.035);
+}
+.motion-media img,
+.big-image img,
+.hero-media img,
+.world-media img,
+.app-media img,
+.moments-media img,
+.studio-point-image img,
+.about-rare-image img,
+.world-feature-image-frame img,
+.personality-board-frame img,
+.founders-note-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+/* A quiet pool of light beneath the image, contained within each card. */
+.motion-media::after,
+.big-image::after,
+.studio-point-image::after,
+.about-rare-image::after,
+.world-feature-image-frame::after,
+.personality-board-frame::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 16%; right: 16%; bottom: 0;
+  height: 10%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(205, 166, 190, .22) 0%, rgba(205,166,190,0) 72%);
+  filter: blur(15px);
+  opacity: .7;
+  pointer-events: none;
+}
+/* Editorial posters should sit inside the frame with breathing room, like the BRB carousel. */
+.world-feature-image-frame,
+.personality-board-frame,
+.about-rare-image { padding: clamp(10px, 1.5vw, 20px); }
+.world-feature-image-frame img,
+.personality-board-frame img,
+.about-rare-image img { max-height: 460px; object-fit: contain; }
+.studio-point-image { padding: clamp(8px, 1.2vw, 16px); }
+.studio-point-image img { max-height: 440px; object-fit: contain; }
+.about-page .about-point-of-view .moments-media { padding: clamp(8px, 1.2vw, 16px); }
+.about-page .about-point-of-view .moments-media img { max-height: 440px; object-fit: contain; }
+@media (hover: hover) and (pointer: fine) {
+  .motion-media:hover,
+  .big-image:hover,
+  .studio-point-image:hover,
+  .about-rare-image:hover,
+  .world-feature-image-frame:hover,
+  .personality-board-frame:hover {
+    box-shadow: 0 16px 38px rgba(32,35,38,.07);
+  }
+}
+@media (max-width: 680px) {
+  :root { --image-card-radius: 18px; }
+  .world-feature-image-frame,
+  .personality-board-frame,
+  .about-rare-image,
+  .studio-point-image,
+  .about-page .about-point-of-view .moments-media { padding: 8px; }
+  .world-feature-image-frame img,
+  .personality-board-frame img,
+  .about-rare-image img,
+  .studio-point-image img,
+  .about-page .about-point-of-view .moments-media img { max-height: 320px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .motion-media, .big-image, .studio-point-image, .about-rare-image,
+  .world-feature-image-frame, .personality-board-frame { transition: none !important; }
+}
