@@ -1331,3 +1331,53 @@ main .about-waitlist { display: none; }
  .rare-media { max-width:360px; }
 }
 @media (prefers-reduced-motion:reduce) { .js-reveal { opacity:1; transform:none; } }
+
+
+/* Final placement refinements: Studio concept sheet and About rare edition */
+.studio-blueprint-media { width:100%; max-width:660px; justify-self:end; align-self:center; overflow:hidden; border-radius:24px; background:#f7f7f6; }
+.studio-blueprint-media img { display:block; width:100%; height:auto; object-fit:cover; }
+.about-page .about-hero { display:block; min-height:0; padding-bottom:clamp(28px,5vw,64px); }
+.about-page .about-hero .hero-copy { max-width:900px; }
+.about-rare-image-section { width:min(100% - 2*clamp(24px,6vw,88px), 1180px); margin:0 auto; padding:0 0 clamp(64px,10vw,140px); }
+.about-rare-image { width:100%; max-width:900px; margin:0 auto; overflow:hidden; border-radius:24px; background:#fafafa; }
+.about-rare-image img { display:block; width:100%; height:auto; object-fit:contain; }
+@media (max-width:680px) {
+  .studio-blueprint-media { width:100%; max-width:none; justify-self:stretch; border-radius:18px; margin-top:10px; }
+  .about-page .about-hero { display:block; padding-bottom:24px; }
+  .about-page .about-hero .hero-copy { max-width:none; }
+  .about-rare-image-section { width:calc(100% - 40px); padding-bottom:64px; }
+  .about-rare-image { border-radius:18px; }
+}
+
+
+/* Added visual assets — editorial object gallery and studio concept panels */
+.world-object-gallery, .world-personality-board { padding-top:clamp(58px,8vw,108px); padding-bottom:clamp(58px,8vw,108px); border-top:1px solid var(--line); }
+.world-object-gallery-heading { max-width:760px; margin-bottom:clamp(24px,4vw,44px); }
+.world-object-gallery-heading h2 { margin-bottom:12px; }
+.world-object-gallery-heading > p:not(.eyebrow) { color:var(--grey); }
+.object-gallery-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(12px,2vw,24px); }
+.object-gallery-card { min-width:0; margin:0; padding:clamp(10px,1.5vw,18px); border:1px solid var(--line); border-radius:20px; background:#fff; overflow:hidden; }
+.object-gallery-card img { display:block; width:100%; aspect-ratio:4/5; object-fit:contain; border-radius:12px; transition:transform .55s var(--ease); }
+.object-gallery-card:hover img { transform:scale(1.025); }
+.object-gallery-card figcaption { display:flex; flex-direction:column; gap:8px; padding:16px 5px 5px; }
+.object-gallery-card figcaption span { color:var(--secondary-grey, #8D969B); font-size:10px; letter-spacing:.16em; }
+.object-gallery-card figcaption strong { font-size:clamp(15px,1.7vw,21px); font-weight:500; letter-spacing:-.025em; }
+.world-feature-image { display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); align-items:center; gap:clamp(28px,6vw,88px); padding-top:clamp(58px,8vw,108px); padding-bottom:clamp(58px,8vw,108px); border-top:1px solid var(--line); }
+.world-feature-image-copy { max-width:470px; }
+.world-feature-image-copy h2 { margin-bottom:18px; }
+.world-feature-image-copy p:not(.eyebrow) { color:var(--grey); }
+.world-feature-image-frame, .personality-board-frame { overflow:hidden; border-radius:22px; background:#fafafa; }
+.world-feature-image-frame img, .personality-board-frame img { display:block; width:100%; height:auto; object-fit:contain; }
+.world-personality-board .personality-board-frame { max-width:1040px; margin:0 auto; }
+.about-point-of-view .moments-media { max-width:680px; }
+.about-point-of-view .moments-media img { object-fit:contain; }
+@media (max-width:680px) {
+ .object-gallery-grid { grid-template-columns:1fr; gap:14px; }
+ .object-gallery-card { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.85fr); align-items:center; gap:10px; padding:10px; border-radius:16px; }
+ .object-gallery-card img { aspect-ratio:4/5; max-height:230px; }
+ .object-gallery-card figcaption { padding:10px 6px; }
+ .object-gallery-card figcaption strong { font-size:18px; }
+ .world-feature-image { grid-template-columns:1fr; }
+ .world-feature-image-frame, .personality-board-frame { border-radius:16px; }
+}
+@media (prefers-reduced-motion:reduce) { .object-gallery-card img { transition:none; } }
